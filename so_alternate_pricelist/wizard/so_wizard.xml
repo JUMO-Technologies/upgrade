@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Views -->
+        <record id="so_duplicate_wizard_form" model="ir.ui.view">
+            <field name="name">so_duplicate_wizard_form</field>
+            <field name="model">so_duplicate_wizard</field>
+            <field name="arch" type="xml">
+                <form string="Duplicate with other pricelist">
+                    <group>
+                        <field name="so_id" />
+                        <field name="pricelist_id" />
+                        <field name="partner_id" context="{'search_default_customer':1, 'show_address': 1}" options="{&quot;always_reload&quot;: True}" />
+                    </group>
+                    <footer>
+                        <button string="Duplicate Sale Order" name="action_duplicate" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                 </form>
+            </field>
+        </record>
+
+        <!-- Actions -->
+        <act_window id="so_duplicate_wizard_action"
+                    name="Duplicate with different PriceList and Customer"
+                    binding_model="sale.order"
+                    res_model="so_duplicate_wizard"
+                    view_mode="form"
+                    target="new"/>
+    </data>
+</odoo>

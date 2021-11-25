@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- REMOVE the default code from ALL products. Aswell as the sequence from all collections and product_type,
+        and the collection number from collections. USE ONLY to clean the current data in db. -->
+        <!-- TODO action_clean_default_code deactivated : still usefull ? -->
+        <record id="action_clean_default_code" model="ir.actions.server">
+            <field name="name">Clean Default Code</field>
+            <field name="model_id" ref="sale.model_product_template"/>
+            <field name="state">code</field>
+            <field name="code"><![CDATA[
+products = record.search([])
+collections = env['product.public.category'].search([])
+categs = env['x_tipos_producto'].search([])
+sequences = collections.mapped('x_sequence_id') | categs.mapped('x_sequence_id')
+
+products.write({
+    'default_code': '',
+})
+
+collections.write({
+    'x_collection_number': '',
+})
+
+sequences.unlink()
+                ]]>
+            </field>
+        </record>
+
+        <!-- select all products, and use this to initialize all the current products -->
+        <!-- TODO action_product_compute_default_code deactivated : still usefull ? -->
+        <record id="action_product_compute_default_code" model="ir.actions.server">
+            <field name="name">Compute Default Code</field>
+            <field name="model_id" ref="sale.model_product_template"/>
+            <field name="state">code</field>
+            <field name="code"><![CDATA[
+Sequence = env['ir.sequence']
+
+def get_type_sequence(type):
+    if type.x_sequence_id:
+        return type.x_sequence_id
+    sequence = Sequence.create({
+        'name': type.x_product_category,
+        'prefix': type.x_product_category,
+        'padding': 3,
+    })
+    type.write({
+        'x_sequence_id': sequence.id,
+    })
+    return sequence
+
+def get_collection_sequence(collection):
+    if collection.x_sequence_id:
+        return collection.x_sequence_id
+    if not collection.x_product_type:
+        return
+
+    type_sequence = get_type_sequence(collection.x_product_type)
+    collection_number = type_sequence._next()
+    sequence = Sequence.create({
+        'name': collection_number,
+        'prefix': '%s-' %collection_number,
+        'padding': 3,
+    })
+    collection.write({
+        'x_sequence_id': sequence.id,
+        'x_collection_number': collection_number,
+    })
+    return sequence
+
+def compute_default_code(product):
+    if product.default_code:
+        return
+    if not product.x_coleccion:
+        return
+
+    sequence = get_collection_sequence(product.x_coleccion)
+    if sequence:
+        product.write({
+            'default_code': sequence._next()
+        })
+
+for product in record.browse(context.get('active_ids', [])):
+    compute_default_code(product)
+                ]]>
+            </field>
+        </record>
+    </data>
+</odoo>

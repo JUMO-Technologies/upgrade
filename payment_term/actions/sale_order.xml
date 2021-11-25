@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+     <record id="sale_order_onchange_x_payment_term_sa" model="ir.actions.server">
+        <field name="name">Onchange sale.order x_payment_term_id</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="state">code</field>
+        <field name="code">
+<![CDATA[
+if record.x_payment_term_id and record.payment_term_id:
+    record['payment_term_id'] = False
+]]>
+        </field>
+    </record> 
+
+    <record id="sale_order_onchange_x_payment_term_ba" model="base.automation">
+        <field name="name">Onchange sale.order x_payment_term_id (Automated Action)</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="trigger">on_change</field>
+        <field name="on_change_fields">x_payment_term_id</field>
+        <field name="state">code</field>
+        <field name="code">
+<![CDATA[
+if record.x_payment_term_id and record.payment_term_id:
+    record['payment_term_id'] = False
+]]>
+        </field>
+    </record>
+
+     <record id="sale_order_onchange_payment_term_sa" model="ir.actions.server">
+        <field name="name">Onchange sale.order payment_term_id</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="state">code</field>
+        <field name="code">
+<![CDATA[
+if record.payment_term_id and record.x_payment_term_id:
+    record['x_payment_term_id'] = False
+]]>
+        </field>
+    </record>
+ 
+    <record id="sale_order_onchange_payment_term_ba" model="base.automation">
+        <field name="name">Onchange sale.order payment_term_id (Automated Action)</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="trigger">on_change</field>
+        <field name="on_change_fields">payment_term_id</field>
+        <field name="state">code</field>
+        <field name="code">
+<![CDATA[
+if record.payment_term_id and record.x_payment_term_id:
+    record['x_payment_term_id'] = False
+]]>
+        </field>
+    </record>
+
+    <record id="sale_order_onchange_partner_sa" model="ir.actions.server">
+        <field name="name">Onchange sale.order partner_id</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="state">code</field>
+        <field name="code">
+<![CDATA[
+if record.partner_id and record.partner_id.property_payment_term_id and record.partner_id.property_payment_term_id.x_special_term:
+    record['x_payment_term_id'] = record.partner_id.property_payment_term_id.id
+    record['payment_term_id'] = False
+]]>
+        </field>
+    </record>
+
+    <record id="sale_order_onchange_partner_ba" model="base.automation">
+        <field name="name">Onchange sale.order partner_id (Automated Action)</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="trigger">on_change</field>
+        <field name="on_change_fields">partner_id</field>
+        <field name="state">code</field>
+        <field name="code">
+<![CDATA[
+if record.partner_id and record.partner_id.property_payment_term_id and record.partner_id.property_payment_term_id.x_special_term:
+    record['x_payment_term_id'] = record.partner_id.property_payment_term_id.id
+    record['payment_term_id'] = False
+]]>
+        </field>
+    </record>
+</odoo>

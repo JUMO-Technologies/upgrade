@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="payment_term_fix_one_time_sa" model="ir.actions.server">
+        <field name="name">Payment Term fix</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="state">code</field>
+        <field name="code">
+<![CDATA[
+acc_type_receivable_id = env['ir.model.data'].xmlid_to_res_id('account.data_account_type_receivable')
+acc_type_payable_id = env['ir.model.data'].xmlid_to_res_id('account.data_account_type_payable')
+
+for invoice in env['account.move'].search([('state', 'not in', ['cancel']), (['invoice_payment_state', 'not in', 'paid']), ('invoice_payment_term_id', '!=', False), ('payment_term_id.x_special_term', '=', True)]):
+
+    # calculate due date
+    invoice_date = datetime.datetime.strptime(invoice.invoice_date, '%Y-%m-%d').date() if invoice.invoice_date else datetime.date.today()
+    due_date = invoice_date + datetime.timedelta(days=invoice.invoice_payment_term_id.x_number_days)
+    if due_date.day > invoice.invoice_payment_term_id.x_day_month:
+        due_date += dateutil.relativedelta.relativedelta(months=+1)
+    due_date = due_date.replace(day=invoice.invoice_payment_term_id.x_day_month).strftime('%Y-%m-%d')
+
+    invoice.write({'date_due': due_date, 'x_payment_term_id': invoice.invoice_payment_term_id.id, 'invoice_payment_term_id': False})
+
+    # checking journal entries
+    if invoice.state == 'posted':
+        for move_line in invoice.line_ids.filtered(lambda l: l.account_id.user_type_id.id in [acc_type_receivable_id, acc_type_payable_id]):
+            if move_line.date_maturity != due_date:
+                env.cr.execute('UPDATE account_move_line SET "date_maturity" = \'{due_date}\' WHERE "id" = {id}'.format(due_date=due_date, id=move_line.id))
+]]>
+        </field>
+    </record>
+</odoo>

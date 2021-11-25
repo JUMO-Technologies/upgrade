@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="so_line_forecast">
+      <field name="name">so_line_forecast</field>
+      <field name="inherit_id" ref="sale.view_order_form"/>
+      <field name="priority">1100</field>
+      <field name="model">sale.order</field>
+      <field name="active" eval="True"/>
+      <field name="arch" type="xml">
+        <xpath expr="//button[@name='action_confirm'][2]" position="attributes">
+          <attribute name="name">check_qty</attribute>
+          <attribute name="string">Confirm Sale</attribute>
+          <attribute name="type">object</attribute>
+        </xpath>
+        <xpath expr="//notebook//tree//field[@name='product_id']" position="before">
+          <button name="copy_so" string="DL" type="object"/>
+        </xpath>
+        <xpath expr="//notebook//tree//field[@name='name']" position="before">
+          <field name="forecasted_qty"/>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>

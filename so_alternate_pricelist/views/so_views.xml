@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_order_form_custom" model="ir.ui.view">
+            <field name="name">view_order_form_custom</field>
+            <field name="model">sale.order</field>
+            <field name="priority">100</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="active" eval="True"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[last()]" position="after">
+                    <page string="Linked Sale Orders" groups="product.group_sale_pricelist">
+                        <group>
+                            <group>
+                                <button name="%(so_duplicate_wizard_action)d"
+                                        string="Duplicate with other PriceList and Customer"
+                                        type="action"
+                                        class="btn btn-link"
+                                />
+                            </group>
+                            <group>
+                                <field name="linked_original_so_id"
+                                       attrs="{'invisible': [('linked_original_so_id','=',False)]}"/>
+                            </group>
+                        </group>
+                        <field name="linked_so_ids">
+                            <tree string="Quotation" class="o_sale_order" decoration-bf="message_needaction==True" decoration-muted="state=='cancel'">
+                                <field name="message_needaction" invisible="1"/>
+                                <field name="name" string="Quotation Number"/>
+                                <field name="date_order"/>
+                                <field name="partner_id"/>
+                                <field name="user_id"/>
+                                <field name="amount_total" sum="Total Tax Included" widget="monetary"/>
+                                <field name="currency_id" invisible="1"/>
+                                <field name="pricelist_id"/>
+                                <field name="state"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

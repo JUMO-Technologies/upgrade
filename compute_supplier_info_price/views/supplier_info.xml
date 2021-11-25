@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_supplier_form" model="ir.ui.view">
+        <field name="name">Supplier Info Form (compute_supplier_info_price)</field>
+        <field name="model">product.supplierinfo</field>
+        <field name="inherit_id" ref="product.product_supplierinfo_form_view"/>
+        <field name="priority">999</field>
+        <field name="active" eval="True"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='price']" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='price']/.." position="after">
+                <field name="compute_price"/>
+                <field name="discount_1"/>
+                <field name="discount_2"/>
+                <field name="discount_3"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_supplier_info_tree" model="ir.ui.view">
+        <field name="name">Supplier Info Tree (compute_supplier_info_price)</field>
+        <field name="model">product.supplierinfo</field>
+        <field name="inherit_id" ref="product.product_supplierinfo_tree_view"/>
+        <field name="priority">999</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='price']" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

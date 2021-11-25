@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+<!--     <record id="account_invoice_payment_term_due_date_sa" model="ir.actions.server">
+        <field name="name">Update due_date based on payment terms</field>
+        <field name="model_id" ref="account.model_account_invoice"/>
+        <field name="state">code</field>
+        <field name="code"><![CDATA[
+for r in records:
+    if r.x_payment_term_id and r.x_payment_term_id.x_special_term and r.x_payment_term_id.x_number_days and r.x_payment_term_id.x_day_month:
+        invoice_date = datetime.datetime.strptime(r.invoice_date, '%Y-%m-%d').date() if r.invoice_date else datetime.date.today()
+        due_date = invoice_date + datetime.timedelta(days=r.x_payment_term_id.x_number_days)
+        if due_date.day > r.x_payment_term_id.x_day_month:
+            due_date += dateutil.relativedelta.relativedelta(months=+1)
+        due_date = due_date.replace(day=r.x_payment_term_id.x_day_month)
+        r['date_due'] = due_date.strftime('%Y-%m-%d')
+]]>
+        </field>
+    </record> -->
+
+    <record id="account_invoice_payment_term_due_date_ba" model="base.automation">
+        <field name="name">Update due_date based on payment terms (Automated Action)</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="trigger">on_create_or_write</field>
+        <field name="state">code</field>
+        <field name="code"><![CDATA[
+for r in records:
+    if r.x_payment_term_id and r.x_payment_term_id.x_special_term and r.x_payment_term_id.x_number_days and r.x_payment_term_id.x_day_month:
+        invoice_date = datetime.datetime.strptime(r.invoice_date, '%Y-%m-%d').date() if r.invoice_date else datetime.date.today()
+        due_date = invoice_date + datetime.timedelta(days=r.x_payment_term_id.x_number_days)
+        if due_date.day > r.x_payment_term_id.x_day_month:
+            due_date += dateutil.relativedelta.relativedelta(months=+1)
+        due_date = due_date.replace(day=r.x_payment_term_id.x_day_month)
+        r['date_due'] = due_date.strftime('%Y-%m-%d')
+]]>
+        </field>
+    </record>
+
+<!--     <record id="account_invoice_payment_term_from_sale_order_sa" model="ir.actions.server">
+        <field name="name">Update x_payment_term when set on sale order on creation</field>
+        <field name="model_id" ref="account.model_account_invoice"/>
+        <field name="state">code</field>
+        <field name="code"><![CDATA[
+for r in records:
+    if r.state == 'draft' and r.invoice_origin:
+        invoice_origin = r.invoice_origin.split(':')[0]
+        # search if its a sale order
+        so = env['sale.order'].search([('name', '=', invoice_origin)], limit=1)
+        if so and so.x_payment_term_id:
+            r.write({'x_payment_term_id': so.x_payment_term_id.id, 'payment_term_id': False})
+        else:
+            # search if its a purchase order
+            po = env['purchase.order'].search([('name', '=', invoice_origin)], limit=1)
+            if po and po.x_payment_term_id:
+                r.write({'x_payment_term_id': po.x_payment_term_id.id, 'payment_term_id': False})
+]]>
+        </field>
+    </record> -->
+
+    <record id="account_invoice_payment_term_from_sale_order_ba" model="base.automation">
+        <field name="name">Update x_payment_term when set on sale order on creation (Automated Action)</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="trigger">on_create</field>
+        <field name="state">code</field>
+        <field name="code">
+<![CDATA[
+for r in records:
+    if r.state == 'draft' and r.invoice_origin:
+        invoice_origin = r.invoice_origin.split(':')[0]
+        # search if its a sale order
+        so = env['sale.order'].search([('name', '=', invoice_origin)], limit=1)
+        if so and so.x_payment_term_id:
+            r.write({'x_payment_term_id': so.x_payment_term_id.id, 'payment_term_id': False})
+        else:
+            # search if its a purchase order
+            po = env['purchase.order'].search([('name', '=', invoice_origin)], limit=1)
+            if po and po.x_payment_term_id:
+                r.write({'x_payment_term_id': po.x_payment_term_id.id, 'payment_term_id': False})
+]]>
+        </field>
+    </record>
+
+<!--     <record id="account_invoice_onchange_x_payment_term_sa" model="ir.actions.server">
+        <field name="name">Onchange account.invoice x_payment_term_id</field>
+        <field name="model_id" ref="account.model_account_invoice"/>
+        <field name="state">code</field>
+        
+    </record> -->
+
+    <record id="account_invoice_onchange_x_payment_term_ba" model="base.automation">
+        <field name="name">Onchange account.invoice x_payment_term_id (Automated Action)</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="trigger">on_change</field>
+        <field name="on_change_fields">x_payment_term_id</field>
+        <field name="state">code</field>
+        <field name="code"><![CDATA[
+if record.x_payment_term_id and record.invoice_payment_term_id:
+    record['invoice_payment_term_id'] = False
+
+    invoice_date = datetime.datetime.strptime(record.invoice_date, '%Y-%m-%d').date() if record.invoice_date else datetime.date.today()
+    due_date = invoice_date + datetime.timedelta(days=record.x_payment_term_id.x_number_days)
+    if due_date.day > record.x_payment_term_id.x_day_month:
+        due_date += dateutil.relativedelta.relativedelta(months=+1)
+    due_date = due_date.replace(day=record.x_payment_term_id.x_day_month)
+    record['date_due'] = due_date.strftime('%Y-%m-%d')
+]]>
+        </field>
+    </record>
+
+<!--     <record id="account_invoice_onchange_payment_term_sa" model="ir.actions.server">
+        <field name="name">Onchange account.invoice payment_term_id</field>
+        <field name="model_id" ref="account.model_account_invoice"/>
+        
+    </record> -->
+
+    <record id="account_invoice_onchange_payment_term_ba" model="base.automation">
+        <field name="name">Onchange account.invoice payment_term_id (Automated Action)</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="trigger">on_change</field>
+        <field name="on_change_fields">invoice_payment_term_id</field>
+        <field name="state">code</field>
+        <field name="code">
+<![CDATA[
+if record.invoice_payment_term_id and record.x_payment_term_id:
+    record['x_payment_term_id'] = False
+]]>
+        </field>
+    </record>
+
+<!--     <record id="account_invoice_onchange_partner_sa" model="ir.actions.server">
+        <field name="name">Onchange account.invoice partner_id</field>
+        <field name="model_id" ref="account.model_account_invoice"/>
+        <field name="state">code</field>
+        <field name="code">
+<![CDATA[
+if record.partner_id and record.partner_id.property_payment_term_id and record.partner_id.property_payment_term_id.x_special_term:
+    record['x_payment_term_id'] = record.partner_id.property_payment_term_id.id
+    record['payment_term_id'] = False
+]]>
+        </field>
+    </record> -->
+
+    <record id="account_invoice_onchange_partner_ba" model="base.automation">
+        <field name="name">Onchange account.invoice partner_id (Automated Action)</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="trigger">on_change</field>
+        <field name="on_change_fields">partner_id</field>
+        <field name="state">code</field>
+        <field name="code">
+<![CDATA[
+if record.partner_id and record.partner_id.property_payment_term_id and record.partner_id.property_payment_term_id.x_special_term:
+    record['x_payment_term_id'] = record.partner_id.property_payment_term_id.id
+    record['payment_term_id'] = False
+]]>
+        </field>
+    </record>
+</data>
+</odoo>

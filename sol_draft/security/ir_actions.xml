@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="sale.action_quotation_form" model="ir.actions.act_window">
+		<field name="domain">[('draft', '=', False)]</field>
+	</record>
+	<record id="sale.action_orders" model="ir.actions.act_window">
+		<field name="domain">[('draft', '=', False), ('state', 'not in', ('draft', 'sent', 'cancel'))]</field>
+	</record>
+	<record id="sale.action_orders_salesteams" model="ir.actions.act_window">
+		<field name="domain">[('draft', '=', False), ('state', 'not in', ('draft', 'sent', 'cancel'))]</field>
+	</record>
+	<record id="sale.action_orders_to_invoice_salesteams" model="ir.actions.act_window">
+		<field name="domain">[('draft', '=', False), ('state', '=', 'sale'), ('invoice_status', '=', 'to invoice')]</field>
+	</record>
+	<record id="sale.action_orders_upselling" model="ir.actions.act_window">
+		<field name="domain">[('draft', '=', False), ('invoice_status', '=', 'upselling')]</field>
+	</record>
+	<record id="sale_crm.sale_action_quotations_new" model="ir.actions.act_window">
+		<field name="domain">[('draft', '=', False), ('opportunity_id', '=', active_id)]</field>
+	</record>
+	<record id="sale.action_quotations_salesteams" model="ir.actions.act_window">
+		<field name="domain">[('draft', '=', False)]</field>
+	</record>
+	<!--<record id="sale_crm.sale_action_quotations" model="ir.actions.act_window">
+		<field name="domain">[('draft', '=', False), ('opportunity_id', '=', active_id)]</field>
+	</record>--> <!-- removed in 13 but we have to take care of "action_view_sale_quotation" id we reactivate them-->
+	<record id="sale.action_quotations" model="ir.actions.act_window">
+		<field name="domain">[('draft', '=', False)]</field>
+	</record>
+	<record id="sale.act_res_partner_2_sale_order" model="ir.actions.act_window">
+		<field name="domain">[('draft', '=', False)]</field>
+	</record>
+	<record id="sale.action_orders_to_invoice" model="ir.actions.act_window">
+		<field name="domain">[('draft', '=', False), ('invoice_status', '=', 'to invoice')]</field>
+	</record>
+</odoo>

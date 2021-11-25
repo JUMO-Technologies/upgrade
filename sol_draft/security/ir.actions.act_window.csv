@@ -1,0 +1,12 @@
+id,domain
+sale.action_quotation_form,"[('draft', '=', False)]"
+sale.action_orders,"[('draft', '=', False), ('state', 'not in', ('draft', 'sent', 'cancel'))]"
+sale.action_orders_salesteams,"[('draft', '=', False), ('state', 'not in', ('draft', 'sent', 'cancel'))]"
+sale.action_orders_to_invoice_salesteams,"[('draft', '=', False), ('state', '=', 'sale'), ('invoice_status', '=', 'to invoice')]"
+sale.action_orders_upselling,"[('draft', '=', False), ('invoice_status', '=', 'upselling')]"
+sale_crm.sale_action_quotations_new,"[('draft', '=', False), ('opportunity_id', '=', active_id)]"
+sale.action_quotations_salesteams,"[('draft', '=', False)]"
+sale_crm.sale_action_quotations,"[('draft', '=', False), ('opportunity_id', '=', active_id)]"
+sale.action_quotations,"[('draft', '=', False)]"
+sale.act_res_partner_2_sale_order,"[('draft', '=', False)]"
+sale.action_orders_to_invoice,"[('draft', '=', False), ('invoice_status', '=', 'to invoice')]"
