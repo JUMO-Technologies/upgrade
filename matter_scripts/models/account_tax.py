@@ -4,10 +4,19 @@ from odoo import fields, models, api
 class AccountTax(models.Model):
     _inherit = "account.tax"
 
+    @api.model
+    def create(self, vals):
+        res = super(AccountTax, self).create(vals)
+        if res:
+            self.create_account_tax_template()
+        return res
+
     def create_account_tax_template(self):
         for company in self.env.user.company_ids:
-            for tax in self.with_company(company).search([('company_id', '=', company.id), '|', ('active', '=', True),
-                                                          ('active', '=', False)]):
+            if company.partner_id.country_id.code == 'ES':
+                continue
+            for tax in self.with_context(company_id=company.id).search([('company_id', '=', company.id), '|', ('active', '=', True),
+                                                                        ('active', '=', False)]):
                 xml_id = self.env['ir.model.data'].search([('model', '=', 'account.tax'), ('res_id', '=', tax.id)])
                 if not xml_id:
                     self._cr.execute("""INSERT INTO ir_model_data(name, module, model, res_id, noupdate)
