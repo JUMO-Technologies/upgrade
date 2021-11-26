@@ -8,7 +8,7 @@
     "author": "Odoo PS",
     "website": "http://www.odoo.com",
     "license": "OEEL-1",
-    "depends": ['crm'],
+    "depends": ['crm', 'account_bank_statement_import_camt'],
     "data": [
         "views/crm_lead.xml",
     ],
