@@ -1,4 +1,6 @@
 from odoo import fields, models, api
+import logging
+_logger = logging.Logger(__name__)
 
 
 class AccountTax(models.Model):
@@ -13,8 +15,6 @@ class AccountTax(models.Model):
 
     def create_account_tax_template(self):
         for company in self.env.user.company_ids:
-            if company.partner_id.country_id.code == 'ES':
-                continue
             for tax in self.with_context(company_id=company.id).search([('company_id', '=', company.id), '|', ('active', '=', True),
                                                                         ('active', '=', False)]):
                 xml_id = self.env['ir.model.data'].search([('model', '=', 'account.tax'), ('res_id', '=', tax.id)])
