@@ -1,5 +1,8 @@
-from odoo import fields, models, api
+from odoo import fields, models, api, _
 import logging
+
+from odoo.exceptions import ValidationError
+
 _logger = logging.Logger(__name__)
 
 
@@ -9,34 +12,43 @@ class AccountTax(models.Model):
     @api.model
     def create(self, vals):
         res = super(AccountTax, self).create(vals)
-        if res:
-            self.create_account_tax_template()
+        if res and not self._context.get('install_mode', False):
+            res._create_account_tax_template()
         return res
 
-    def create_account_tax_template(self):
+    def script_create_account_tax_template(self):
         for company in self.env.user.company_ids:
             for tax in self.with_context(company_id=company.id).search([('company_id', '=', company.id), '|', ('active', '=', True),
                                                                         ('active', '=', False)]):
-                xml_id = self.env['ir.model.data'].search([('model', '=', 'account.tax'), ('res_id', '=', tax.id)])
-                if not xml_id:
-                    self._cr.execute("""INSERT INTO ir_model_data(name, module, model, res_id, noupdate)
-                    VALUES ('%(company_id)i_account_tax_%(tax_id)i_6370beff', 'l10n_es', 'account.tax', %(tax_id)i, true)
-                    RETURNING id""" % {'company_id': company.id, 'tax_id': tax.id})
-                    xml_id = self.env['account.tax'].browse(self._cr.fetchone()[0])
-                else:
-                    if not xml_id.name.startswith("%i_" % company.id):
-                        self._cr.execute("UPDATE ir_model_data SET name = '%i_%s' WHERE id = %i"
-                                         % (company.id, xml_id.name, xml_id.id))
-                template_id = xml_id.name.replace("%i_" % company.id, "", 1)
-                tmp_xml_id = self.env['ir.model.data'].search([('model', '=', 'account.tax.template'),
-                                                               ('name', '=', template_id)])
-                if not tmp_xml_id:
-                    values = tax._get_tax_template_values()
-                    tax_tmp = self.env['account.tax.template'].create(values)
-                    self._cr.execute("""INSERT INTO ir_model_data(name, module, model, res_id, noupdate) 
-                                        VALUES ('%s', 'l10n_es', 'account.tax.template', %i, true)
-                                        RETURNING id""" % (template_id, tax_tmp.id))
+                tax.with_context(company_id=company.id)._create_account_tax_template()
             company.clear_caches()
+
+    def _create_account_tax_template(self):
+        self.ensure_one()
+        xml_id = self.env['ir.model.data'].search([('model', '=', 'account.tax'), ('res_id', '=', self.id)])
+        xml_id_str = xml_id and xml_id.name or ""
+        if not xml_id:
+            if not self.name:
+                raise ValidationError(_("The tax needs a name"))
+            suffix = "%s_%i" % (str(self.type_tax_use).replace(" ", "_").lower(), int(self.amount))
+            xml_id_str = "%i_account_tax_%i_%s" % (self.env.company.id, self.id, suffix)
+            self._cr.execute("""INSERT INTO ir_model_data(name, module, model, res_id, noupdate)
+                            VALUES ('%s', 'l10n_es', 'account.tax', %i, true)
+                            RETURNING id""" % (xml_id_str, self.id))
+
+        else:
+            if not xml_id.name.startswith("%i_" % self.env.company.id):
+                self._cr.execute("UPDATE ir_model_data SET name = '%i_%s' WHERE id = %i"
+                                 % (self.env.company.id, xml_id.name, xml_id.id))
+        template_id = xml_id_str.replace("%i_" % self.env.company.id, "", 1)
+        tmp_xml_id = self.env['ir.model.data'].search([('model', '=', 'account.tax.template'),
+                                                       ('name', '=', template_id)])
+        if not tmp_xml_id:
+            values = self._get_tax_template_values()
+            tax_tmp = self.env['account.tax.template'].create(values)
+            self._cr.execute("""INSERT INTO ir_model_data(name, module, model, res_id, noupdate) 
+                                                VALUES ('%s', 'l10n_es', 'account.tax.template', %i, true)
+                                                RETURNING id""" % (template_id, tax_tmp.id))
 
     def _get_tax_template_values(self):
         self.ensure_one()
