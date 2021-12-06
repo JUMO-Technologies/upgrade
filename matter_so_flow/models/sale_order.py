@@ -31,9 +31,9 @@ class SaleOrderLine(models.Model):
     )
 
     def _get_forecasted_qty(self):
-        warehouse = self.env.ref('stock.warehouse0')
+        # warehouse = self.env.ref('stock.warehouse0')
         for rec in self:
-            forecasted_qty = rec.product_id.with_context(warehouse=warehouse.id).virtual_available
+            forecasted_qty = rec.product_id.with_context(warehouse=rec.order_id.warehouse_id.id).virtual_available
             rec['forecasted_qty'] = forecasted_qty
 
     def copy_so(self):
