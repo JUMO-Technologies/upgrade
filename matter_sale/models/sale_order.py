@@ -1,17 +1,24 @@
-from odoo import fields, models, api
+from odoo import fields, models, api, _
+from odoo.exceptions import ValidationError
 
 
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
-    sale_order_template_id = fields.Many2one(default=lambda s: s.env.company.sale_order_template_id)
+    team_warehouse_id = fields.Many2one(related="team_id.warehouse_id", string="Team Warehouse")
+    warehouse_id = fields.Many2one(domain="[('id', '=', team_warehouse_id)]")
 
-    @api.model
-    def _del_default_sale_order_template(self):
-        IrDefault = self.env['ir.default']
-        if IrDefault.get('sale.order', 'sale_order_template_id'):
-            field_id = self.env['ir.model.fields'].search([('model', '=', 'sale.order'),
-                                                           ('name', '=', 'sale_order_template_id')])
-            default_vls = IrDefault.search([('field_id', '=', field_id.id)])
-            if default_vls:
-                default_vls.unlink()
+    @api.onchange('team_id')
+    def _onchange_team_warehouse(self):
+        domain = [('id', '=', self.team_id and self.team_id.warehouse_id.id or 0)]
+        return {
+            'domain': {'warehouse_id': domain},
+            'value': {'warehouse_id': self.warehouse_id.filtered_domain(domain)}
+        }
+
+    @api.constrains('warehouse_id')
+    def _constrains_warehouse_team(self):
+        for sale in self:
+            if sale.state in ['draft', 'sent'] and sale.team_id and sale.warehouse_id and \
+                    sale.warehouse_id.id != sale.team_id.warehouse_id.id:
+                raise ValidationError(_("The chosen warehouse is not available to this sales team."))

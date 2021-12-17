@@ -7,8 +7,9 @@
     'author': 'JUMO Technologies',
     'website': '',
     'license': '',
-    'depends': ['sale_management', 'sale_quotation_builder'],
+    'depends': ['sale_management', 'sale_quotation_builder', 'stock', 'sale_stock'],
     'data': [
+        'views/crm_team.xml',
         'views/sale_order.xml',
     ],
     'installable': True,

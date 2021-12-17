@@ -1,2 +1,2 @@
-from . import res_company
+from . import crm_team
 from . import sale_order
