@@ -8,7 +8,7 @@
             <field name="inherit_id" ref="sale_stock.view_order_form_inherit_sale_stock"/>
             <field name="arch" type="xml">
                 <field name="warehouse_id" position="before">
-                    <field name="team_warehouse_id"/>
+                    <field name="team_warehouse_id" invisible="1"/>
                 </field>
             </field>
         </record>
