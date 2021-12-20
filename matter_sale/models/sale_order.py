@@ -11,9 +11,12 @@ class SaleOrder(models.Model):
     @api.onchange('team_id')
     def _onchange_team_warehouse(self):
         domain = [('id', '=', self.team_id and self.team_id.warehouse_id.id or 0)]
+        warehouse = self.warehouse_id.filtered_domain(domain)
+        if not warehouse and self.team_id:
+            warehouse = self.team_id.warehouse_id
         return {
             'domain': {'warehouse_id': domain},
-            'value': {'warehouse_id': self.warehouse_id.filtered_domain(domain)}
+            'value': {'warehouse_id': warehouse}
         }
 
     @api.constrains('warehouse_id')
