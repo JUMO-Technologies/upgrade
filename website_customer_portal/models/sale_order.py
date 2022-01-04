@@ -120,7 +120,7 @@ class SaleOrderLine(models.Model):
             domain = [("order_id.origin", "=", origin), ("product_id", "=", rec.product_id.id)]
             line = purchase_line.search(domain, limit=1, order="id desc")
 
-            if rec.x_ordered_quantity == rec.stock_move_id.quantity_done:
+            if rec.x_ordered_quantity == rec.qty_delivered:
                 rec.product_state = "delivered"
             elif rec.x_ordered_quantity <= rec.x_qty_received:
                 rec.product_state = "at warehouse"
