@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form" model="ir.ui.view">
+        <field name="name">sale.order.form.matter.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="priority">30</field>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button name="show_opportunity" type="object" class="oe_stat_button" icon="fa-link icon" attrs="{'invisible':[('x_partner_id', '=', False)]}">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_text">Ir a Delivery</span>
+                    </div>
+                </button>
+            </div>
+            <xpath expr="//field[@name='sale_order_template_id']" position="after">
+                <field name="x_partner_id" />
+            </xpath>
+        </field>
+    </record>
+    <record id="view_order_tree" model="ir.ui.view">
+        <field name="name">sale.order.form.matter.tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree" />
+        <field name="priority">16</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="x_opportunity_ids"  optional="show" />
+            </xpath>
+        </field>
+    </record>
+    <record id="view_quotation_tree" model="ir.ui.view">
+        <field name="name">sale.order.form.matter.tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree" />
+        <field name="priority">16</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="x_opportunity_ids"  optional="show" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
+
