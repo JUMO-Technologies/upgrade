@@ -114,7 +114,7 @@ class SaleOrderLine(models.Model):
     def _compute_product_state(self):
 
         purchase_line = self.env["purchase.order.line"]
-        picking = self.env["stock.picking"]
+        # picking = self.env["stock.picking"]
         for rec in self:
             origin = rec.mapped("order_id").name
             domain = [("order_id.origin", "=", origin), ("product_id", "=", rec.product_id.id)]
@@ -124,7 +124,7 @@ class SaleOrderLine(models.Model):
                 rec.product_state = "delivered"
             elif rec.x_ordered_quantity <= rec.x_qty_received:
                 rec.product_state = "at warehouse"
-            elif line.order_id.falta_confirmacion == True:
+            elif line.order_id.falta_confirmacion:
                 rec.product_state = "approved"
             else:
                 rec.product_state = "processed"
@@ -138,7 +138,7 @@ class SaleOrderLine(models.Model):
                 ("product_id", "=", rec.product_id.id),
                 ("origin", "in", purchase_names),
                 ("group_id.name", "=", rec.order_id.name),
-                ("location_dest_id.usage", "=", "customer"),
+                ("location_id.usage", "=", "supplier"),
             ]
             stock_move = self.env["stock.move"].search(domain, order="date_expected desc", limit=1)
 
