@@ -138,7 +138,7 @@ class SaleOrderLine(models.Model):
                 ("product_id", "=", rec.product_id.id),
                 ("origin", "in", purchase_names),
                 ("group_id.name", "=", rec.order_id.name),
-                ("picking_type_id.sequence_code", "=", "IN"),
+                ("location_dest_id.usage", "=", "customer"),
             ]
             stock_move = self.env["stock.move"].search(domain, order="date_expected desc", limit=1)
 
