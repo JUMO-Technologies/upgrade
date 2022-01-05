@@ -14,10 +14,15 @@ class SaleOrder(models.Model):
         warehouse = self.warehouse_id.filtered_domain(domain)
         if not warehouse and self.team_id:
             warehouse = self.team_id.warehouse_id
-        return {
-            'domain': {'warehouse_id': domain},
-            'value': {'warehouse_id': warehouse}
-        }
+        self.warehouse_id = warehouse
+
+    @api.onchange('company_id')
+    def _onchange_company_id(self):
+        """
+        Re-write to trigger user change after company change
+        """
+        super(SaleOrder, self)._onchange_company_id()
+        self._onchange_team_warehouse()
 
     @api.constrains('warehouse_id')
     def _constrains_warehouse_team(self):
