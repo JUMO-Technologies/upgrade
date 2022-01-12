@@ -19,7 +19,7 @@ class ResPartner(models.Model):
                 ["opportunity_id"],
             )
         )
-        ids = [s.get("opportunity_id")[0] for s in sales if s.get("opportunity_id")]
+        ids = [s.get("opportunity_id", [0])[0] for s in sales if s.get("opportunity_id")]
         leads = self.env["crm.lead"].with_user(SUPERUSER_ID).search([("id", "in", ids)])
         [lead._portal_ensure_token() for lead in leads]
         return leads
