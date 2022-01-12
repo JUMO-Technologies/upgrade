@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <record id="purchase_order_form" model="ir.ui.view">
+            <field name="name">purchase.order.form</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <field name="partner_ref" position="after">
+                    <field name="sale_order_id" invisible="1"/>
+                    <field name="sale_team_id" attrs="{'invisible': [('sale_order_id', '=', False)]}"/>
+                    <field name="sale_user_id" attrs="{'invisible': [('sale_order_id', '=', False)]}"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_purchase_order_filter" model="ir.ui.view">
+            <field name="name">request.quotation.select</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+            <field name="arch" type="xml">
+                <field name="product_id" position="after">
+                    <field name="sale_team_id"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</odoo>
