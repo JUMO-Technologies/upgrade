@@ -15,12 +15,12 @@ class ResPartner(models.Model):
             .with_user(SUPERUSER_ID)
             .read_group(
                 [("partner_id", "=", self.id), ("state", "not in", ["draft", "sent"]),],
-                ["x_studio_field_RBuAR"],
-                ["x_studio_field_RBuAR"],
+                ["opportunity_id"],
+                ["opportunity_id"],
             )
         )
-        ids = [s.get("x_studio_field_RBuAR") for s in sales if s.get("x_studio_field_RBuAR")]
-        leads = self.env["crm.lead"].with_user(SUPERUSER_ID).search([("name", "in", ids)])
+        ids = [s.get("opportunity_id") for s in sales if s.get("opportunity_id")]
+        leads = self.env["crm.lead"].with_user(SUPERUSER_ID).search([("id", "in", ids)])
         [lead._portal_ensure_token() for lead in leads]
         return leads
 
