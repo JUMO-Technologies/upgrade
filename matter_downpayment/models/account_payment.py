@@ -11,7 +11,7 @@ class AccountPayment(models.Model):
     def _compute_destination_account_id(self):
         for payment in self:
             if payment.partner_type == 'supplier_downpayment':
-                payment.destination_account_id = payment.company.account_downpayment_supplier_id
+                payment.destination_account_id = payment.company_id.account_downpayment_supplier_id
             else:
                 super(AccountPayment, payment)._compute_destination_account_id()
 
