@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <template id="report_purchaseorder_document" inherit_id="purchase.report_purchaseorder_document">
+            <div id="informations" position="inside">
+                <div t-if="o.sale_team_id" class="col-3 bm-2">
+                    <strong>Sale Team:</strong>
+                    <p t-field="o.sale_team_id" class="m-0"/>
+                </div>
+            </div>
+        </template>
+    
+    </data>
+</odoo>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="my_dashboard_link" name="Link to dashboard" inherit_id="portal.frontend_layout">
+            <xpath expr="//a[@id='o_logout']" position="before">
+                <a href="/my/dashboard" role="menuitem" class="dropdown-item">Dashboard</a>
+            </xpath>
+        </template>
+        <template id="delivery_matter" name="DELIVERY MATTER">
+            <div class="jumbotron jumbotron-fluid  text-center o_portal_jumbotron" id="oe_structure_jumbotron_1">
+                <div class="container">
+                    <h1 class="display-5 o_delivery_matter"><a href="/my/dashboard" style="text-decoration:none;color:#fff">DELIVERY MATTER</a> </h1>
+                </div>
+            </div>
+        </template>
+        <template id="portal_my_dashboard" name="My Dashboard">
+            <t t-call="portal.frontend_layout">
+                <t t-set="is_portal" t-value="True" />
+                <div class="o_portal_dashboard">
+                    <t t-call="website_customer_portal.delivery_matter" />
+                    <div class="container-fluid mb64">
+                        <div class="container p-5">
+                            <t t-foreach="leads" t-as="lead">
+                                <div class="col">
+                                    <a t-att-href="'/my/dashboard/%s' % lead.access_token" class="o_delivery_matter_link">
+                                        <h2 class="o_delivery_matter_name">
+                                            <span t-field="lead.display_name" />
+                                        </h2>
+                                    </a>
+                                    <hr />
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure" id="oe_structure_portal_my_home_2" />
+            </t>
+        </template>
+        <!-- portal_my_dashboard_main-->
+        <template id="portal_my_dashboard_main" name="DELIVERY MATTER">
+            <t t-call="portal.frontend_layout">
+                <t t-set="is_portal" t-value="True" />
+                <div class="o_portal_dashboard">
+                    <t t-call="website_customer_portal.delivery_matter" />
+                    <div class="jumbotron jumbotron-fluid  text-center o_portal_jumbotron" id="oe_structure_jumbotron_2">
+                        <div class="container ">
+                            <h3 class="display-5 o_o_delivery_matter">
+                                <span t-field="lead_id.display_name" />
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="container-fluid mb64">
+                        <t t-foreach="lead_id" t-as="lead">
+                            <div class="row">
+                                <div class=" container-fluid">
+                                    <div class="mb-1 p-3 container project_data">
+                                        <h2 class="mb-4">Datos del proyecto </h2>
+                                        <h6 class="mb-4">Pedidos relacionados:
+                                            <t t-esc="lead_sales.stringify()" />
+                                        </h6>
+                                        <h6 class="mb-4">Back-up Specialist: <span t-field="lead.back_up_specialist" /> </h6>
+                                        <h6 class="mb-4">Dirección de facturación:
+                                            <span t-if="lead.partner_id.street">
+                                                <span t-field="lead.partner_id.street" />,
+                                                <span t-field="lead.partner_id.street2" />
+                                                <span t-field="lead.partner_id.zip" />
+                                                <span t-field="lead.partner_id.city" />
+                                                <span t-field="lead.partner_id.state_id" />
+                                                <span t-field="lead.partner_id.country_id" />
+                                            </span>
+                                        </h6>
+                                        <h2 class="mb-4">Datos de envio</h2>
+                                        <h6 class="mb-4">Dirección de envío:
+                                            <span t-field="lead.shipping_address" />
+                                        </h6>
+                                        <h6 class="mb-4">Contacto Obra:
+                                            <span t-field="lead.project_contact" />
+                                        </h6>
+                                    </div>
+                                </div>
+                                <div class="container-fluid" style="padding:15px">
+                                    <t t-foreach="lead.order_ids.filtered(lambda r: r.state not in ['draft', 'sent'])" t-as="order">
+                                        <div class="accordion-started accordion-bral row">
+                                            <div class="o_download p-1 col-md-2 offset-md-10">
+                                                <a t-att-href="order.get_portal_url(report_type='pdf', download=True)" title="Ver Descargar"> Ver Descargar</a>
+                                            </div>
+                                            <div class="col-sm-12 col-md-12 col-lg-12" style="padding: 0px;border-color: #fff;border: 5px;border-bottom-style: solid;">
+                                                <!--   <input class="ac-input" id="ac-1" name="accordion-1" type="radio" checked="1" /> -->
+                                                <input class="ac-input" id="ac-1" name="accordion-1" type="radio" />
+                                                <label class="ac-label" for="ac-1">
+                                                    <h4><span t-field="order.name" />
+                                                        <i></i></h4>
+                                                    <h6>Referencia Cliente: <span t-field="order.partner_id" /> </h6>
+                                                    <br />
+                                                    <h6>Fecha: <span t-esc="order.date_order.date().strftime('%d/%m/%Y')" t-if="order.date_order" /> </h6>
+                                                </label>
+                                                <div class="article ac-content row p-2">
+                                                    <table class="table">
+                                                        <thead class="text-left thead">
+                                                            <tr>
+                                                                <th scope="col" class="col-md-4">Descripción</th>
+                                                                <th scope="col" class="col-md-3">Fecha de llegada prevista</th>
+                                                                <th scope="col" colspan="3" class="col-md-3">Cantidad</th>
+                                                                <th scope="col" class="col-md-2">Estado</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="col-md-4"> </td>
+                                                                <td class="col-md-3"> </td>
+                                                                <td class="col-md-1">Pedida</td>
+                                                                <td class="col-md-1">En almacén</td>
+                                                                <td class="col-md-1">Enviada</td>
+                                                                <td class="col-md-2"> </td>
+                                                            </tr>
+                                                            <t t-foreach="order.order_line" t-as="line">
+                                                                <tr>
+                                                                    <t t-if="line.display_type == 'line_section'">
+                                                                        <td name="td_section_line" colspan="6">
+                                                                            <h5 t-field="line.name" />
+                                                                        </td>
+                                                                    </t>
+                                                                    <t t-if="not line.display_type">
+                                                                        <td class="col-md-4">
+                                                                            <div class="row">
+                                                                                <div class="col-sm-12 col-md-2">
+                                                                                    <img t-att-src="line.product_id.image_url" t-att-alt="line.name" class="img-thumbnail" style="width: 100px;" />
+                                                                                </div>
+                                                                                <div class="col-sm-12 col-md-10">
+                                                                                    <p t-field="line.name" t-if="line.name" />
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="col-md-3">
+                                                                            <span t-esc="line.x_date_expected.strftime('%d/%m/%Y')" t-if="line.x_date_expected" />
+                                                                        </td>
+                                                                        <td class="col-md-1">
+                                                                            <span t-field="line.x_ordered_quantity" />
+                                                                            <span t-field="line.x_qty_received_uom_id" />
+                                                                        </td>
+                                                                        <td class="col-md-1">
+                                                                            <span t-field="line.x_qty_received" />
+                                                                            <span t-field="line.x_qty_received_uom_id" />
+                                                                        </td>
+                                                                        <td class="col-md-1">
+                                                                            <span t-field="line.qty_delivered" />
+                                                                            <span t-field="line.product_uom" />
+                                                                        </td>
+                                                                        <td class="col-md-2">
+                                                                            <span t-field="line.product_state" />
+                                                                        </td>
+                                                                    </t>
+                                                                </tr>
+                                                            </t>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+                <div class="oe_structure" id="oe_structure_portal_my_home_2" />
+            </t>
+        </template>
+    </data>
+</odoo>
