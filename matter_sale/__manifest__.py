@@ -1,6 +1,6 @@
 {
     'name': 'Matter Sale',
-    'version': '13.0.0.0.1',
+    'version': '13.0.0.0.2',
     'summary': 'Custom Matter Sale Flow',
     'description': 'Custom Matter Sale Flow',
     'category': 'Sales',
