@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import fields, models, api
+from odoo import SUPERUSER_ID
 
 
 class CalendarEvent(models.Model):
@@ -25,3 +26,9 @@ class CalendarEvent(models.Model):
                 event.sale_team_id = team
             else:
                 event.sale_team_id = False
+
+    def script_update_team_calendar(self):
+        if not self.user_has_groups("base.group_system"):
+            return False
+        events = self.search([])
+        events.with_user(SUPERUSER_ID)._compute_sale_team()
