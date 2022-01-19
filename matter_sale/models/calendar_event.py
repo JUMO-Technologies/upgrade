@@ -6,7 +6,7 @@ from odoo import fields, models, api
 class CalendarEvent(models.Model):
     _inherit = "calendar.event"
 
-    sale_team_id = fields.Many2one("crm.team", string="Sales Team", compute="_compute_sale_team")#, store=True)
+    sale_team_id = fields.Many2one("crm.team", string="Sales Team", compute="_compute_sale_team", store=True)
 
     @api.depends("partner_id")
     def _compute_sale_team(self):
