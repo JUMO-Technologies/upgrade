@@ -7,9 +7,9 @@
             </xpath>
         </template>
         <template id="delivery_matter" name="DELIVERY MATTER">
-            <div class="jumbotron jumbotron-fluid  text-center o_portal_jumbotron" id="oe_structure_jumbotron_1">
+            <div class="jumbotron-fluid o_portal_jumbotron" id="oe_structure_jumbotron_1">
                 <div class="container">
-                    <h1 class="display-5 o_delivery_matter"><a href="/my/dashboard" style="text-decoration:none;color:#fff">DELIVERY MATTER</a> </h1>
+                    <h3 class="display-5 o_delivery_matter"><a href="/my/dashboard" style="text-decoration:none;color:#fff">DELIVERY MATTER</a> </h3>
                 </div>
             </div>
         </template>
@@ -42,7 +42,7 @@
                 <t t-set="is_portal" t-value="True" />
                 <div class="o_portal_dashboard">
                     <t t-call="website_customer_portal.delivery_matter" />
-                    <div class="jumbotron jumbotron-fluid  text-center o_portal_jumbotron" id="oe_structure_jumbotron_2">
+                    <div class="jumbotron-fluid  text-center" id="oe_structure_jumbotron_2">
                         <div class="container ">
                             <h3 class="display-5 o_o_delivery_matter">
                                 <span t-field="lead_id.display_name" />
@@ -55,64 +55,67 @@
                                 <div class=" container-fluid">
                                     <div class="mb-1 p-3 container project_data">
                                         <h2 class="mb-4">Datos del proyecto </h2>
-                                        <h6 class="mb-4">Pedidos relacionados:
-                                            <t t-esc="lead_sales.stringify()" />
-                                        </h6>
-                                        <h6 class="mb-4">Back-up Specialist: <span t-field="lead.back_up_specialist" /> </h6>
-                                        <h6 class="mb-4">Dirección de facturación:
-                                            <span t-if="lead.partner_id.street">
-                                                <span t-field="lead.partner_id.street" />,
-                                                <span t-field="lead.partner_id.street2" />
-                                                <span t-field="lead.partner_id.zip" />
-                                                <span t-field="lead.partner_id.city" />
-                                                <span t-field="lead.partner_id.state_id" />
-                                                <span t-field="lead.partner_id.country_id" />
-                                            </span>
-                                        </h6>
-                                        <h2 class="mb-4">Datos de envio</h2>
-                                        <h6 class="mb-4">Dirección de envío:
-                                            <span t-field="lead.shipping_address" />
-                                        </h6>
-                                        <h6 class="mb-4">Contacto Obra:
-                                            <span t-field="lead.project_contact" />
-                                        </h6>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <h6 class="mb-4"><b>Pedidos relacionados:</b>
+                                                    <t t-esc="lead_sales.stringify()" />
+                                                </h6>
+                                                <h6 class="mb-4"><b>Back-up Specialist:</b> <span t-field="lead.back_up_specialist" /> </h6>
+                                                <h6 class="mb-4"><b>Dirección de facturación:</b></h6>
+                                                <span t-if="lead.partner_id.street">
+                                                    <span t-field="lead.partner_id.street" />,
+                                                    <span t-field="lead.partner_id.street2" />
+                                                    <span t-field="lead.partner_id.zip" />
+                                                    <span t-field="lead.partner_id.city" />
+                                                    <span t-field="lead.partner_id.state_id" />
+                                                    <span t-field="lead.partner_id.country_id" />
+                                                </span>
+                                            </div>
+                                            <div class="col-6">
+                                                <h6 class="mb-4"><b>Dirección de envío:</b></h6>
+                                                <span t-field="lead.shipping_address"/>
+                                                <h6 class="mb-4"><b>Contacto Obra:</b></h6>
+                                                <span t-field="lead.project_contact"/>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="container-fluid" style="padding:15px">
                                     <t t-foreach="lead.order_ids.filtered(lambda r: r.state not in ['draft', 'sent'])" t-as="order">
                                         <div class="accordion-started accordion-bral row">
-                                            <div class="o_download p-1 col-md-2 offset-md-10">
-                                                <a t-att-href="order.get_portal_url(report_type='pdf', download=True)" title="Ver Descargar"> Ver Descargar</a>
-                                            </div>
                                             <div class="col-sm-12 col-md-12 col-lg-12" style="padding: 0px;border-color: #fff;border: 5px;border-bottom-style: solid;">
                                                 <!--   <input class="ac-input" id="ac-1" name="accordion-1" type="radio" checked="1" /> -->
                                                 <input class="ac-input" id="ac-1" name="accordion-1" type="radio" />
-                                                <label class="ac-label" for="ac-1">
-                                                    <h4><span t-field="order.name" />
-                                                        <i></i></h4>
-                                                    <h6>Referencia Cliente: <span t-field="order.partner_id" /> </h6>
-                                                    <br />
-                                                    <h6>Fecha: <span t-esc="order.date_order.date().strftime('%d/%m/%Y')" t-if="order.date_order" /> </h6>
-                                                </label>
+                                                <div class="row o_padding_wcp">
+                                                    <div class="col-10">
+                                                        <label for="ac-1">
+                                                            <h4><span t-field="order.name" /></h4>
+                                                            <h6>Referencia Cliente: <span t-field="order.partner_id"/></h6>
+                                                            <h6>Fecha: <span t-esc="order.date_order.date().strftime('%d/%m/%Y')" t-if="order.date_order"/> </h6>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-1.5">
+                                                        <div class="o_download o_button_black_wcp">
+                                                            <a t-att-href="order.get_portal_url(report_type='pdf', download=True)" title="Descargar">Descargar <i class="fa fa-download"/></a>
+                                                        </div>
+                                                        <div class="o_download ac-label o_button_white_wcp">
+                                                            <a href="#" title="Descargar"><span>Ver Pedido</span> <i class="fa fa-angle-down"/></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div class="article ac-content row p-2">
                                                     <table class="table">
-                                                        <thead class="text-left thead">
+                                                        <thead class="thead">
                                                             <tr>
-                                                                <th scope="col" class="col-md-4">Descripción</th>
-                                                                <th scope="col" class="col-md-3">Fecha de llegada prevista</th>
-                                                                <th scope="col" colspan="3" class="col-md-3">Cantidad</th>
-                                                                <th scope="col" class="col-md-2">Estado</th>
+                                                                <th scope="col" class="col-md-4 text-left"><b>Producto</b></th>
+                                                                <th scope="col" class="col-md-1 text-center"><b>Llegada al Almacén</b></th>
+                                                                <th scope="col" class="col-md-1 text-center">Pedida</th>
+                                                                <th scope="col" class="col-md-1 text-center"><b>Cantidad</b><br/>En almacén</th>
+                                                                <th scope="col" class="col-md-1 text-center">Enviada</th>
+                                                                <th scope="col" class="col-md-2 text-center"><b>Estado</b></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr>
-                                                                <td class="col-md-4"> </td>
-                                                                <td class="col-md-3"> </td>
-                                                                <td class="col-md-1">Pedida</td>
-                                                                <td class="col-md-1">En almacén</td>
-                                                                <td class="col-md-1">Enviada</td>
-                                                                <td class="col-md-2"> </td>
-                                                            </tr>
                                                             <t t-foreach="order.order_line" t-as="line">
                                                                 <tr>
                                                                     <t t-if="line.display_type == 'line_section'">
@@ -131,7 +134,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </td>
-                                                                        <td class="col-md-3">
+                                                                        <td class="col-md-1">
                                                                             <span t-esc="line.x_date_expected.strftime('%d/%m/%Y')" t-if="line.x_date_expected" />
                                                                         </td>
                                                                         <td class="col-md-1">

@@ -5,14 +5,15 @@
 }
 
 .o_delivery_matter {
-    font-size: 7em;
+//     font-size: 7em;
     font-weight: 500;
     padding: 0.5em;
-
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 }
 
 .o_o_delivery_matter {
-    font-size: 4em;
+//     font-size: 4em;
     font-weight: 500;
     padding: 0.5em;
 
@@ -48,8 +49,7 @@
 
 .o_download {
     >a {
-
-        color: #fff;
+//         color: #fff;
         text-decoration: none;
     }
 
@@ -73,25 +73,25 @@
     height: auto;
 }
 
-.accordion-started.accordion-bral .ac-label {
-    font-family: Arial, sans-serif;
-    padding: 5px 20px;
-    position: relative;
-    display: block;
-    height: auto;
-    color: #ffffff;
-    line-height: 33px;
-    font-size: 15px;
-    font-weight: 300;
-    margin-bottom: 5px;
-}
+// .accordion-started.accordion-bral .ac-label {
+//     font-family: Arial, sans-serif;
+//     padding: 5px 20px;
+//     position: relative;
+//     display: block;
+//     height: auto;
+//     color: #ffffff;
+//     line-height: 33px;
+//     font-size: 15px;
+//     font-weight: 300;
+//     margin-bottom: 5px;
+// }
 
-.accordion-started.accordion-bral .ac-label:hover {}
+// .accordion-started.accordion-bral .ac-label:hover {}
 
 
 
-.accordion-started.accordion-bral input:checked+.ac-label,
-.accordion-started.accordion-bral input:checked+.ac-label:active {}
+.accordion-started.accordion-bral input:checked+div>.ac-label,
+.accordion-started.accordion-bral input:checked+div>.ac-label:active {}
 
 .accordion-started.accordion-bral input.ac-input {
     display: none;
@@ -116,33 +116,33 @@
     background: #fff;
 }
 
-.accordion-started.accordion-bral i {
-    position: absolute;
-    transform: translate(-30px, 0);
-    margin-top: 16px;
-    right: 0;
-}
+// .accordion-started.accordion-bral i {
+//     position: absolute;
+//     transform: translate(-30px, 0);
+//     margin-top: 16px;
+//     right: 0;
+// }
 
-.accordion-started.accordion-bral input:checked~.ac-label i:before {
-    transform: translate(2px, 0) rotate(-45deg);
-}
+// .accordion-started.accordion-bral input:checked~div>.ac-label i:before {
+//     transform: translate(2px, 0) rotate(-45deg);
+// }
+//
+// .accordion-started.accordion-bral input:checked~div>.ac-label i:after {
+//     transform: translate(-2px, 0) rotate(45deg);
+// }
 
-.accordion-started.accordion-bral input:checked~.ac-label i:after {
-    transform: translate(-2px, 0) rotate(45deg);
-}
+// .accordion-started.accordion-bral i:before,
+// .accordion-bral i:after {
+//     content: "";
+//     position: absolute;
+//     background-color: #fff;
+//     width: 4px;
+//     height: 9px;
+// }
 
-.accordion-started.accordion-bral i:before,
-.accordion-bral i:after {
-    content: "";
-    position: absolute;
-    background-color: #fff;
-    width: 4px;
-    height: 9px;
-}
-
-.accordion-started.accordion-bral i:before {
-    transform: translate(-2px, 0) rotate(-45deg);
-}
+// .accordion-started.accordion-bral i:before {
+//     transform: translate(-2px, 0) rotate(-45deg);
+// }
 
 .accordion-started.accordion-bral i:after {
     transform: translate(2px, 0) rotate(45deg);
@@ -153,5 +153,22 @@
     list-style-type: disc;
 }
 
+.o_padding_wcp {
+    padding: 1.5em;
+    padding-left: 2em;
+}
+
+.o_button_black_wcp {
+    border: 1px solid #fff;
+    padding: 0.5em;
+    margin: 5px;
+}
+
+.o_button_white_wcp {
+    background: #fff;
+    color: #212529;
+    padding: 0.5em;
+    margin: 5px;
+}
 
 /* ---------- accordion style end --------------------------------------- */
