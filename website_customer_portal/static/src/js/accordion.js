@@ -3,20 +3,17 @@
         $(".ac-label").click(function(e) {
             e.preventDefault();
             $check = $(this).parent().parent().prev();
-            $icon = $(this).find("i");
+            $img = $(this).find("img");
             $span = $(this).find("span");
             if ($check.prop('checked')){
                 $check.prop("checked", false);
-                $icon.removeClass("fa-angle-up");
-                $icon.addClass("fa-angle-down");
+                $img.attr("src", "/website_customer_portal/static/src/img/desktop---proyecto-noun-arrow-1776263-1.png");
                 $span.html("Ver Pedido");
             } else {
                 $check.prop("checked", true);
-                $icon.removeClass("fa-angle-down");
-                $icon.addClass("fa-angle-up");
+                $img.attr("src", "/website_customer_portal/static/src/img/desktop---proyecto-noun-arrow-1776263.png");
                 $span.html("Cerrar Pedido");
             }
         });
-
     });
 })(jQuery);
