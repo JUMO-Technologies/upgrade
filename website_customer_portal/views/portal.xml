@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
-        <!--        <template id="my_dashboard_link" name="Link to dashboard" inherit_id="portal.frontend_layout">-->
-        <!--            <xpath expr="//a[@id='o_logout']" position="before">-->
-        <!--                <a href="/my/dashboard" role="menuitem" class="dropdown-item">Dashboard</a>-->
-        <!--            </xpath>-->
-        <!--        </template>-->
 
         <template id="portal_delivery_layout">
-            <div class="cabecera-v1">
+            <div class="cabecera-v1" t-if="not hide_header_footer">
                 <img class="logo-horizontal"
                      src="/website_customer_portal/static/src/img/desktop---inicio-logo-horizontal.png"/>
             </div>
             <div>
                 <t t-raw="0"/>
             </div>
-            <div class="footer">
+            <div class="footer" t-if="not hide_header_footer">
                 <img
                         class="matter-solo-blanc"
                         src="/website_customer_portal/static/src/img/desktop---inicio-matter-solo-blanc.png"
@@ -235,20 +230,33 @@
                                             <table class="table">
                                                 <thead class="thead">
                                                     <tr>
-                                                        <th scope="col" class="col-md-4 text-left montserrat-semi-bold-eerie-black-14px"><b>Producto</b></th>
-                                                        <th scope="col" class="col-md-1 text-center montserrat-semi-bold-eerie-black-14px"><b>Llegada al
+                                                        <th scope="col"
+                                                            class="col-md-4 text-left montserrat-semi-bold-eerie-black-14px"><b>
+                                                            Producto</b></th>
+                                                        <th scope="col"
+                                                            class="col-md-1 text-center montserrat-semi-bold-eerie-black-14px"><b>
+                                                            Llegada al
                                                             almacén</b></th>
-                                                        <th scope="col" class="col-md-1 text-center montserrat-semi-bold-eerie-black-14px">Pedida</th>
-                                                        <th scope="col" class="col-md-1 text-center montserrat-semi-bold-eerie-black-14px"><b>
+                                                        <th scope="col"
+                                                            class="col-md-1 text-center montserrat-semi-bold-eerie-black-14px">
+                                                            Pedida</th>
+                                                        <th scope="col"
+                                                            class="col-md-1 text-center montserrat-semi-bold-eerie-black-14px"><b>
                                                             Cantidad</b><br/>En almacén</th>
-                                                        <th scope="col" class="col-md-1 text-center montserrat-semi-bold-eerie-black-14px">Enviada</th>
-                                                        <th scope="col" class="col-md-2 text-center montserrat-semi-bold-eerie-black-14px"><b>Estado</b></th>
+                                                        <th scope="col"
+                                                            class="col-md-1 text-center montserrat-semi-bold-eerie-black-14px">
+                                                            Enviada</th>
+                                                        <th scope="col"
+                                                            class="col-md-2 text-center montserrat-semi-bold-eerie-black-14px"><b>
+                                                            Estado</b></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <t t-foreach="order.order_line" t-as="line">
-                                                        <tr t-if="line.display_type == 'line_section'" class="rectangle">
-                                                            <td class="montserrat-medium-black-24px" name="td_section_line" colspan="6">
+                                                        <tr t-if="line.display_type == 'line_section'"
+                                                            class="rectangle">
+                                                            <td class="montserrat-medium-black-24px"
+                                                                name="td_section_line" colspan="6">
                                                                 <span t-field="line.name"/>
                                                             </td>
                                                         </tr>
@@ -674,6 +682,67 @@
             <!--                </div>-->
             <!--                <div class="oe_structure" id="oe_structure_portal_my_home_2" />-->
             <!--            </t>-->
+        </template>
+
+        <template id="my_login">
+            <t t-set="hide_header_footer" t-value="True"/>
+            <t t-call="website_customer_portal.my_frontend_layout">
+                <div class="container-center-horizontal">
+                    <div class="desktoplogin screen">
+                        <div class="overlap-group3">
+                            <form role="form" t-attf-action="/my/dashboard/login" method="post"
+                                  onsubmit="this.action = this.action + location.hash">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <input type="hidden" name="db" t-att-value="request.db" id="db"
+                                       t-attf-class="form-control #{'form-control-sm' if form_small else ''}"
+                                       required="required" readonly="readonly"/>
+                                <div class="overlap-group2">
+                                    <img class="matter-solo-blanc"
+                                         src="/website_customer_portal/static/src/img/desktop---login-matter-solo-blanc.png"/>
+                                    <div class="bloque-login">
+                                        <div class="boton-blanco">
+                                            <button type="submit" class="btn-block iniciar-sesin">Iniciar sesión</button>
+                                        </div>
+                                        <div class="overlap-group1 border-0-8px-white">
+                                            <input type="text" placeholder="Email" name="login" t-att-value="login"
+                                                   id="login"
+                                                   class="email-login montserrat-normal-mountain-mist-18px"
+                                                   required="required" autofocus="autofocus" autocapitalize="off"/>
+                                        </div>
+                                        <div class="overlap-group border-0-8px-white">
+                                            <input type="password" placeholder="Contraseña" name="password"
+                                                   id="password"
+                                                   class="contrasea montserrat-normal-mountain-mist-18px"
+                                                   required="required" autocomplete="current-password"
+                                                   t-att-autofocus="'autofocus' if login else None"/>
+                                        </div>
+                                        <div class="check-sesion">
+                                            <div class="mantener-la-sesin-i montserrat-normal-white-16px">
+                                                Mantener la sesión iniciada
+                                            </div>
+                                            <img class="rectangle"
+                                                 src="/website_customer_portal/static/src/img/desktop---login-rectangle.png"/>
+                                        </div>
+                                        <p class="alert alert-danger" t-if="error" role="alert">
+                                            <t t-esc="error"/>
+                                        </p>
+                                        <p class="alert alert-success" t-if="message" role="status">
+                                            <t t-esc="message"/>
+                                        </p>
+                                    </div>
+                                    <img class="logo-horizontal"
+                                         src="/website_customer_portal/static/src/img/desktop---login-logo-horizontal.png"/>
+                                </div>
+                                <div class="identifcate-para-ac">
+                                    Identifícate para acceder a tus proyectos<br/>y gestionar tus pedidos
+                                </div>
+                                <h1 class="title">Bienvenido a</h1>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </t>
         </template>
     </data>
 </odoo>

@@ -1,166 +1,6 @@
-// .o_portal_jumbotron {
-//     background: #212529;
-//     color: #ffffff;
-//
-// }
-//
-// .o_delivery_matter {
-// //     font-size: 7em;
-//     font-weight: 500;
-//     padding: 0.5em;
-//     margin-top: 0.5em;
-//     margin-bottom: 0.5em;
-// }
-//
-// .o_o_delivery_matter {
-// //     font-size: 4em;
-//     font-weight: 500;
-//     padding: 0.5em;
-//
-// }
-//
-// .o_delivery_matter_name {
-//     font-weight: 600;
-//     color: #212529;
-// }
-//
-// .o_delivery_matter_link {
-//     display: block;
-//     padding: 4px;
-//     text-decoration: none !important;
-// }
-//
-// .project_data {
-//
-//     h6 {
-//         font-weight: 500 !important;
-//         font-size: 14px !important;
-//     }
-// }
-//
-// .thead {
-//     font-weight: 800;
-//     text-transform: uppercase;
-//
-//     th {
-//         border: 0px !important;
-//     }
-// }
-//
-// .o_download {
-//     >a {
-// //         color: #fff;
-//         text-decoration: none;
-//     }
-//
-//
-//
-// }
-//
-// /* -----------------> can start accordion style copy from here ------------------------*/
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,300,500,600,100");
 
-// .accordion-started.accordion-bral {
-//     min-height: 0;
-//     min-width: 220px;
-//     width: 100%;
-//     background-color: #212529;
-//     margin: 0px !important;
-//     color: #ffffff;
-// }
-//
-// .accordion-started.accordion-bral img {
-//     width: 100%;
-//     height: auto;
-// }
-
-.ac-label:hover {}
-
-
-
-input:checked+div>.ac-label,
-input:checked+div>.ac-label:active {}
-
-input.ac-input {
-    display: none;
-}
-
-.article {
-    overflow: hidden;
-    height: 0px;
-    max-height: auto;
-    padding: 0px !important;
-    margin-bottom: 8px;
-}
-
-.article p {
-    line-height: 23px;
-    padding-left: 5px;
-}
-
-input:checked~.article.ac-content {
-    height: auto;
-    background: #fff;
-}
-
-// .accordion-started.accordion-bral i {
-//     position: absolute;
-//     transform: translate(-30px, 0);
-//     margin-top: 16px;
-//     right: 0;
-// }
-
-// .accordion-started.accordion-bral input:checked~div>.ac-label i:before {
-//     transform: translate(2px, 0) rotate(-45deg);
-// }
-//
-// .accordion-started.accordion-bral input:checked~div>.ac-label i:after {
-//     transform: translate(-2px, 0) rotate(45deg);
-// }
-
-// .accordion-started.accordion-bral i:before,
-// .accordion-bral i:after {
-//     content: "";
-//     position: absolute;
-//     background-color: #fff;
-//     width: 4px;
-//     height: 9px;
-// }
-
-// .accordion-started.accordion-bral i:before {
-//     transform: translate(-2px, 0) rotate(-45deg);
-// }
-
-i:after {
-    transform: translate(2px, 0) rotate(45deg);
-}
-
-ul.ac-list {
-    padding-left: 40px;
-    list-style-type: disc;
-}
-
-// .o_padding_wcp {
-//     padding: 1.5em;
-//     padding-left: 2em;
-// }
-//
-// .o_button_black_wcp {
-//     border: 1px solid #fff;
-//     padding: 0.5em;
-//     margin: 5px;
-// }
-//
-// .o_button_white_wcp {
-//     background: #fff;
-//     color: #212529;
-//     padding: 0.5em;
-//     margin: 5px;
-// }
-
-/* ---------- accordion style end --------------------------------------- */
-
-// NEW STYLE
-// VARIABLES
+/* Variables */
 :root {
   --black: rgba(0, 0, 0, 1);
   --eerie-black: rgba(26, 29, 31, 1);
@@ -182,7 +22,7 @@ ul.ac-list {
   --font-family-montserrat: "Montserrat";
 }
 
-// Clases
+/* Classes */
 .montserrat-semi-bold-white-16px {
   color: var(--white);
   font-family: var(--font-family-montserrat);
@@ -338,12 +178,48 @@ ul.ac-list {
   font-style: normal;
 }
 
-// Estilos
+/* Accordion */
+.ac-label:hover {}
+
+input:checked+div>.ac-label,
+input:checked+div>.ac-label:active {}
+
+input.ac-input {
+    display: none;
+}
+
+.article {
+    overflow: hidden;
+    height: 0px;
+    max-height: auto;
+    padding: 0px !important;
+    margin-bottom: 8px;
+}
+
+.article p {
+    line-height: 23px;
+    padding-left: 5px;
+}
+
+input:checked~.article.ac-content {
+    height: auto;
+    background: #fff;
+}
+
+i:after {
+    transform: translate(2px, 0) rotate(45deg);
+}
+
+ul.ac-list {
+    padding-left: 40px;
+    list-style-type: disc;
+}
+
+/* Styles */
 .cabecera-v1 {
   background-color: var(--black);
   height: 70px;
   position: relative;
-//   width: 1536px;
 }
 
 .logo-horizontal {
@@ -422,9 +298,6 @@ ul.ac-list {
   top: 0;
   width: 18px;
 }
-
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,300,500,600,100");
-
 
 .desktopinicio {
   background-color: var(--white);
@@ -550,8 +423,6 @@ ul.ac-list {
   top: 26px;
   width: 300px;
 }
-
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,300,500,600,100");
 
 .screen a {
   display: contents;
@@ -1946,4 +1817,181 @@ ul.ac-list {
   position: absolute;
   top: 26px;
   width: 300px;
+}
+
+/* Login Styles */
+.desktoplogin {
+  background-color: var(--white);
+  height: 960px;
+  width: 1536px;
+}
+
+.desktoplogin .overlap-group3 {
+  height: 960px;
+  position: relative;
+}
+
+.desktoplogin .overlap-group2 {
+  background-color: var(--black);
+  height: 960px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1536px;
+}
+
+.desktoplogin .matter-solo-blanc {
+  height: 25px;
+  left: 642px;
+  position: absolute;
+  top: 63px;
+  width: 253px;
+}
+
+.desktoplogin .bloque-login {
+  height: 228px;
+  left: 527px;
+  position: absolute;
+  top: 488px;
+  width: 471px;
+}
+
+.desktoplogin .boton-blanco {
+  background-color: var(--white);
+  height: 45px;
+  left: 1px;
+  position: absolute;
+  top: 184px;
+  width: 471px;
+}
+
+.desktoplogin .iniciar-sesin {
+  color: var(--black);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-xl);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 21px;
+  text-align: center;
+  top: 11px;
+  white-space: nowrap;
+  width: 100%;
+  height: 100%;
+  background-color: var(__white);
+}
+
+.desktoplogin .overlap-group {
+  background-color: var(--black);
+  height: 49px;
+  left: -1px;
+  position: absolute;
+  top: 64px;
+  width: 474px;
+}
+
+.desktoplogin .contrasea {
+    background-color: var(--black);
+    padding-left: 21px;
+    letter-spacing: 0;
+    line-height: 21px;
+    white-space: nowrap;
+    width: 100%;
+    height: 100%;
+}
+
+.desktoplogin .overlap-group1 {
+  height: 49px;
+  left: -1px;
+  position: absolute;
+  top: -1px;
+  width: 474px;
+}
+
+.desktoplogin .email-login {
+  background-color: var(--black);
+  padding-left: 21px;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+  width: 100%;
+  height: 100%;
+}
+
+.desktoplogin .check-sesion {
+  height: 19px;
+  left: 1px;
+  position: absolute;
+  top: 130px;
+  width: 246px;
+}
+
+.desktoplogin .mantener-la-sesin-i {
+  left: 28px;
+  letter-spacing: 0;
+  line-height: 19px;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+.desktoplogin .rectangle {
+  background-color: var(__white);
+  height: 14px;
+  left: 0;
+  position: absolute;
+  top: 2px;
+  width: 14px;
+}
+
+.desktoplogin .logo-horizontal {
+  height: 22px;
+  left: 526px;
+  position: absolute;
+  top: 265px;
+  width: 472px;
+}
+
+.desktoplogin .identifcate-para-ac {
+  color: var(--white);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-xl);
+  font-weight: 300;
+  left: 582px;
+  letter-spacing: 0;
+  line-height: 21px;
+  position: absolute;
+  text-align: center;
+  top: 399px;
+}
+
+.desktoplogin .title {
+  color: var(--white);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-xxxxl);
+  font-weight: 100;
+  left: 650px;
+  letter-spacing: 0;
+  line-height: 55px;
+  position: absolute;
+  text-align: center;
+  top: 200px;
+  white-space: nowrap;
+}
+
+.screen a {
+  display: contents;
+  text-decoration: none;
+}
+
+.container-center-horizontal {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  pointer-events: none;
+  width: 100%;
+}
+
+.container-center-horizontal > * {
+  flex-shrink: 0;
+  pointer-events: auto;
 }
