@@ -10,7 +10,6 @@ from odoo.addons.web.controllers.main import Home
 class CustomerPortal(CustomerPortal):
     def _prepare_lead_portal_values(self, leads):
         values = self._prepare_home_portal_values()
-
         values.update(leads=leads, lead_count=len(leads))
         return values
 
@@ -18,7 +17,8 @@ class CustomerPortal(CustomerPortal):
         values = self._prepare_home_portal_values()
         domain = [("access_token", "=", access_token)]
         lead_id = request.env["crm.lead"].with_user(SUPERUSER_ID).search(domain)
-        values.update(lead_sales=lead_id.get_sale_by_oppotunity_id(lead_id), lead_id=lead_id)
+        down_payment = int(request.env['ir.config_parameter'].sudo().get_param('sale.default_deposit_product_id'))
+        values.update(lead_sales=lead_id.get_sale_by_oppotunity_id(lead_id), lead_id=lead_id, down_payment=down_payment)
         return values
 
     @route(["/my/dashboard", "/my/<string:model>/dashboard", "/my/dashboard/<string:lead_id>"],

@@ -179,30 +179,43 @@
 }
 
 /* Accordion */
-.ac-label:hover {}
+// .ac-label:hover {}
 
-input:checked+div>.ac-label,
-input:checked+div>.ac-label:active {}
+// input:checked+div>.ac-label,
+// input:checked+div>.ac-label:active {}
 
 input.ac-input {
     display: none;
 }
 
-.article {
-    overflow: hidden;
-    height: 0px;
-    max-height: auto;
-    padding: 0px !important;
+.desktopproyecto table th {
+    vertical-align: middle !important;
+}
+
+.desktopproyecto table tr {
+    border-bottom: 3px solid var(--gallery);
+}
+
+.desktopproyecto .padding-left{
+    padding-left: 70px;
+}
+
+.desktopproyecto .order-container {
     margin-bottom: 8px;
 }
 
-.article p {
+.desktopproyecto .article {
+    overflow: hidden;
+    padding: 0px !important;
+}
+
+.desktopproyecto .article p {
     line-height: 23px;
     padding-left: 5px;
 }
 
-input:checked~.article.ac-content {
-    height: auto;
+.desktopproyecto .article.ac-content {
+    display: none;
     background: #fff;
 }
 
@@ -220,7 +233,15 @@ ul.ac-list {
   background-color: var(--black);
   height: 70px;
   position: relative;
+  width: 1536px;
 }
+
+// background-color: var(--black);
+//   height: 70px;
+//   left: 0;
+//   position: absolute;
+//   top: 0;
+//   width: 1536px;
 
 .logo-horizontal {
   height: 14px;
@@ -234,7 +255,7 @@ ul.ac-list {
   background-color: var(--eerie-black);
   height: 100px;
   position: relative;
-//   width: 1536px;
+  width: 1536px;
 }
 
 .matter-solo-blanc {
@@ -301,22 +322,20 @@ ul.ac-list {
 
 .desktopinicio {
   background-color: var(--white);
-  height: 960px;
   overflow: hidden;
   position: relative;
   width: 1536px;
 }
 
 .desktopinicio .overlap-group1 {
-  height: 1262px;
-  left: 0;
-  position: absolute;
+  height: 600px;
+  position: relative;
   width: 1536px;
 }
 
 .desktopinicio .overlap-group {
   background-color: var(--gallery);
-  height: 1262px;
+  height: 600px;
   left: 0;
   position: absolute;
   top: 0;
@@ -407,15 +426,6 @@ ul.ac-list {
   top: 53px;
 }
 
-.desktopinicio .cabecera-v1 {
-  background-color: var(--black);
-  height: 70px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 1536px;
-}
-
 .desktopinicio .logo-horizontal {
   height: 14px;
   left: 79px;
@@ -432,7 +442,6 @@ ul.ac-list {
 .container-center-horizontal {
   display: flex;
   flex-direction: row;
-  justify-content: center;
   pointer-events: none;
   width: 100%;
 }
@@ -444,22 +453,21 @@ ul.ac-list {
 
 .desktopproyecto {
   background-color: var(--white);
-  height: 2132px;
+  min-height: 600px;
   overflow: hidden;
-  position: relative;
-  width: 1536px;
 }
 
 .desktopproyecto .overlap-group6 {
-  height: 2250px;
-  left: 0;
-  position: absolute;
+  min-height: 600px;
+  background-color: var(--gallery);
+//   left: 0;
+  position: relative;
   width: 1536px;
 }
 
 .desktopproyecto .overlap-group5 {
   background-color: var(--gallery);
-  height: 2250px;
+//   min-height: 2250px;
   left: 0;
   position: absolute;
   top: 0;
@@ -505,14 +513,15 @@ ul.ac-list {
   position: absolute;
   top: 143px;
   width: 1377px;
+  padding: 32px 58px;
 }
 
 .desktopproyecto .boton-editar-datos {
   height: 42px;
-  left: 1152px;
-  position: absolute;
-  top: 31px;
+  position: relative;
   width: 167px;
+  float: right;
+  cursor: pointer;
 }
 
 .desktopproyecto .overlap-group1-1 {
@@ -551,12 +560,9 @@ ul.ac-list {
 }
 
 .desktopproyecto .referencia-proyecto {
-  left: 60px;
-  letter-spacing: 0.38px;
+  font-weight: 600;
   line-height: 16px;
-  position: absolute;
-  top: 122px;
-  width: 341px;
+  margin-bottom: 20.1px;
 }
 
 .desktopproyecto .span {
@@ -573,31 +579,18 @@ ul.ac-list {
 }
 
 .desktopproyecto .pedidos-relacionados {
-  left: 60px;
-  letter-spacing: 0.38px;
   line-height: 19px;
-  position: absolute;
-  top: 164px;
-  white-space: nowrap;
-  width: 485px;
+  margin-bottom: 20.1px;
 }
 
 .desktopproyecto .back-up-specialist {
-  left: 60px;
-  letter-spacing: 0.38px;
   line-height: 19px;
-  position: absolute;
-  top: 203px;
-  white-space: nowrap;
-  width: 412px;
+  margin-bottom: 20.1px;
 }
 
 .desktopproyecto .dir-facturacin {
-  height: 83px;
-  left: 60px;
-  position: absolute;
-  top: 245px;
-  width: 445px;
+  position: relative;
+  margin-bottom: 20.1px;
 }
 
 .desktopproyecto .direccin-de-factura {
@@ -622,9 +615,7 @@ ul.ac-list {
 
 .desktopproyecto .dir-envio {
   height: 55px;
-  left: 749px;
-  position: absolute;
-  top: 124px;
+  position: relative;
   width: 334px;
 }
 
@@ -650,11 +641,8 @@ ul.ac-list {
 }
 
 .desktopproyecto .dir-envio-1 {
-  height: 53px;
-  left: 749px;
-  position: absolute;
-  top: 203px;
-  width: 222px;
+  position: relative;
+  margin-bottom: 20.1px;
 }
 
 .desktopproyecto .contacto-obra {
@@ -679,19 +667,29 @@ ul.ac-list {
 }
 
 .desktopproyecto .datos-del-proyecto {
-  left: 58px;
   letter-spacing: 0.71px;
-  position: absolute;
-  top: 32px;
   width: 353px;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.desktopproyecto .col-2-project{
+    display: inline-block;
+    margin-top: 18px;
+    width: 54%;
+    vertical-align: top;
+}
+
+.desktopproyecto .col-3-project{
+    display: inline-block;
+    margin-top: 18px;
+    width: 45%;
+    vertical-align: top;
 }
 
 .desktopproyecto .line-2 {
   height: 2px;
-  left: 60px;
-  position: absolute;
-  top: 91px;
-  width: 1260px;
+  width: 100%;
 }
 
 .desktopproyecto .overlap-group4 {
@@ -1112,17 +1110,11 @@ ul.ac-list {
 
 .desktopproyecto .fill-1 {
   height: 21px;
-//   left: 0;
-//   position: absolute;
-//   top: 1px;
   width: 26px;
 }
 
 .desktopproyecto .fill-3 {
   height: 13px;
-//   left: 16px;
-//   position: absolute;
-//   top: 0;
   width: 13px;
 }
 
@@ -1201,9 +1193,6 @@ ul.ac-list {
 
 .desktopproyecto .icon-estado-almacen-1 {
   height: 65px;
-//   left: 976px;
-//   position: absolute;
-//   top: 7px;
   width: 103px;
 }
 
@@ -1460,9 +1449,6 @@ ul.ac-list {
 
 .desktopproyecto .fill-4 {
   height: 21px;
-  left: 0;
-  position: absolute;
-  top: 1px;
   width: 25px;
 }
 
@@ -1529,9 +1515,6 @@ ul.ac-list {
 
 .desktopproyecto .icon-estado-almacen-2 {
   height: 65px;
-//   left: 986px;
-//   position: absolute;
-//   top: 0;
   width: 103px;
 }
 
@@ -1575,9 +1558,6 @@ ul.ac-list {
 
 .desktopproyecto .btn-descargar {
   height: 42px;
-//   left: 1152px;
-//   position: absolute;
-//   top: 37px;
   width: 166px;
   margin-bottom: 15px;
 }
@@ -1664,10 +1644,7 @@ ul.ac-list {
 }
 
 .desktopproyecto .order-reference {
-//   left: 58px;
   letter-spacing: 0.71px;
-//   position: absolute;
-//   top: 30px;
   width: 158px;
   margin-bottom: 10px;
 }
@@ -1685,23 +1662,17 @@ ul.ac-list {
 }
 
 .desktopproyecto .fecha-de-formalizaci {
-//   left: 58px;
   letter-spacing: 0.38px;
   line-height: 19px;
-//   position: absolute;
-//   top: 116px;
   white-space: nowrap;
-//   width: 615px;
 }
 
 .desktopproyecto .btn-ver-pedido {
   background-color: var(--white);
   height: 40px;
-//   left: 1153px;
-//   position: absolute;
-//   top: 93px;
   width: 164px;
   color: var(__black);
+  cursor: pointer;
 }
 
 .desktopproyecto .noun-arrow-1776263 {
@@ -1722,15 +1693,6 @@ ul.ac-list {
   top: 11px;
   white-space: nowrap;
   width: 100px;
-}
-
-.desktopproyecto .footer {
-  background-color: var(--eerie-black);
-  height: 100px;
-  left: 0;
-  position: absolute;
-  top: 1962px;
-  width: 1536px;
 }
 
 .desktopproyecto .matter-solo-blanc {
@@ -1802,21 +1764,16 @@ ul.ac-list {
   margin-top: 47px;
 }
 
-.desktopproyecto .cabecera-v1 {
-  background-color: var(--black);
-  height: 70px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 1536px;
-}
-
 .desktopproyecto .logo-horizontal {
   height: 14px;
   left: 79px;
   position: absolute;
   top: 26px;
   width: 300px;
+}
+
+.desktopproyecto .border-light-td {
+    border-right: 3px solid var(--gallery);
 }
 
 /* Login Styles */
@@ -1981,17 +1938,4 @@ ul.ac-list {
 .screen a {
   display: contents;
   text-decoration: none;
-}
-
-.container-center-horizontal {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  pointer-events: none;
-  width: 100%;
-}
-
-.container-center-horizontal > * {
-  flex-shrink: 0;
-  pointer-events: auto;
 }
