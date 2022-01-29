@@ -38,7 +38,7 @@
                   '-o-transform': 'rotate(0deg)'
                 });
                 $overlap.css('height', ($overlap[0].clientHeight - art_before) + "px");
-                $span.html("Ver Pedido");
+                $span.html("Ver pedido");
             } else {
                 $article.css("display", 'block');
                 $img.css({
