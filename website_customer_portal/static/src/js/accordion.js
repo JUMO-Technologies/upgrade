@@ -15,7 +15,7 @@
             $overlap = $("div.overlap-group1");
         }
         if(orders.length > 0){
-            height = orders[0].scrollHeight;
+            height = orders[0].clientHeight;
         }
         if($overlap.length > 0){
             $overlap.css("height", ($overlap[0].clientHeight + length * height) + "px");
