@@ -238,10 +238,10 @@
                                                                 Llegada al
                                                                 almacén</b></th>
                                                             <th scope="col"
-                                                                class="col-md-1 border-light-td text-center montserrat-semi-bold-eerie-black-14px">
+                                                                class="col-md-1 text-center montserrat-semi-bold-eerie-black-14px">
                                                                 <br/>Pedida</th>
                                                             <th scope="col"
-                                                                class="col-md-1 border-light-td text-center montserrat-semi-bold-eerie-black-14px"><b>
+                                                                class="col-md-1 text-center montserrat-semi-bold-eerie-black-14px"><b>
                                                                 Cantidad</b><br/>En almacén</th>
                                                             <th scope="col"
                                                                 class="col-md-1 border-light-td text-center montserrat-semi-bold-eerie-black-14px">
