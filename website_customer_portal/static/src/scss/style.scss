@@ -22,7 +22,24 @@
   --font-family-montserrat: "Montserrat";
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+}
+#wrapwrap {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 100vh !important;
+}
+
+#wrapwrap > * {
+  padding: 0px;
+}
+
 /* Classes */
+.dashboard_main_context {
+  flex-grow: 1 !important;
+}
 .montserrat-semi-bold-white-16px {
   color: var(--white);
   font-family: var(--font-family-montserrat);
@@ -233,7 +250,8 @@ ul.ac-list {
   background-color: var(--black);
   height: 70px;
   position: relative;
-  width: 1536px;
+//   width: 1536px;
+  width: 100%;
 }
 
 // background-color: var(--black);
@@ -254,14 +272,17 @@ ul.ac-list {
 .footer {
   background-color: var(--eerie-black);
   height: 100px;
-  position: relative;
-  width: 1536px;
+//   position: relative;
+//   width: 1536px;
+  width: 100%;
+  margin-top: auto;
 }
 
 .matter-solo-blanc {
   height: 15px;
   left: 80px;
-  position: absolute;
+//   position: absolute;
+  position: relative;
   top: 41px;
   width: 150px;
 }
@@ -269,9 +290,10 @@ ul.ac-list {
 .email {
   height: 19px;
   left: 1002px;
-  position: absolute;
-  top: 39px;
+  position: relative;
+  top: 22px;
   width: 253px;
+//   position: absolute;
 }
 
 .ateliermatterbarce {
@@ -296,8 +318,9 @@ ul.ac-list {
 .tel {
   height: 19px;
   left: 1321px;
-  position: absolute;
-  top: 39px;
+//   position: absolute;
+  position: relative;
+  top: 0px;
   width: 136px;
 }
 
@@ -324,14 +347,17 @@ ul.ac-list {
   background-color: var(--white);
   overflow: hidden;
   position: relative;
-  width: 1536px;
+//   width: 1536px;
+  width: 100%;
 }
 
 .desktopinicio .overlap-group1 {
   background-color: var(--gallery);
-  height: 700px;
+//   height: 700px;
+  height: 100%;
   position: relative;
-  width: 1536px;
+//   width: 1536px;
+  width: 100%;
 }
 
 .desktopinicio .overlap-group {
@@ -340,7 +366,9 @@ ul.ac-list {
   left: 0;
   position: absolute;
   top: 0;
-  width: 1536px;
+//   width: 1536px;
+  width: 100%;
+  height: 100%
 }
 
 .desktopinicio .proyecto {
@@ -445,9 +473,17 @@ ul.ac-list {
   flex-direction: row;
   pointer-events: none;
   width: 100%;
+  height: 100%;
 }
 
-.container-center-horizontal > * {
+.container-center-horizontal1 {
+  flex-direction: row;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+}
+
+.container-center-horizontal > *, .container-center-horizontal1 > * {
   flex-shrink: 0;
   pointer-events: auto;
 }
@@ -455,24 +491,26 @@ ul.ac-list {
 .desktopproyecto {
   background-color: var(--white);
   min-height: 600px;
-  overflow: hidden;
+//   overflow: hidden;
 }
 
 .desktopproyecto .overlap-group6 {
   min-height: 700px;
   background-color: var(--gallery);
-//   left: 0;
+  left: 0;
   position: relative;
-  width: 1536px;
+//   width: 1536px;
+  width: 100%;
 }
 
 .desktopproyecto .overlap-group5 {
   background-color: var(--gallery);
 //   min-height: 2250px;
   left: 0;
-  position: absolute;
+  position: relative;
   top: 0;
-  width: 1536px;
+//   width: 1536px;
+  width: 100%;
 }
 
 .desktopproyecto .boton-volver {
@@ -531,6 +569,7 @@ ul.ac-list {
   position: relative;
   top: -1px;
   width: 169px;
+  height: 100%;
 }
 
 .desktopproyecto .overlap-group-3 {
@@ -1762,7 +1801,11 @@ ul.ac-list {
   font-size: var(--font-size-xxxxxl);
   font-weight: 600;
   letter-spacing: 0.95px;
-  margin-top: 47px;
+  padding-top: 47px;
+}
+
+.td-center {
+    text-align: center;
 }
 
 .desktopproyecto .logo-horizontal {
@@ -1781,7 +1824,8 @@ ul.ac-list {
 .desktoplogin {
   background-color: var(--white);
   height: 960px;
-  width: 1536px;
+//   width: 1536px;
+  width: 100%;
 }
 
 .desktoplogin .overlap-group3 {
@@ -1795,7 +1839,8 @@ ul.ac-list {
   left: 0;
   position: absolute;
   top: 0;
-  width: 1536px;
+//   width: 1536px;
+  width: 100%;
 }
 
 .desktoplogin .matter-solo-blanc {

@@ -3,12 +3,12 @@
     <data>
 
         <template id="portal_delivery_layout">
-            <div>
+<!--            <div>-->
                 <div class="cabecera-v1" t-if="not hide_header_footer">
                     <img class="logo-horizontal"
                          src="/website_customer_portal/static/src/img/desktop---inicio-logo-horizontal.png"/>
                 </div>
-                <div>
+                <div class="dashboard_main_context">
                     <t t-raw="0"/>
                 </div>
                 <div class="footer" t-if="not hide_header_footer">
@@ -29,7 +29,7 @@
                              src="/website_customer_portal/static/src/img/desktop---inicio-noun-phone-1995462.png"/>
                     </div>
                 </div>
-            </div>
+<!--            </div>-->
         </template>
 
         <template id="my_frontend_layout" name="My Frontend layout">&lt;!DOCTYPE html&gt;
@@ -76,7 +76,7 @@
                 <div class="container-center-horizontal">
                     <div class="desktopinicio screen">
                         <div class="overlap-group1">
-                            <div class="overlap-group">
+<!--                            <div class="overlap-group">-->
                                 <h1 class="title-delivery montserrat-light-black-40px">
                                     Proyectos en curso
                                 </h1>
@@ -91,7 +91,7 @@
                                     </div>
                                     <t t-set="index_lead" t-value="index_lead + 1"/>
                                 </t>
-                            </div>
+<!--                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -101,7 +101,7 @@
         <!-- portal_my_dashboard_main-->
         <template id="portal_my_dashboard_main" name="DELIVERY MATTER">
             <t t-call="website_customer_portal.my_frontend_layout">
-                <div class="container-center-horizontal">
+                <div class="container-center-horizontal1">
                     <div class="desktopproyecto screen">
                         <div class="overlap-group6">
                             <div class="overlap-group5">
@@ -168,13 +168,16 @@
                                                 </div>
                                                 <p class="c-jos-lopez-35-08 montserrat-normal-black-16px">
                                                     <span t-field="lead_id.shipping_address"/>
+                                                    <br/>
                                                 </p>
                                             </div>
                                             <div class="dir-envio-1">
                                                 <div class="contacto-obra montserrat-semi-bold-black-16px">
+                                                    <br/>
                                                     Contacto Obra:
                                                 </div>
                                                 <div class="julian-lopez-66553 montserrat-normal-black-16px">
+                                                    <br/>
                                                     <span t-field="lead_id.project_contact"/>
                                                 </div>
                                             </div>
@@ -281,7 +284,7 @@
                                                                             </div>
                                                                         </div>
                                                                     </td>
-                                                                    <td class="col-md-1 border-light-td montserrat-medium-eerie-black-14px">
+                                                                    <td class="col-md-1 border-light-td montserrat-medium-eerie-black-14px td-center">
                                                                         <span t-esc="line.x_date_expected.strftime('%d/%m/%Y')"
                                                                               t-if="line.x_date_expected"/>
                                                                     </td>

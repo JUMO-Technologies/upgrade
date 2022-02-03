@@ -49,7 +49,7 @@
                   '-o-transform': 'rotate(180deg)'
                 });
                 $overlap.css('height', ($overlap[0].clientHeight + $article[0].scrollHeight) + "px");
-                $span.html("Cerrar Pedido");
+                $span.html("Cerrar pedido");
             }
         });
     });
