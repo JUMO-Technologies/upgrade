@@ -289,11 +289,18 @@ ul.ac-list {
 
 .email {
   height: 19px;
-  left: 1002px;
+//   left: 1002px;
   position: relative;
-  top: 22px;
+//   top: 22px;
   width: 253px;
+  margin-right: 10px;
 //   position: absolute;
+}
+.footer_tel_mail {
+    top: 38px;
+    margin-left: auto;
+    margin-right: 0;
+    position: relative;
 }
 
 .ateliermatterbarce {
@@ -317,10 +324,10 @@ ul.ac-list {
 
 .tel {
   height: 19px;
-  left: 1321px;
+//   left: 1321px;
 //   position: absolute;
   position: relative;
-  top: 0px;
+//   top: 0px;
   width: 136px;
 }
 
@@ -344,8 +351,10 @@ ul.ac-list {
 }
 
 .desktopinicio {
-  background-color: var(--white);
-  overflow: hidden;
+    background-color: var(--gallery);
+//   background-color: var(--white);
+//   overflow: hidden;
+  overflow: auto;
   position: relative;
 //   width: 1536px;
   width: 100%;
@@ -371,20 +380,27 @@ ul.ac-list {
   height: 100%
 }
 
+.container-desktopinicio {
+    background-color: var(--gallery);
+}
+
 .desktopinicio .proyecto {
-  background-color: var(--white);
-  height: 100px;
-  left: 80px;
-  position: absolute;
-  width: 1376px;
+  background-color: var(--white) !important;
+  margin-top: 10px;
+//   height: 100px;
+//   left: 80px;
+//   position: relative;
+//   width: 1376px;
 }
 
 .desktopinicio .leal-item-value {
-  font-weight: 500;
-  left: 46px;
-  letter-spacing: 0.81px;
-  position: absolute;
-  top: 26px;
+    background: var(--white);
+    padding: 20px 0 20px 25px;
+    font-weight: 500;
+//   left: 46px;
+    letter-spacing: 0.81px;
+    position: relative;
+//   top: 26px;
 }
 
 .desktopinicio .matter-solo-blanc {
@@ -395,13 +411,13 @@ ul.ac-list {
   width: 150px;
 }
 
-.desktopinicio .email {
-  height: 19px;
-  left: 1002px;
-  position: absolute;
-  top: 39px;
-  width: 253px;
-}
+// .desktopinicio .email {
+//   height: 19px;
+//   left: 1002px;
+//   position: absolute;
+//   top: 39px;
+//   width: 253px;
+// }
 
 .desktopinicio .ateliermatterbarce {
   font-weight: 500;
@@ -421,13 +437,13 @@ ul.ac-list {
   width: 22px;
 }
 
-.desktopinicio .tel {
-  height: 19px;
-  left: 1321px;
-  position: absolute;
-  top: 39px;
-  width: 136px;
-}
+// .desktopinicio .tel {
+//   height: 19px;
+//   left: 1321px;
+//   position: absolute;
+//   top: 39px;
+//   width: 136px;
+// }
 
 .desktopinicio .phone {
   font-weight: 500;
@@ -449,10 +465,11 @@ ul.ac-list {
 
 .desktopinicio .title-delivery {
   font-weight: 300;
-  left: 76px;
+//   left: 76px;
   letter-spacing: 0.95px;
-  position: absolute;
-  top: 53px;
+  position: relative;
+  margin-top: 53px;
+  margin-bottom: 30px;
 }
 
 .desktopinicio .logo-horizontal {
@@ -1743,13 +1760,13 @@ ul.ac-list {
   width: 150px;
 }
 
-.desktopproyecto .email {
-  height: 19px;
-  left: 1002px;
-  position: absolute;
-  top: 39px;
-  width: 253px;
-}
+// .desktopproyecto .email {
+//   height: 19px;
+//   left: 1002px;
+//   position: absolute;
+//   top: 39px;
+//   width: 253px;
+// }
 
 .desktopproyecto .ateliermatterbarce {
   font-weight: 500;
@@ -1769,13 +1786,13 @@ ul.ac-list {
   width: 22px;
 }
 
-.desktopproyecto .tel {
-  height: 19px;
-  left: 1321px;
-  position: absolute;
-  top: 39px;
-  width: 136px;
-}
+// .desktopproyecto .tel {
+//   height: 19px;
+//   left: 1321px;
+//   position: absolute;
+//   top: 39px;
+//   width: 136px;
+// }
 
 .desktopproyecto .phone {
   font-weight: 500;

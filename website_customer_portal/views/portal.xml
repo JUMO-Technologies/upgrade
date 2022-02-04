@@ -12,21 +12,29 @@
                     <t t-raw="0"/>
                 </div>
                 <div class="footer" t-if="not hide_header_footer">
-                    <img class="matter-solo-blanc"
+                    <div class="col-12 row">
+                        <div class="col-6 row">
+                            <img class="matter-solo-blanc pull-left"
                          src="/website_customer_portal/static/src/img/desktop---inicio-matter-solo-blanc.png"/>
-                    <div class="email">
-                        <img class="noun-mail-1053115"
-                             src="/website_customer_portal/static/src/img/desktop---perfil-noun-mail-1053115.png"/>
-                        <div class="ateliermatterbarce montserrat-medium-white-16px">
-                            atelier@matter.barcelona
                         </div>
-                    </div>
-                    <div class="tel">
-                        <div class="phone montserrat-medium-white-16px">
-                            93 707 70 32
+                        <div class="col-6 row">
+                            <div class="footer_tel_mail">
+                                <div class="tel pull-right">
+                                    <div class="phone montserrat-medium-white-16px">
+                                        93 707 70 32
+                                    </div>
+                                    <img class="noun-phone-1995462"
+                                         src="/website_customer_portal/static/src/img/desktop---inicio-noun-phone-1995462.png"/>
+                                </div>
+                                <div class="email pull-right">
+                                    <img class="noun-mail-1053115"
+                                         src="/website_customer_portal/static/src/img/desktop---perfil-noun-mail-1053115.png"/>
+                                    <div class="ateliermatterbarce montserrat-medium-white-16px">
+                                        atelier@matter.barcelona
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <img class="noun-phone-1995462"
-                             src="/website_customer_portal/static/src/img/desktop---inicio-noun-phone-1995462.png"/>
                     </div>
                 </div>
 <!--            </div>-->
@@ -75,14 +83,16 @@
                 <t t-set="is_portal" t-value="True"/>
                 <div class="container-center-horizontal">
                     <div class="desktopinicio screen">
-                        <div class="overlap-group1">
+                        <div class="container container-desktopinicio">
+                            <div class="overlap-group1">
 <!--                            <div class="overlap-group">-->
                                 <h1 class="title-delivery montserrat-light-black-40px">
                                     Proyectos en curso
                                 </h1>
                                 <t t-set="index_lead" t-value="0"/>
                                 <t t-foreach="leads" t-as="lead">
-                                    <div class="proyecto" t-attf-style="top: #{139 + index_lead * 110}px;">
+<!--                                     t-attf-style="margin-top: #{75 + index_lead * 110}px;"-->
+                                    <div class="proyecto">
                                         <div class="leal-item-value montserrat-medium-black-34px">
                                             <a t-att-href="'/my/dashboard/%s' % lead.access_token">
                                                 <span style="color: black;" t-field="lead.display_name"/>
@@ -92,6 +102,7 @@
                                     <t t-set="index_lead" t-value="index_lead + 1"/>
                                 </t>
 <!--                            </div>-->
+                            </div>
                         </div>
                     </div>
                 </div>
