@@ -380,10 +380,6 @@ ul.ac-list {
   height: 100%
 }
 
-.container-desktopinicio {
-    background-color: var(--gallery);
-}
-
 .desktopinicio .proyecto {
   background-color: var(--white) !important;
   margin-top: 10px;
@@ -391,6 +387,10 @@ ul.ac-list {
 //   left: 80px;
 //   position: relative;
 //   width: 1376px;
+}
+
+.container-desktopinicio {
+    background-color: var(--gallery) !important;
 }
 
 .desktopinicio .leal-item-value {

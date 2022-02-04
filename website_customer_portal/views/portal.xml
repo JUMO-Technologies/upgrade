@@ -113,9 +113,10 @@
         <template id="portal_my_dashboard_main" name="DELIVERY MATTER">
             <t t-call="website_customer_portal.my_frontend_layout">
                 <div class="container-center-horizontal1">
-                    <div class="desktopproyecto screen">
-                        <div class="overlap-group6">
-                            <div class="overlap-group5">
+                    <div class="desktopproyecto screen container-desktopinicio">
+                        <div class="container">
+                            <div class="overlap-group6">
+                                <div class="overlap-group5">
                                 <div class="boton-volver" onclick="history.back()">
                                     <div class="overlap-group-2 border-1px-black">
                                         <div class="volver montserrat-medium-eerie-black-14px">
@@ -344,6 +345,7 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                             </div>
                         </div>
                     </div>
