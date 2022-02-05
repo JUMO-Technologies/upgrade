@@ -1,6 +1,4 @@
 from odoo import models, fields, api
-from itertools import groupby
-import operator
 
 
 STATES = [
@@ -92,7 +90,7 @@ class SaleOrderLine(models.Model):
             domain = [("order_id.origin", "=", origin), ("product_id", "=", rec.product_id.id)]
             # line = purchase_line.search(domain, limit=1, order="id desc")
             line = purchase_line.search(domain, order="id desc")
-            rec.x_qty_received = sum(line.mapped("qty_received"))
+            rec.x_qty_received = sum(line.mapped("qty_received")) - rec.qty_delivered
             rec.x_qty_received_uom_id = len(line) > 0 and line[0].product_uom.id or False
             rec.x_ordered_quantity = sum(line.mapped("product_qty"))
 
@@ -122,10 +120,6 @@ class SaleOrderLine(models.Model):
 
             if rec.x_ordered_quantity == rec.qty_delivered:
                 rec.product_state = "delivered"
-            elif rec.x_ordered_quantity <= rec.x_qty_received:
-                rec.product_state = "at warehouse"
-            elif line.order_id.falta_confirmacion:
-                rec.product_state = "approved"
             else:
                 rec.product_state = "processed"
 
