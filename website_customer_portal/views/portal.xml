@@ -3,41 +3,39 @@
     <data>
 
         <template id="portal_delivery_layout">
-<!--            <div>-->
-                <div class="cabecera-v1" t-if="not hide_header_footer">
-                    <img class="logo-horizontal"
-                         src="/website_customer_portal/static/src/img/desktop---inicio-logo-horizontal.png"/>
-                </div>
-                <div class="dashboard_main_context">
-                    <t t-raw="0"/>
-                </div>
-                <div class="footer" t-if="not hide_header_footer">
-                    <div class="col-12 row">
-                        <div class="col-6 row">
-                            <img class="matter-solo-blanc pull-left"
-                         src="/website_customer_portal/static/src/img/desktop---inicio-matter-solo-blanc.png"/>
-                        </div>
-                        <div class="col-6 row">
-                            <div class="footer_tel_mail">
-                                <div class="tel pull-right">
-                                    <div class="phone montserrat-medium-white-16px">
-                                        93 707 70 32
-                                    </div>
-                                    <img class="noun-phone-1995462"
-                                         src="/website_customer_portal/static/src/img/desktop---inicio-noun-phone-1995462.png"/>
+            <div class="cabecera-v1" t-if="not hide_header_footer">
+                <img class="logo-horizontal-header"
+                     src="/website_customer_portal/static/src/img/desktop---inicio-logo-horizontal.png"/>
+            </div>
+            <div class="dashboard_main_context">
+                <t t-raw="0"/>
+            </div>
+            <div class="footer" t-if="not hide_header_footer">
+                <div class="col-12 row">
+                    <div class="col-6 row">
+                        <img class="matter-solo-blanc-footer pull-left"
+                             src="/website_customer_portal/static/src/img/desktop---inicio-matter-solo-blanc.png"/>
+                    </div>
+                    <div class="col-6 row">
+                        <div class="footer_tel_mail">
+                            <div class="tel pull-right">
+                                <div class="phone montserrat-medium-white-16px">
+                                    93 707 70 32
                                 </div>
-                                <div class="email pull-right">
-                                    <img class="noun-mail-1053115"
-                                         src="/website_customer_portal/static/src/img/desktop---perfil-noun-mail-1053115.png"/>
-                                    <div class="ateliermatterbarce montserrat-medium-white-16px">
-                                        atelier@matter.barcelona
-                                    </div>
+                                <img class="noun-phone-1995462"
+                                     src="/website_customer_portal/static/src/img/desktop---inicio-noun-phone-1995462.png"/>
+                            </div>
+                            <div class="email pull-right">
+                                <img class="noun-mail-1053115"
+                                     src="/website_customer_portal/static/src/img/desktop---perfil-noun-mail-1053115.png"/>
+                                <div class="ateliermatterbarce montserrat-medium-white-16px">
+                                    atelier@matter.barcelona
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-<!--            </div>-->
+            </div>
         </template>
 
         <template id="my_frontend_layout" name="My Frontend layout">&lt;!DOCTYPE html&gt;
@@ -83,15 +81,13 @@
                 <t t-set="is_portal" t-value="True"/>
                 <div class="container-center-horizontal">
                     <div class="desktopinicio screen">
-                        <div class="container container-desktopinicio">
+                        <div>
                             <div class="overlap-group1">
-<!--                            <div class="overlap-group">-->
                                 <h1 class="title-delivery montserrat-light-black-40px">
-                                    Proyectos en curso
+                                    Pedidos en curso
                                 </h1>
                                 <t t-set="index_lead" t-value="0"/>
                                 <t t-foreach="leads" t-as="lead">
-<!--                                     t-attf-style="margin-top: #{75 + index_lead * 110}px;"-->
                                     <div class="proyecto">
                                         <div class="leal-item-value montserrat-medium-black-34px">
                                             <a t-att-href="'/my/dashboard/%s' % lead.access_token">
@@ -101,7 +97,6 @@
                                     </div>
                                     <t t-set="index_lead" t-value="index_lead + 1"/>
                                 </t>
-<!--                            </div>-->
                             </div>
                         </div>
                     </div>
@@ -113,239 +108,253 @@
         <template id="portal_my_dashboard_main" name="DELIVERY MATTER">
             <t t-call="website_customer_portal.my_frontend_layout">
                 <div class="container-center-horizontal1">
-                    <div class="desktopproyecto screen container-desktopinicio">
-                        <div class="container">
+                    <div class="desktopproyecto screen">
+                        <div class="matter-container">
                             <div class="overlap-group6">
                                 <div class="overlap-group5">
-                                <div class="boton-volver" onclick="history.back()">
-                                    <div class="overlap-group-2 border-1px-black">
-                                        <div class="volver montserrat-medium-eerie-black-14px">
-                                            Volver
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="masa-can-palet text-center"><span t-field="lead_id.name"/></div>
-                                <div class="datos-proyecto">
-                                    <div class="datos-del-proyecto montserrat-normal-eerie-black-30px">
-                                        Datos del proyecto
-                                    </div>
-                                    <div class="boton-editar-datos">
-                                        <div class="overlap-group1-1">
-                                            <div class="overlap-group-3 border-1px-black">
-                                                <img class="noun-edit-1513863"
-                                                     src="/website_customer_portal/static/src/img/desktop---proyecto-noun-edit-1513863.png"/>
-                                            </div>
-                                            <div class="editar-datos montserrat-medium-eerie-black-14px">
-                                                Editar datos
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <img class="line-2"
-                                         src="/website_customer_portal/static/src/img/desktop---proyecto-line-2.png"/>
-                                    <div class="row-project">
-                                        <div class="col-2-project">
-                                            <div class="referencia-proyecto montserrat-normal-eerie-black-16px">
-                                                <span class="span montserrat-normal-eerie-black-16px">
-                                                    <b>Referencia Proyecto:</b></span>
-                                                <span class="span2"></span>
-                                                <span class="span montserrat-normal-eerie-black-16px"><span
-                                                        t-esc="lead_id.id"/></span>
-                                            </div>
-                                            <div class="pedidos-relacionados montserrat-normal-eerie-black-16px">
-                                                <b>Pedidos relacionados:</b> <t t-esc="lead_sales.stringify()"/>
-                                            </div>
-                                            <div class="back-up-specialist montserrat-normal-eerie-black-16px">
-                                                <b>Back-up Specialist:</b> <span t-field="lead_id.back_up_specialist"/>
-                                            </div>
-                                            <div class="dir-facturacin">
-                                                <div class="direccin-de-factura montserrat-semi-bold-eerie-black-16px">
-                                                    Dirección de facturación:
-                                                </div>
-                                                <p class="e-closion-diseo montserrat-normal-eerie-black-16px">
-                                                    <span t-if="lead_id.partner_id.street">
-                                                        <span t-field="lead_id.partner_id.street"/>,
-                                                        <span t-field="lead_id.partner_id.street2"/>
-                                                        <span t-field="lead_id.partner_id.zip"/>
-                                                        <span t-field="lead_id.partner_id.city"/>
-                                                        <span t-field="lead_id.partner_id.state_id"/>
-                                                        <span t-field="lead_id.partner_id.country_id"/>
-                                                    </span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="col-3-project">
-                                            <div class="dir-envio">
-                                                <div class="direccin-de-envo montserrat-semi-bold-black-16px">
-                                                    Dirección de envío:
-                                                </div>
-                                                <p class="c-jos-lopez-35-08 montserrat-normal-black-16px">
-                                                    <span t-field="lead_id.shipping_address"/>
-                                                    <br/>
-                                                </p>
-                                            </div>
-                                            <div class="dir-envio-1">
-                                                <div class="contacto-obra montserrat-semi-bold-black-16px">
-                                                    <br/>
-                                                    Contacto Obra:
-                                                </div>
-                                                <div class="julian-lopez-66553 montserrat-normal-black-16px">
-                                                    <br/>
-                                                    <span t-field="lead_id.project_contact"/>
+                                    <div class="row masa-can-palet text-center">
+                                        <div class="boton-volver" onclick="history.back()">
+                                            <div class="overlap-group-2 border-1px-black">
+                                                <div class="volver montserrat-medium-eerie-black-14px">
+                                                    Volver
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="project-title">
+                                            <span class="project-title-text" t-field="lead_id.name"/>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="orders">
-                                    <div t-foreach="lead_id.order_ids.filtered(lambda r: r.state not in ['draft', 'sent'])"
-                                         t-as="order">
-                                        <div class="order-container">
-                                            <div class="pedido row">
-                                                <div class="col-10">
-                                                    <div class="order-reference montserrat-normal-white-30px">
-                                                        <span t-field="order.name"/>
+                                    <div class="datos-proyecto">
+                                        <div class="datos-del-proyecto montserrat-normal-eerie-black-30px">
+                                            Datos del proyecto
+                                        </div>
+    <!--                                    =========== FUTURE FUNCTION ==============-->
+    <!--                                    <div class="boton-editar-datos">-->
+    <!--                                        <div class="overlap-group1-1">-->
+    <!--                                            <div class="overlap-group-3 border-1px-black">-->
+    <!--                                                <img class="noun-edit-1513863"-->
+    <!--                                                     src="/website_customer_portal/static/src/img/desktop-&#45;&#45;proyecto-noun-edit-1513863.png"/>-->
+    <!--                                            </div>-->
+    <!--                                            <div class="editar-datos montserrat-medium-eerie-black-14px">-->
+    <!--                                                Editar datos-->
+    <!--                                            </div>-->
+    <!--                                        </div>-->
+    <!--                                    </div>-->
+    <!--                                    =========== FUTURE FUNCTION ==============-->
+                                        <img class="line-2"
+                                             src="/website_customer_portal/static/src/img/desktop---proyecto-line-2.png"/>
+                                        <div class="row-project">
+                                            <div class="col-2-project">
+                                                <div class="referencia-proyecto montserrat-normal-eerie-black-16px">
+                                                    <span class="span montserrat-normal-eerie-black-16px">
+                                                        <b>Referencia Proyecto:</b></span>
+                                                    <span class="span2"></span>
+                                                    <span class="span montserrat-normal-eerie-black-16px"><span
+                                                            t-esc="lead_id.id"/></span>
+                                                </div>
+                                                <div class="pedidos-relacionados montserrat-normal-eerie-black-16px">
+                                                    <b>Pedidos relacionados:</b> <t t-esc="lead_sales.stringify()"/>
+                                                </div>
+                                                <div class="back-up-specialist montserrat-normal-eerie-black-16px">
+                                                    <b>Back-Office:</b> <span t-field="lead_id.back_up_specialist"/>
+                                                </div>
+                                                <div class="dir-facturacin">
+                                                    <div class="direccin-de-factura montserrat-semi-bold-eerie-black-16px">
+                                                        Dirección de facturación:
                                                     </div>
-                                                    <!--                                                <div class="referencia-cliente montserrat-semi-bold-white-16px">-->
-                                                    <!--                                                    Referencia Cliente: <span t-field="order.partner_id"/>-->
-                                                    <!--                                                </div>-->
-                                                    <p class="fecha-de-formalizaci montserrat-normal-white-16px">
-                                                        Fecha de formalización del pedido: <span
-                                                            t-esc="order.date_order.date().strftime('%d/%m/%Y')"
-                                                            t-if="order.date_order"/>
+                                                    <p class="e-closion-diseo montserrat-normal-eerie-black-16px">
+                                                        <span t-if="lead_id.partner_id.street">
+                                                            <span t-field="lead_id.partner_id.street"/>,
+                                                            <span t-field="lead_id.partner_id.street2"/>
+                                                            <span t-field="lead_id.partner_id.zip"/>
+                                                            <span t-field="lead_id.partner_id.city"/>
+                                                            <span t-field="lead_id.partner_id.state_id"/>
+                                                            <span t-field="lead_id.partner_id.country_id"/>
+                                                        </span>
                                                     </p>
                                                 </div>
-                                                <div class="col-1.5">
-                                                    <div class="btn-descargar">
-                                                        <div class="overlap-group1">
-                                                            <a t-att-href="order.get_portal_url(report_type='pdf', download=True)"
-                                                               title="Descargar">
-                                                                <div class="overlap-group-1 border-1px-white">
-                                                                    <img class="noun-save-2209758"
-                                                                         src="/website_customer_portal/static/src/img/desktop---proyecto-noun-save-2209758-1.png"/>
-                                                                </div>
-                                                                <div class="descargar montserrat-semi-bold-white-14px">
-                                                                    Descargar</div>
-                                                            </a>
-                                                        </div>
+                                            </div>
+                                            <div class="col-3-project">
+                                                <div class="dir-envio">
+                                                    <div class="direccin-de-envo montserrat-semi-bold-black-16px">
+                                                        Dirección de envío:
                                                     </div>
-                                                    <div class="btn-ver-pedido ac-label">
-                                                        <div class="overlap-group1">
-                                                            <div class="overlap-group-1">
-                                                                <img class="noun-arrow-1776263"
-                                                                     src="/website_customer_portal/static/src/img/desktop---proyecto-noun-arrow-1776263-1.png"/>
+                                                    <p class="c-jos-lopez-35-08 montserrat-normal-black-16px">
+                                                        <span t-field="lead_id.shipping_address"/>
+                                                        <br/>
+                                                    </p>
+                                                </div>
+                                                <div class="dir-envio-1">
+                                                    <div class="contacto-obra montserrat-semi-bold-black-16px">
+                                                        <br/>
+                                                        Contacto Obra:
+                                                    </div>
+                                                    <div class="julian-lopez-66553 montserrat-normal-black-16px">
+                                                        <br/>
+                                                        <span t-field="lead_id.project_contact"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="orders">
+                                        <div t-foreach="lead_id.order_ids.filtered(lambda r: r.state not in ['draft', 'sent'])"
+                                             t-as="order">
+                                            <div class="order-container">
+                                                <div class="pedido row">
+                                                    <div class="col-order">
+                                                        <div class="order-reference montserrat-normal-white-30px">
+                                                            <span t-field="order.name"/>
+                                                            <span t-if="order.full_delivered"
+                                                                  class="background-color-green padding-tag montserrat-semi-bold-eerie-black-14px">
+                                                                Entregado
+                                                            </span>
+                                                        </div>
+                                                        <div class="referencia-cliente montserrat-normal-white-16px">
+                                                            Referencia Cliente: <span class="montserrat-semi-bold-white-16px"
+                                                                                      t-field="order.partner_id"/>
+                                                        </div>
+                                                        <p class="fecha-de-formalizaci montserrat-normal-white-16px">
+                                                            Fecha de formalización del pedido: <span class="montserrat-semi-bold-white-16px"
+                                                                t-esc="order.date_order.date().strftime('%d/%m/%Y')"
+                                                                t-if="order.date_order"/>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-button">
+                                                        <div class="btn-descargar border-1px-white">
+                                                            <div class="overlap-group1">
+                                                                <a t-att-href="order.get_portal_url(report_type='pdf', download=True)"
+                                                                   title="Descargar">
+                                                                    <span class="descargar montserrat-semi-bold-white-14px">
+                                                                        Descargar
+                                                                    </span>
+                                                                    <span>
+                                                                        <img class="noun-save-2209758"
+                                                                             src="/website_customer_portal/static/src/img/desktop---proyecto-noun-save-2209758-1.png"/>
+                                                                    </span>
+                                                                </a>
                                                             </div>
-                                                            <div class="ver-pedido montserrat-semi-bold-eerie-black-14px">
-                                                                <span>Ver pedido</span>
+                                                        </div>
+                                                        <div class="btn-ver-pedido ac-label">
+                                                            <div class="overlap-group1">
+                                                                <span class="ver-pedido montserrat-semi-bold-eerie-black-14px">
+                                                                    Ver pedido
+                                                                </span>
+                                                                <span>
+                                                                    <img class="noun-arrow-1776263"
+                                                                         src="/website_customer_portal/static/src/img/desktop---proyecto-noun-arrow-1776263-1.png"/>
+                                                                </span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="article ac-content row p-2">
-                                                <table class="table">
-                                                    <thead class="thead">
-                                                        <tr>
-                                                            <th scope="col"
-                                                                class="col-md-4 border-light-td padding-left text-left montserrat-semi-bold-eerie-black-14px"><b>
-                                                                Producto</b></th>
-                                                            <th scope="col"
-                                                                class="col-md-1 border-light-td text-center montserrat-semi-bold-eerie-black-14px"><b>
-                                                                Llegada al
-                                                                almacén</b></th>
-                                                            <th scope="col"
-                                                                class="col-md-1 text-center montserrat-semi-bold-eerie-black-14px">
-                                                                <br/>Pedida</th>
-                                                            <th scope="col"
-                                                                class="col-md-1 text-center montserrat-semi-bold-eerie-black-14px"><b>
-                                                                Cantidad</b><br/>En almacén</th>
-                                                            <th scope="col"
-                                                                class="col-md-1 border-light-td text-center montserrat-semi-bold-eerie-black-14px">
-                                                                <br/>Enviada</th>
-                                                            <th scope="col"
-                                                                class="col-md-2 text-center montserrat-semi-bold-eerie-black-14px"><b>
-                                                                Estado</b></th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <t t-set="last_section" t-value="False"/>
-                                                        <t t-foreach="order.order_line" t-as="line">
-                                                            <t t-if="line.display_type == 'line_section'">
-                                                                <t t-set="last_section" t-value="line"/>
-                                                            </t>
-                                                            <t t-if="not line.display_type and line.product_id.id != down_payment and line.product_id.categ_id.id != 119 and line.product_uom_qty != 0">
-                                                                <tr t-if="last_section"
-                                                                    class="rectangle">
-                                                                    <td class="padding-left border-light-td montserrat-medium-black-24px"
-                                                                        name="td_section_line" colspan="6">
-                                                                        <span t-field="last_section.name"/>
-                                                                        <t t-set="last_section" t-value="False"/>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="col-md-4 border-light-td padding-left montserrat-medium-eerie-black-14px">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12 col-md-2">
-                                                                                <img t-att-src="line.product_id.image_url"
-                                                                                     t-att-alt="line.name"
-                                                                                     class="img-thumbnail"
-                                                                                     style="width: 100px;"/>
+                                                <div class="article ac-content p-2">
+                                                    <table class="table">
+                                                        <thead class="thead">
+                                                            <tr>
+                                                                <th scope="col"
+                                                                    class="col-md-4 border-light-td padding-left text-left montserrat-semi-bold-eerie-black-14px"><b>
+                                                                    Producto</b></th>
+                                                                <th scope="col"
+                                                                    class="col-md-1 border-light-td text-center montserrat-semi-bold-eerie-black-14px"><b>
+                                                                    Llegada al
+                                                                    almacén</b></th>
+                                                                <th scope="col"
+                                                                    class="col-md-1 text-center montserrat-semi-bold-eerie-black-14px">
+                                                                    <br/>Pedida</th>
+                                                                <th scope="col"
+                                                                    class="col-md-1 text-center montserrat-semi-bold-eerie-black-14px"><b>
+                                                                    Cantidad</b><br/>En almacén</th>
+                                                                <th scope="col"
+                                                                    class="col-md-1 border-light-td text-center montserrat-semi-bold-eerie-black-14px">
+                                                                    <br/>Enviada</th>
+                                                                <th scope="col"
+                                                                    class="col-md-2 text-center montserrat-semi-bold-eerie-black-14px"><b>
+                                                                    Estado</b></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <t t-set="last_section" t-value="False"/>
+                                                            <t t-foreach="order.order_line" t-as="line">
+                                                                <t t-if="line.display_type == 'line_section'">
+                                                                    <t t-set="last_section" t-value="line"/>
+                                                                </t>
+                                                                <t t-if="not line.display_type and line.product_id.id != down_payment and line.product_id.categ_id.id != 119 and line.product_uom_qty != 0">
+                                                                    <tr t-if="last_section"
+                                                                        class="rectangle">
+                                                                        <td class="padding-left border-light-td montserrat-medium-black-24px"
+                                                                            name="td_section_line" colspan="6">
+                                                                            <span t-field="last_section.name"/>
+                                                                            <t t-set="last_section" t-value="False"/>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr t-attf-class="#{'color-green' if line.product_state == 'delivered' else 'color-black'}">
+                                                                        <td class="col-md-4 border-light-td padding-left montserrat-medium-eerie-black-14px">
+                                                                            <div class="row">
+                                                                                <div class="col-sm-12 col-md-2">
+                                                                                    <img t-att-src="line.product_id.image_url"
+                                                                                         t-att-alt="line.name"
+                                                                                         class="img-thumbnail"
+                                                                                         style="width: 100px;"/>
+                                                                                </div>
+                                                                                <div class="col-sm-12 col-md-10">
+                                                                                    <span t-field="line.name"
+                                                                                          t-if="line.name"/>
+                                                                                </div>
                                                                             </div>
-                                                                            <div class="col-sm-12 col-md-10">
-                                                                                <span t-field="line.name"
-                                                                                      t-if="line.name"/>
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td class="col-md-1 border-light-td montserrat-medium-eerie-black-14px td-center">
-                                                                        <span t-esc="line.x_date_expected.strftime('%d/%m/%Y')"
-                                                                              t-if="line.x_date_expected"/>
-                                                                    </td>
-                                                                    <td class="col-md-1 border-light-td text-center montserrat-medium-eerie-black-14px">
-                                                                        <span t-field="line.x_ordered_quantity"/>
-                                                                        <span t-field="line.x_qty_received_uom_id"/>
-                                                                    </td>
-                                                                    <td class="col-md-1 border-light-td text-center montserrat-medium-eerie-black-14px">
-                                                                        <span t-field="line.x_qty_received"/>
-                                                                        <span t-field="line.x_qty_received_uom_id"/>
-                                                                    </td>
-                                                                    <td class="col-md-1 border-light-td text-center montserrat-medium-eerie-black-14px">
-                                                                        <span t-field="line.qty_delivered"/>
-                                                                        <span t-field="line.product_uom"/>
-                                                                    </td>
-                                                                    <td class="col-md-2 text-center montserrat-medium-eerie-black-14px">
-                                                                        <span t-field="line.product_state"/>
-                                                                        <t t-if="line.product_state=='delivered'">
-                                                                            <div class="fill-container-1">
-                                                                                <img class="fill-1"
-                                                                                     src="/website_customer_portal/static/src/img/desktop---proyecto-fill-1.png"/>
-                                                                            </div>
-                                                                        </t>
-                                                                        <t t-elif="line.product_state=='approved'">
+                                                                        </td>
+                                                                        <td class="col-md-1 border-light-td text-center montserrat-medium-eerie-black-14px td-center">
+                                                                            <span t-esc="line.x_date_expected.strftime('%d/%m/%Y')"
+                                                                                  t-if="line.x_date_expected"/>
+                                                                        </td>
+                                                                        <td class="col-md-1 border-light-td text-center montserrat-medium-eerie-black-14px">
+                                                                            <span t-field="line.x_ordered_quantity"/>
+                                                                            <span t-field="line.x_qty_received_uom_id"/>
+                                                                        </td>
+                                                                        <td class="col-md-1 border-light-td text-center montserrat-medium-eerie-black-14px">
+                                                                            <span t-attf-class="#{'color-green' if line.x_qty_received > 0 else 'color-black'}"
+                                                                                  t-field="line.x_qty_received"/>
+                                                                            <span t-attf-class="#{'color-green' if line.x_qty_received > 0 else 'color-black'}"
+                                                                                  t-field="line.x_qty_received_uom_id"/>
+                                                                        </td>
+                                                                        <td class="col-md-1 border-light-td text-center montserrat-medium-eerie-black-14px">
+                                                                            <span t-field="line.qty_delivered"/>
+                                                                            <span t-field="line.product_uom"/>
+                                                                        </td>
+                                                                        <td class="col-md-2 text-center montserrat-medium-eerie-black-14px">
+                                                                            <span t-field="line.product_state"/>
+                                                                            <t t-if="line.product_state=='delivered'">
+                                                                                <div class="fill-container-1">
+                                                                                    <img class="fill-1"
+                                                                                         src="/website_customer_portal/static/src/img/desktop---proyecto-fill-1.png"/>
+                                                                                </div>
+                                                                            </t>
+                                                                            <t t-elif="line.product_state=='approved'">
 
-                                                                        </t>
-                                                                        <t t-elif="line.product_state=='processed'">
-                                                                            <div class="fill-container-1">
-                                                                                <img class="fill-4"
-                                                                                     src="/website_customer_portal/static/src/img/desktop---proyecto-fill-4.png"/>
-                                                                            </div>
-                                                                        </t>
-                                                                        <t t-elif="line.product_state=='at warehouse'">
-                                                                            <div class="fill-container-1">
-                                                                                <img class="icon-estado-almacen"
-                                                                                     src="/website_customer_portal/static/src/img/desktop---proyecto-icon-estado-almacen.png"/>
-                                                                            </div>
-                                                                        </t>
-                                                                    </td>
-                                                                </tr>
+                                                                            </t>
+                                                                            <t t-elif="line.product_state=='processed'">
+                                                                                <div class="fill-container-1">
+                                                                                    <img class="fill-4"
+                                                                                         src="/website_customer_portal/static/src/img/desktop---proyecto-fill-4.png"/>
+                                                                                </div>
+                                                                            </t>
+                                                                            <t t-elif="line.product_state=='at warehouse'">
+                                                                                <div class="fill-container-1">
+                                                                                    <img class="icon-estado-almacen"
+                                                                                         src="/website_customer_portal/static/src/img/desktop---proyecto-icon-estado-almacen.png"/>
+                                                                                </div>
+                                                                            </t>
+                                                                        </td>
+                                                                    </tr>
+                                                                </t>
                                                             </t>
-                                                        </t>
-                                                    </tbody>
-                                                </table>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                             </div>
                         </div>
                     </div>
@@ -366,13 +375,19 @@
                                        t-attf-class="form-control #{'form-control-sm' if form_small else ''}"
                                        required="required" readonly="readonly"/>
                                 <div class="overlap-group2">
-                                    <img class="matter-solo-blanc"
-                                         src="/website_customer_portal/static/src/img/desktop---login-matter-solo-blanc.png"/>
+                                    <div>
+                                        <img class="matter-solo-blanc"
+                                             src="/website_customer_portal/static/src/img/desktop---login-matter-solo-blanc.png"/>
+                                    </div>
+                                    <div>
+                                        <h1 class="title">Bienvenido a</h1>
+                                    </div>
+                                    <img class="logo-horizontal"
+                                         src="/website_customer_portal/static/src/img/desktop---login-logo-horizontal.png"/>
+                                    <div class="identifcate-para-ac">
+                                        Identifícate para acceder a tus proyectos<br/>y gestionar tus pedidos
+                                    </div>
                                     <div class="bloque-login">
-                                        <div class="boton-blanco">
-                                            <button type="submit" class="btn-block iniciar-sesin">Iniciar
-                                                sesión</button>
-                                        </div>
                                         <div class="overlap-group1 border-0-8px-white">
                                             <input type="text" placeholder="Email" name="login" t-att-value="login"
                                                    id="login"
@@ -387,11 +402,11 @@
                                                    t-att-autofocus="'autofocus' if login else None"/>
                                         </div>
                                         <div class="check-sesion">
-                                            <div class="mantener-la-sesin-i montserrat-normal-white-16px">
-                                                Mantener la sesión iniciada
-                                            </div>
                                             <img class="rectangle"
                                                  src="/website_customer_portal/static/src/img/desktop---login-rectangle.png"/>
+                                            <span class="mantener-la-sesin-i montserrat-normal-white-16px">
+                                                Mantener la sesión iniciada
+                                            </span>
                                         </div>
                                         <p class="alert alert-danger" t-if="error" role="alert">
                                             <t t-esc="error"/>
@@ -399,15 +414,12 @@
                                         <p class="alert alert-success" t-if="message" role="status">
                                             <t t-esc="message"/>
                                         </p>
+                                        <div class="boton-blanco">
+                                            <button type="submit" class="btn-block iniciar-sesin">Iniciar
+                                                sesión</button>
+                                        </div>
                                     </div>
-                                    <img class="logo-horizontal"
-                                         src="/website_customer_portal/static/src/img/desktop---login-logo-horizontal.png"/>
                                 </div>
-                                <div class="identifcate-para-ac">
-                                    Identifícate para acceder a tus proyectos<br/>y gestionar tus pedidos
-                                </div>
-                                <h1 class="title">Bienvenido a</h1>
-
                             </form>
                         </div>
                     </div>

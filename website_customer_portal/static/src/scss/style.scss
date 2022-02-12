@@ -9,6 +9,7 @@
   --celeste: rgba(209, 209, 209, 1);
   --gallery: rgba(238, 238, 238, 1);
   --white: rgba(255, 255, 255, 1);
+  --green: #178e37;
 
   --font-size-m: 14px;
   --font-size-l: 16px;
@@ -25,7 +26,9 @@
 body {
     display: flex;
     flex-direction: column;
+    background-color: var(--eerie-black);
 }
+
 #wrapwrap {
   display: flex !important;
   flex-direction: column !important;
@@ -38,7 +41,7 @@ body {
 
 /* Classes */
 .dashboard_main_context {
-  flex-grow: 1 !important;
+    background-color: var(--gallery);
 }
 .montserrat-semi-bold-white-16px {
   color: var(--white);
@@ -88,9 +91,9 @@ body {
 }
 
 .border-0-8px-white {
-  border-width: 0.8px;
-  border-style: solid;
-  border-color: var(--white);
+    border-width: 0.8px;
+    border-style: solid;
+    border-color: var(--white);
 }
 
 .montserrat-normal-black-16px {
@@ -195,12 +198,6 @@ body {
   font-style: normal;
 }
 
-/* Accordion */
-// .ac-label:hover {}
-
-// input:checked+div>.ac-label,
-// input:checked+div>.ac-label:active {}
-
 input.ac-input {
     display: none;
 }
@@ -236,6 +233,10 @@ input.ac-input {
     background: #fff;
 }
 
+.desktopproyecto .float-right {
+    float: right;
+}
+
 i:after {
     transform: translate(2px, 0) rotate(45deg);
 }
@@ -250,18 +251,10 @@ ul.ac-list {
   background-color: var(--black);
   height: 70px;
   position: relative;
-//   width: 1536px;
   width: 100%;
 }
 
-// background-color: var(--black);
-//   height: 70px;
-//   left: 0;
-//   position: absolute;
-//   top: 0;
-//   width: 1536px;
-
-.logo-horizontal {
+.logo-horizontal-header {
   height: 14px;
   left: 79px;
   position: absolute;
@@ -272,13 +265,10 @@ ul.ac-list {
 .footer {
   background-color: var(--eerie-black);
   height: 100px;
-//   position: relative;
-//   width: 1536px;
   width: 100%;
-  margin-top: auto;
 }
 
-.matter-solo-blanc {
+.matter-solo-blanc-footer {
   height: 15px;
   left: 80px;
 //   position: absolute;
@@ -289,13 +279,11 @@ ul.ac-list {
 
 .email {
   height: 19px;
-//   left: 1002px;
   position: relative;
-//   top: 22px;
   width: 253px;
   margin-right: 10px;
-//   position: absolute;
 }
+
 .footer_tel_mail {
     top: 38px;
     margin-left: auto;
@@ -323,50 +311,41 @@ ul.ac-list {
 }
 
 .tel {
-  height: 19px;
-//   left: 1321px;
-//   position: absolute;
-  position: relative;
-//   top: 0px;
-  width: 136px;
+    height: 19px;
+    position: relative;
+    width: 136px;
 }
 
 .phone {
-  font-weight: 500;
-  left: 32px;
-  letter-spacing: 0.38px;
-  line-height: 19px;
-  position: absolute;
-  top: 0;
-  white-space: nowrap;
-  color: white;
+    font-weight: 500;
+    left: 32px;
+    letter-spacing: 0.38px;
+    line-height: 19px;
+    position: absolute;
+    top: 0;
+    white-space: nowrap;
+    color: white;
 }
 
 .noun-phone-1995462 {
-  height: 18px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 18px;
+    height: 18px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 18px;
 }
 
 .desktopinicio {
     background-color: var(--gallery);
-//   background-color: var(--white);
-//   overflow: hidden;
-  overflow: auto;
-  position: relative;
-//   width: 1536px;
-  width: 100%;
+    overflow: auto;
+    position: relative;
 }
 
 .desktopinicio .overlap-group1 {
-  background-color: var(--gallery);
-//   height: 700px;
-  height: 100%;
-  position: relative;
-//   width: 1536px;
-  width: 100%;
+    background-color: var(--gallery);
+    position: relative;
+    padding: 0px 79px;
+    margin-bottom: 79px;
 }
 
 .desktopinicio .overlap-group {
@@ -375,7 +354,6 @@ ul.ac-list {
   left: 0;
   position: absolute;
   top: 0;
-//   width: 1536px;
   width: 100%;
   height: 100%
 }
@@ -383,13 +361,9 @@ ul.ac-list {
 .desktopinicio .proyecto {
   background-color: var(--white) !important;
   margin-top: 10px;
-//   height: 100px;
-//   left: 80px;
-//   position: relative;
-//   width: 1376px;
 }
 
-.container-desktopinicio {
+.container {
     background-color: var(--gallery) !important;
 }
 
@@ -397,10 +371,8 @@ ul.ac-list {
     background: var(--white);
     padding: 20px 0 20px 25px;
     font-weight: 500;
-//   left: 46px;
     letter-spacing: 0.81px;
     position: relative;
-//   top: 26px;
 }
 
 .desktopinicio .matter-solo-blanc {
@@ -465,9 +437,7 @@ ul.ac-list {
 
 .desktopinicio .title-delivery {
   font-weight: 300;
-//   left: 76px;
   letter-spacing: 0.95px;
-  position: relative;
   margin-top: 53px;
   margin-bottom: 30px;
 }
@@ -481,23 +451,16 @@ ul.ac-list {
 }
 
 .screen a {
-  display: contents;
   text-decoration: none;
 }
 
 .container-center-horizontal {
-  display: flex;
-  flex-direction: row;
   pointer-events: none;
-  width: 100%;
-  height: 100%;
 }
 
 .container-center-horizontal1 {
   flex-direction: row;
   pointer-events: none;
-  width: 100%;
-  height: 100%;
 }
 
 .container-center-horizontal > *, .container-center-horizontal1 > * {
@@ -508,34 +471,44 @@ ul.ac-list {
 .desktopproyecto {
   background-color: var(--white);
   min-height: 600px;
-//   overflow: hidden;
+}
+
+.desktopproyecto .padding-tag {
+    padding: 5px;
+}
+
+.desktopproyecto .background-color-green {
+    background-color: var(--green) !important;
+    color: var(--white);
+}
+
+.desktopproyecto .color-green{
+    color: var(--green) !important;
+}
+
+.desktopproyecto .color-green td{
+    color: var(--green) !important;
 }
 
 .desktopproyecto .overlap-group6 {
-  min-height: 700px;
-  background-color: var(--gallery);
-  left: 0;
-  position: relative;
-//   width: 1536px;
-  width: 100%;
+    background-color: var(--gallery);
+    position: relative;
+    padding: 0px 79px;
 }
 
 .desktopproyecto .overlap-group5 {
   background-color: var(--gallery);
-//   min-height: 2250px;
   left: 0;
   position: relative;
   top: 0;
-//   width: 1536px;
   width: 100%;
 }
 
 .desktopproyecto .boton-volver {
   height: 42px;
-  left: 79px;
-  position: absolute;
-  top: 51px;
   width: 92px;
+  float: left;
+  margin: auto 0px;
 }
 
 .desktopproyecto .boton-volver:hover {
@@ -564,11 +537,8 @@ ul.ac-list {
 
 .desktopproyecto .datos-proyecto {
   background-color: var(--white);
-  height: 365px;
-  left: 79px;
-  position: absolute;
-  top: 143px;
-  width: 1377px;
+  min-height: 365px;
+  position: relative;
   padding: 32px 58px;
 }
 
@@ -581,11 +551,6 @@ ul.ac-list {
 }
 
 .desktopproyecto .overlap-group1-1 {
-  height: 44px;
-  left: -1px;
-  position: relative;
-  top: -1px;
-  width: 169px;
   height: 100%;
 }
 
@@ -655,19 +620,12 @@ ul.ac-list {
   left: 0;
   letter-spacing: 0.38px;
   line-height: 19px;
-  position: absolute;
-  top: 0;
   white-space: nowrap;
-  width: 319px;
 }
 
 .desktopproyecto .e-closion-diseo {
-  left: 0;
   letter-spacing: 0.38px;
   line-height: 26px;
-  position: absolute;
-  top: 31px;
-  width: 445px;
 }
 
 .desktopproyecto .dir-envio {
@@ -725,7 +683,6 @@ ul.ac-list {
 
 .desktopproyecto .datos-del-proyecto {
   letter-spacing: 0.71px;
-  width: 353px;
   margin-bottom: 5px;
   display: inline-block;
 }
@@ -1137,8 +1094,7 @@ ul.ac-list {
 }
 
 .desktopproyecto .entregado {
-  color:
-#56a323;
+  color: #56a323;
   font-family: var(--font-family-montserrat);
   font-size: var(--font-size-m);
   font-weight: 500;
@@ -1592,67 +1548,27 @@ ul.ac-list {
   width: 131px;
 }
 
-.desktopproyecto .referencia-cliente-1 {
-  font-weight: 600;
-  left: 57px;
-  letter-spacing: 0.38px;
-  line-height: 19px;
-  position: absolute;
-  top: 84px;
-  white-space: nowrap;
-  width: 450px;
-}
-
-.desktopproyecto .fecha-de-formalizaci-1 {
-  left: 57px;
-  letter-spacing: 0.38px;
-  line-height: 19px;
-  position: absolute;
-  top: 116px;
-  white-space: nowrap;
-  width: 615px;
-}
-
 .desktopproyecto .btn-descargar {
   height: 42px;
   width: 166px;
-  margin-bottom: 15px;
+  padding: 10px;
+  text-align: center;
+  margin: 8px;
 }
 
 .desktopproyecto .overlap-group1 {
-  height: 44px;
-  left: -1px;
   position: relative;
-  top: -1px;
-  width: 168px;
-}
-
-.desktopproyecto .overlap-group-1 {
-  height: 44px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 168px;
 }
 
 .desktopproyecto .noun-save-2209758 {
   height: 19px;
-  left: 124px;
-  position: absolute;
-  top: 10px;
   width: 19px;
 }
 
 .desktopproyecto .descargar {
   font-weight: 600;
-  left: 17px;
   letter-spacing: 0;
   line-height: 16px;
-  position: absolute;
-  text-align: center;
-  top: 12px;
-  white-space: nowrap;
-  width: 100px;
 }
 
 .desktopproyecto .btn-cerrar-pedido {
@@ -1686,42 +1602,50 @@ ul.ac-list {
 }
 
 .desktopproyecto .pedido {
-  background-color: var(--mine-shaft);
-  height: 170px;
-  width: 1376px;
-  padding-left: 58px;
-  padding-top: 30px;
+    background-color: var(--mine-shaft);
+    min-height: 170px;
+    padding: 30px 58px;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+.desktopproyecto .col-button {
+    float: right;
+    margin-left: auto auto;
+}
+
+.desktopproyecto .button-box-row {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: 0px;
+    display: inline-block;
+}
+
+.desktopproyecto .col-order {
+    margin-right: auto;
 }
 
 .desktopproyecto .orders {
-    left: 93px;
-    position: absolute;
-    top: 551px;
-    width: 1350px;
+    position: relative;
+    margin: 50px 0px;
 }
 
 .desktopproyecto .order-reference {
   letter-spacing: 0.71px;
-  width: 158px;
   margin-bottom: 10px;
 }
 
 .desktopproyecto .referencia-cliente {
-  font-weight: 600;
-//   left: 58px;
+//   font-weight: 600;
   letter-spacing: 0.38px;
   line-height: 19px;
-//   position: absolute;
-//   top: 84px;
-  white-space: nowrap;
-  width: 450px;
   margin-bottom: 13px;
 }
 
 .desktopproyecto .fecha-de-formalizaci {
   letter-spacing: 0.38px;
   line-height: 19px;
-  white-space: nowrap;
 }
 
 .desktopproyecto .btn-ver-pedido {
@@ -1730,6 +1654,7 @@ ul.ac-list {
   width: 164px;
   color: var(__black);
   cursor: pointer;
+  margin: 8px;
 }
 
 .desktopproyecto .noun-arrow-1776263 {
@@ -1760,14 +1685,6 @@ ul.ac-list {
   width: 150px;
 }
 
-// .desktopproyecto .email {
-//   height: 19px;
-//   left: 1002px;
-//   position: absolute;
-//   top: 39px;
-//   width: 253px;
-// }
-
 .desktopproyecto .ateliermatterbarce {
   font-weight: 500;
   left: 37px;
@@ -1785,14 +1702,6 @@ ul.ac-list {
   top: 3px;
   width: 22px;
 }
-
-// .desktopproyecto .tel {
-//   height: 19px;
-//   left: 1321px;
-//   position: absolute;
-//   top: 39px;
-//   width: 136px;
-// }
 
 .desktopproyecto .phone {
   font-weight: 500;
@@ -1813,12 +1722,20 @@ ul.ac-list {
 }
 
 .desktopproyecto .masa-can-palet {
-  color: var(--black);
-  font-family: var(--font-family-montserrat);
-  font-size: var(--font-size-xxxxxl);
-  font-weight: 600;
-  letter-spacing: 0.95px;
-  padding-top: 47px;
+    color: var(--black);
+    font-family: var(--font-family-montserrat);
+    font-size: var(--font-size-xxxxxl);
+    font-weight: 600;
+    margin: 51px 0px !important
+}
+
+.desktopproyecto .project-title {
+    margin: auto auto;
+    vertical-align: top;
+}
+
+.desktopproyecto .project-title-text {
+    letter-spacing: 0.95px;
 }
 
 .td-center {
@@ -1840,49 +1757,57 @@ ul.ac-list {
 /* Login Styles */
 .desktoplogin {
   background-color: var(--white);
-  height: 960px;
-//   width: 1536px;
-  width: 100%;
 }
 
 .desktoplogin .overlap-group3 {
-  height: 960px;
-  position: relative;
+
 }
 
 .desktoplogin .overlap-group2 {
   background-color: var(--black);
-  height: 960px;
-  left: 0;
-  position: absolute;
-  top: 0;
-//   width: 1536px;
-  width: 100%;
+  text-align: center;
+  padding-bottom: 79px;
+}
+
+.desktoplogin .alert {
+    margin-top: 20px;
 }
 
 .desktoplogin .matter-solo-blanc {
   height: 25px;
-  left: 642px;
-  position: absolute;
-  top: 63px;
   width: 253px;
+  margin-top: 63px;
+}
+
+.desktoplogin .title {
+  color: var(--white);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-xxxxl);
+  font-weight: 100;
+  letter-spacing: 0;
+  line-height: 55px;
+  text-align: center;
+  margin-top: 112px;
+  white-space: nowrap;
+}
+
+.desktoplogin .logo-horizontal {
+  height: 22px;
+  width: 472px;
 }
 
 .desktoplogin .bloque-login {
-  height: 228px;
-  left: 527px;
-  position: absolute;
-  top: 488px;
-  width: 471px;
+    width: 471px;
+    margin-top: 64px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .desktoplogin .boton-blanco {
   background-color: var(--white);
   height: 45px;
-  left: 1px;
-  position: absolute;
-  top: 184px;
   width: 471px;
+  margin-top: 40px;
 }
 
 .desktoplogin .iniciar-sesin {
@@ -1901,12 +1826,12 @@ ul.ac-list {
 }
 
 .desktoplogin .overlap-group {
-  background-color: var(--black);
-  height: 49px;
-  left: -1px;
-  position: absolute;
-  top: 64px;
-  width: 474px;
+    background-color: var(--black);
+    height: 49px;
+    width: 474px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
 }
 
 .desktoplogin .contrasea {
@@ -1920,85 +1845,45 @@ ul.ac-list {
 }
 
 .desktoplogin .overlap-group1 {
-  height: 49px;
-  left: -1px;
-  position: absolute;
-  top: -1px;
-  width: 474px;
+    height: 49px;
+    width: 474px;
 }
 
 .desktoplogin .email-login {
-  background-color: var(--black);
-  padding-left: 21px;
-  letter-spacing: 0;
-  line-height: 21px;
-  white-space: nowrap;
-  width: 100%;
-  height: 100%;
+    background-color: var(--black);
+    padding-left: 21px;
+    letter-spacing: 0;
+    line-height: 21px;
+    white-space: nowrap;
+    width: 100%;
+    height: 100%;
 }
 
 .desktoplogin .check-sesion {
   height: 19px;
-  left: 1px;
-  position: absolute;
-  top: 130px;
-  width: 246px;
+  margin-top: 20px;
+  text-align: left;
 }
 
 .desktoplogin .mantener-la-sesin-i {
-  left: 28px;
   letter-spacing: 0;
   line-height: 19px;
-  position: absolute;
-  top: 0;
   white-space: nowrap;
 }
 
 .desktoplogin .rectangle {
   background-color: var(__white);
   height: 14px;
-  left: 0;
-  position: absolute;
-  top: 2px;
   width: 14px;
 }
 
-.desktoplogin .logo-horizontal {
-  height: 22px;
-  left: 526px;
-  position: absolute;
-  top: 265px;
-  width: 472px;
-}
-
 .desktoplogin .identifcate-para-ac {
-  color: var(--white);
-  font-family: var(--font-family-montserrat);
-  font-size: var(--font-size-xl);
-  font-weight: 300;
-  left: 582px;
-  letter-spacing: 0;
-  line-height: 21px;
-  position: absolute;
-  text-align: center;
-  top: 399px;
-}
-
-.desktoplogin .title {
-  color: var(--white);
-  font-family: var(--font-family-montserrat);
-  font-size: var(--font-size-xxxxl);
-  font-weight: 100;
-  left: 650px;
-  letter-spacing: 0;
-  line-height: 55px;
-  position: absolute;
-  text-align: center;
-  top: 200px;
-  white-space: nowrap;
-}
-
-.screen a {
-  display: contents;
-  text-decoration: none;
+    color: var(--white);
+    font-family: var(--font-family-montserrat);
+    font-size: var(--font-size-xl);
+    font-weight: 300;
+    letter-spacing: 0;
+    line-height: 21px;
+    text-align: center;
+    margin-top: 120px;
 }

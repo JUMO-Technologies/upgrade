@@ -3,9 +3,9 @@ from odoo import models, fields, api
 
 STATES = [
     ("approved", "Presupuesto aprobado"),
-    ("processed", "Pedido tramitado"),
+    ("processed", "En curso"),
     ("at warehouse", "Pedido en almacén"),
-    ("delivered", "Pedido entregado"),
+    ("delivered", "Entregado"),
 ]
 
 
@@ -20,6 +20,7 @@ class SaleOrder(models.Model):
     x_opportunity_ids = fields.Char(string="ID de oportunidad", compute="_compute_x_opportunity_ids")
     count_opportunity_id = fields.Integer(string="Count Opportunity", compute="_compute_count_opportunity_id")
     x_partner_id = fields.Many2one(comodel_name="res.partner", string="Usuario Delivery")
+    full_delivered = fields.Boolean(string="Full Delivered", compute="_compute_full_delivered")
 
     def opportunity_portal_url(self, suffix=None, report_type=None, download=None, query_string=None, anchor=None):
         """Get a portal url for opportunity model, including access_token.
@@ -66,6 +67,11 @@ class SaleOrder(models.Model):
         orders = self.filtered(lambda r: r.state not in ["draft", "sent"])
         names = ", ".join([order.name for order in orders])
         return names
+
+    @api.depends("order_line.product_state")
+    def _compute_full_delivered(self):
+        for order in self:
+            order.full_delivered = not any(l.product_state != 'delivered' for l in order.order_line)
 
 
 class SaleOrderLine(models.Model):
