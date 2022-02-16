@@ -12,9 +12,11 @@
                 </field>
                 <xpath expr="//group/group[@name='right']" position="inside">
                     <field name="assign_address"/>
-                    <field name="logo" widget="image" class="oe_avatar"/>
+                    <field name="logo" widget="image" class="oe_avatar"
+                           attrs="{'invisible': [('assign_address','=', False)]}"/>
                     <field name="address" attrs="{'invisible': [('assign_address','=', False)]}"/>
                     <field name="cp" attrs="{'invisible': [('assign_address','=', False)]}"/>
+                    <field name="phone" attrs="{'invisible': [('assign_address','=', False)]}"/>
                     <field name="email" attrs="{'invisible': [('assign_address','=', False)]}"/>
                     <field name="website" attrs="{'invisible': [('assign_address','=', False)]}"/>
                 </xpath>

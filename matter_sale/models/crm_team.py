@@ -15,3 +15,4 @@ class CrmTeam(models.Model):
     email = fields.Char('Email')
     website = fields.Char('Website')
     logo = fields.Binary('Logo')
+    phone = fields.Char('Phone')
