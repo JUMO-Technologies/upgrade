@@ -9,3 +9,9 @@ class CrmTeam(models.Model):
         return self.env['sale.order']._default_warehouse_id()
 
     warehouse_id = fields.Many2one('stock.warehouse', string="Warehouse", required=True, default=_default_warehouse_id)
+    assign_address = fields.Boolean('Assign Address')
+    address = fields.Char('Address')
+    cp = fields.Char('CP')
+    email = fields.Char('Email')
+    website = fields.Char('Website')
+    logo = fields.Binary('Logo')

@@ -2,7 +2,7 @@
 <odoo>
     <data>
         
-        <record id="crm_team_view_form" model="ir.ui.view">
+        <record id="crm_team_view_form_matter" model="ir.ui.view">
             <field name="name">crm.team.form</field>
             <field name="model">crm.team</field>
             <field name="inherit_id" ref="sales_team.crm_team_view_form"/>
@@ -10,6 +10,14 @@
                 <field name="company_id" position="after">
                     <field name="warehouse_id" options="{'no_create_edit': True, 'no_create': True, 'no_edit': True}"/>
                 </field>
+                <xpath expr="//group/group[@name='right']" position="inside">
+                    <field name="assign_address"/>
+                    <field name="logo" widget="image" class="oe_avatar"/>
+                    <field name="address" attrs="{'invisible': [('assign_address','=', False)]}"/>
+                    <field name="cp" attrs="{'invisible': [('assign_address','=', False)]}"/>
+                    <field name="email" attrs="{'invisible': [('assign_address','=', False)]}"/>
+                    <field name="website" attrs="{'invisible': [('assign_address','=', False)]}"/>
+                </xpath>
             </field>
         </record>
     

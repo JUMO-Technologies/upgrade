@@ -21,10 +21,51 @@
 
 
         <template id="external_layout_background" inherit_id="web.external_layout_background">
-            <xpath expr="//img[@t-if='company.logo']" position="after">
+            <xpath expr="//img[@t-if='company.logo']" position="replace">
+                 <t t-if="o.team_id.assign_address">
+                      <img t-if="o.team_id.logo" t-att-src="image_data_uri(o.team_id.logo)" class="float-left" alt="Logo"/>
+                 </t>
+                 <t t-else="">
+                     <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" class="float-left" alt="Logo"/>
+                 </t>
                 <img t-att-src="'/matter_custom_documents/static/image/image.png'"
                      style="height: 115px; max-height: 115px;" class="float-right" alt="Logo"/>
             </xpath>
+             <xpath expr="//div[@class='float-left company_address']" position="replace">
+                 <t t-if="o.team_id.assign_address">
+                      <div class="float-left company_address">
+                          <div>
+                              <div>
+                                 <span t-field="o.team_id.address"/>
+                              </div>
+                              <div>
+                                 <span t-field="o.team_id.cp"/>
+                              </div>
+                              <div>
+                                 <span t-field="o.team_id.email"/>
+                              </div>
+                              <span t-field="o.team_id.website"/>
+                        </div>
+                      </div>
+                 </t>
+                 <t t-else="">
+                   <div class="float-left company_address">
+                          <div>
+                              <div>
+                                 <span t-field="company.street"/>
+                              </div>
+                              <div>
+                                 <span t-field="company.zip"/>
+                              </div>
+                              <div>
+                                 <span t-field="company.email"/>
+                              </div>
+                              <span t-field="company.website"/>
+                        </div>
+                    </div>
+                 </t>
+
+             </xpath>
         </template>
     
     </data>
