@@ -39,5 +39,18 @@
             </field>
       </record>
 
+
+        
+        <record model="ir.actions.server" id="ir_actions_reemplazar">
+            <field name="name">Reemplazar</field>
+            <field name="model_id" ref="website_sale.model_product_public_category"/>
+            <field name="binding_model_id" ref="website_sale.model_product_public_category" />
+            <field name="state">code</field>
+            <field name="code">
+                if records:
+                    action = records._replace_product()
+            </field>
+    </record>
+
     </data>
 </odoo>

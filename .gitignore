@@ -1,2 +1,31 @@
-*.cpython-36.pyc
-*.mo
+build/
+# Python + Eclipse
+.directory
+*.pyc
+*.pyd
+*.~
+*.class
+*.pyo
+*.*~*
+*.bak
+.project
+.pydevproject
+.settings/
+.DS_Store
+# Git cacharra
+*.orig
+# sqlite3
+*.db
+/backups/
+*.py~
+#Documentos
+*.pdf
+*.doc
+# *.docx
+*.dat
+.iml
+*.swp
+.idea/
+#merge file
+merge.sh
+node_modules
