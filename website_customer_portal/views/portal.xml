@@ -156,7 +156,12 @@
                                                     <b>Pedidos relacionados:</b> <t t-esc="lead_sales.stringify()"/>
                                                 </div>
                                                 <div class="back-up-specialist montserrat-normal-eerie-black-16px">
-                                                    <b>Back-Office:</b> <span t-field="lead_id.back_up_specialist"/>
+                                                    <b>Back-Office:</b>
+                                                    <span t-if="lead_id.back_up_specialist">
+                                                        <span t-field="lead_id.back_up_specialist"/>
+                                                        <span>- Tel:</span>
+                                                        <span t-field="lead_id.back_up_specialist.phone"/>
+                                                    </span>
                                                 </div>
                                                 <div class="dir-facturacin">
                                                     <div class="direccin-de-factura montserrat-semi-bold-eerie-black-16px">
@@ -204,7 +209,7 @@
                                                 <div class="pedido row">
                                                     <div class="col-order">
                                                         <div class="order-reference montserrat-normal-white-30px">
-                                                            <span t-field="order.name"/>
+                                                            <span t-field="order.name" class="span-middle"/>
                                                             <span t-if="order.full_delivered"
                                                                   class="background-color-green padding-tag montserrat-semi-bold-eerie-black-14px">
                                                                 Entregado
@@ -212,7 +217,8 @@
                                                         </div>
                                                         <div class="referencia-cliente montserrat-normal-white-16px">
                                                             Referencia Cliente: <span class="montserrat-semi-bold-white-16px"
-                                                                                      t-field="order.partner_id"/>
+                                                                                      t-if="order.client_order_ref"
+                                                                                      t-field="order.client_order_ref"/>
                                                         </div>
                                                         <p class="fecha-de-formalizaci montserrat-normal-white-16px">
                                                             Fecha de formalización del pedido: <span class="montserrat-semi-bold-white-16px"

@@ -231,6 +231,13 @@ input.ac-input {
 .desktopproyecto .article.ac-content {
     display: none;
     background: #fff;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow-x: scroll;
+}
+
+.desktopproyecto .article.ac-content::-webkit-scrollbar {
+    display: none;
 }
 
 .desktopproyecto .float-right {
@@ -474,7 +481,12 @@ ul.ac-list {
 }
 
 .desktopproyecto .padding-tag {
-    padding: 5px;
+    padding: 4px;
+    vertical-align: middle;
+}
+
+.desktopproyecto .span-middle {
+    vertical-align: middle;
 }
 
 .desktopproyecto .background-color-green {
@@ -1637,7 +1649,6 @@ ul.ac-list {
 }
 
 .desktopproyecto .referencia-cliente {
-//   font-weight: 600;
   letter-spacing: 0.38px;
   line-height: 19px;
   margin-bottom: 13px;
