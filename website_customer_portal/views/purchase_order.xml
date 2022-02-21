@@ -7,7 +7,7 @@
         <field name="priority">16</field>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='origin']" position="after">
-                <field name="falta_confirmacion" />
+                <field name="falta_confirmacion" invisible="1"/>
             </xpath>
         </field>
     </record>
