@@ -1,169 +1,435 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
-        <template id="my_dashboard_link" name="Link to dashboard" inherit_id="portal.frontend_layout">
-            <xpath expr="//a[@id='o_logout']" position="before">
-                <a href="/my/dashboard" role="menuitem" class="dropdown-item">Dashboard</a>
-            </xpath>
-        </template>
-        <template id="delivery_matter" name="DELIVERY MATTER">
-            <div class="jumbotron jumbotron-fluid  text-center o_portal_jumbotron" id="oe_structure_jumbotron_1">
-                <div class="container">
-                    <h1 class="display-5 o_delivery_matter"><a href="/my/dashboard" style="text-decoration:none;color:#fff">DELIVERY MATTER</a> </h1>
+
+        <template id="portal_delivery_layout">
+            <div class="cabecera-v1" t-if="not hide_header_footer">
+                <img class="logo-horizontal-header"
+                     src="/website_customer_portal/static/src/img/desktop---inicio-logo-horizontal.png"/>
+            </div>
+            <div class="dashboard_main_context">
+                <t t-raw="0"/>
+            </div>
+            <div class="footer" t-if="not hide_header_footer">
+                <div class="col-12 row">
+                    <div class="col-6 row">
+                        <img class="matter-solo-blanc-footer pull-left"
+                             src="/website_customer_portal/static/src/img/desktop---inicio-matter-solo-blanc.png"/>
+                    </div>
+                    <div class="col-6 row">
+                        <div class="footer_tel_mail">
+                            <div class="tel pull-right">
+                                <div class="phone montserrat-medium-white-16px">
+                                    93 707 70 32
+                                </div>
+                                <img class="noun-phone-1995462"
+                                     src="/website_customer_portal/static/src/img/desktop---inicio-noun-phone-1995462.png"/>
+                            </div>
+                            <div class="email pull-right">
+                                <img class="noun-mail-1053115"
+                                     src="/website_customer_portal/static/src/img/desktop---perfil-noun-mail-1053115.png"/>
+                                <div class="ateliermatterbarce montserrat-medium-white-16px">
+                                    atelier@matter.barcelona
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </template>
+
+        <template id="my_frontend_layout" name="My Frontend layout">&lt;!DOCTYPE html&gt;
+            <html t-att="html_data or {}">
+                <head>
+                    <meta charset="utf-8"/>
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+                    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+
+                    <title t-esc="title or 'Odoo'"/>
+                    <link type="image/x-icon" rel="shortcut icon"
+                          t-att-href="x_icon or '/web/static/src/img/favicon.ico'"/>
+                    <t t-call-assets="web.assets_common" t-js="false"/>
+                    <t t-call-assets="web.assets_frontend" t-js="false"/>
+                    <script type="text/javascript">
+                        var odoo = {
+                        csrf_token: "<t t-esc="request.csrf_token(None)"/>",
+                        debug: "<t t-esc="debug"/>",
+                        };
+                    </script>
+                    <script type="text/javascript">
+                        odoo.session_info = <t t-raw="json.dumps(request.env['ir.http'].get_frontend_session_info())"/>;
+                    </script>
+                    <t t-call-assets="web.assets_common_minimal_js" t-css="false" defer_load="True"/>
+                    <t t-call-assets="web.assets_frontend_minimal_js" t-css="false" defer_load="True"/>
+                    <t t-call="web.conditional_assets_tests"/>
+                    <t t-call-assets="web.assets_common_lazy" t-css="false" lazy_load="True"/>
+                    <t t-call-assets="web.assets_frontend_lazy" t-css="false" lazy_load="True"/>
+                    <t t-raw="head or ''"/>
+                </head>
+                <body t-att-class="body_classname">
+                    <div id="wrapwrap" t-attf-class="#{pageName or ''}">
+                        <t t-call="website_customer_portal.portal_delivery_layout">
+                            <t t-raw="0"/>
+                        </t>
+                    </div>
+                </body>
+            </html>
+        </template>
+
         <template id="portal_my_dashboard" name="My Dashboard">
-            <t t-call="portal.frontend_layout">
-                <t t-set="is_portal" t-value="True" />
-                <div class="o_portal_dashboard">
-                    <t t-call="website_customer_portal.delivery_matter" />
-                    <div class="container-fluid mb64">
-                        <div class="container p-5">
-                            <t t-foreach="leads" t-as="lead">
-                                <div class="col">
-                                    <a t-att-href="'/my/dashboard/%s' % lead.access_token" class="o_delivery_matter_link">
-                                        <h2 class="o_delivery_matter_name">
-                                            <span t-field="lead.display_name" />
-                                        </h2>
-                                    </a>
-                                    <hr />
-                                </div>
-                            </t>
+            <t t-call="website_customer_portal.my_frontend_layout">
+                <t t-set="is_portal" t-value="True"/>
+                <div class="container-center-horizontal">
+                    <div class="desktopinicio screen">
+                        <div>
+                            <div class="overlap-group1">
+                                <h1 class="title-delivery montserrat-light-black-40px">
+                                    Pedidos en curso
+                                </h1>
+                                <t t-set="index_lead" t-value="0"/>
+                                <t t-foreach="leads" t-as="lead">
+                                    <div class="proyecto">
+                                        <div class="leal-item-value montserrat-medium-black-34px">
+                                            <a t-att-href="'/my/dashboard/%s' % lead.access_token">
+                                                <span style="color: black;" t-field="lead.display_name"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <t t-set="index_lead" t-value="index_lead + 1"/>
+                                </t>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="oe_structure" id="oe_structure_portal_my_home_2" />
             </t>
         </template>
+
         <!-- portal_my_dashboard_main-->
         <template id="portal_my_dashboard_main" name="DELIVERY MATTER">
-            <t t-call="portal.frontend_layout">
-                <t t-set="is_portal" t-value="True" />
-                <div class="o_portal_dashboard">
-                    <t t-call="website_customer_portal.delivery_matter" />
-                    <div class="jumbotron jumbotron-fluid  text-center o_portal_jumbotron" id="oe_structure_jumbotron_2">
-                        <div class="container ">
-                            <h3 class="display-5 o_o_delivery_matter">
-                                <span t-field="lead_id.display_name" />
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="container-fluid mb64">
-                        <t t-foreach="lead_id" t-as="lead">
-                            <div class="row">
-                                <div class=" container-fluid">
-                                    <div class="mb-1 p-3 container project_data">
-                                        <h2 class="mb-4">Datos del proyecto </h2>
-                                        <h6 class="mb-4">Pedidos relacionados:
-                                            <t t-esc="lead_sales.stringify()" />
-                                        </h6>
-                                        <h6 class="mb-4">Back-up Specialist: <span t-field="lead.back_up_specialist" /> </h6>
-                                        <h6 class="mb-4">Dirección de facturación:
-                                            <span t-if="lead.partner_id.street">
-                                                <span t-field="lead.partner_id.street" />,
-                                                <span t-field="lead.partner_id.street2" />
-                                                <span t-field="lead.partner_id.zip" />
-                                                <span t-field="lead.partner_id.city" />
-                                                <span t-field="lead.partner_id.state_id" />
-                                                <span t-field="lead.partner_id.country_id" />
-                                            </span>
-                                        </h6>
-                                        <h2 class="mb-4">Datos de envio</h2>
-                                        <h6 class="mb-4">Dirección de envío:
-                                            <span t-field="lead.shipping_address" />
-                                        </h6>
-                                        <h6 class="mb-4">Contacto Obra:
-                                            <span t-field="lead.project_contact" />
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="container-fluid" style="padding:15px">
-                                    <t t-foreach="lead.order_ids.filtered(lambda r: r.state not in ['draft', 'sent'])" t-as="order">
-                                        <div class="accordion-started accordion-bral row">
-                                            <div class="o_download p-1 col-md-2 offset-md-10">
-                                                <a t-att-href="order.get_portal_url(report_type='pdf', download=True)" title="Ver Descargar"> Ver Descargar</a>
+            <t t-call="website_customer_portal.my_frontend_layout">
+                <div class="container-center-horizontal1">
+                    <div class="desktopproyecto screen">
+                        <div class="matter-container">
+                            <div class="overlap-group6">
+                                <div class="overlap-group5">
+                                    <div class="row masa-can-palet text-center">
+                                        <div class="boton-volver" onclick="history.back()">
+                                            <div class="overlap-group-2 border-1px-black">
+                                                <div class="volver montserrat-medium-eerie-black-14px">
+                                                    Volver
+                                                </div>
                                             </div>
-                                            <div class="col-sm-12 col-md-12 col-lg-12" style="padding: 0px;border-color: #fff;border: 5px;border-bottom-style: solid;">
-                                                <!--   <input class="ac-input" id="ac-1" name="accordion-1" type="radio" checked="1" /> -->
-                                                <input class="ac-input" id="ac-1" name="accordion-1" type="radio" />
-                                                <label class="ac-label" for="ac-1">
-                                                    <h4><span t-field="order.name" />
-                                                        <i></i></h4>
-                                                    <h6>Referencia Cliente: <span t-field="order.partner_id" /> </h6>
-                                                    <br />
-                                                    <h6>Fecha: <span t-esc="order.date_order.date().strftime('%d/%m/%Y')" t-if="order.date_order" /> </h6>
-                                                </label>
-                                                <div class="article ac-content row p-2">
+                                        </div>
+                                        <div class="project-title">
+                                            <span class="project-title-text" t-field="lead_id.name"/>
+                                        </div>
+                                    </div>
+                                    <div class="datos-proyecto">
+                                        <div class="datos-del-proyecto montserrat-normal-eerie-black-30px">
+                                            Datos del proyecto
+                                        </div>
+    <!--                                    =========== FUTURE FUNCTION ==============-->
+    <!--                                    <div class="boton-editar-datos">-->
+    <!--                                        <div class="overlap-group1-1">-->
+    <!--                                            <div class="overlap-group-3 border-1px-black">-->
+    <!--                                                <img class="noun-edit-1513863"-->
+    <!--                                                     src="/website_customer_portal/static/src/img/desktop-&#45;&#45;proyecto-noun-edit-1513863.png"/>-->
+    <!--                                            </div>-->
+    <!--                                            <div class="editar-datos montserrat-medium-eerie-black-14px">-->
+    <!--                                                Editar datos-->
+    <!--                                            </div>-->
+    <!--                                        </div>-->
+    <!--                                    </div>-->
+    <!--                                    =========== FUTURE FUNCTION ==============-->
+                                        <img class="line-2"
+                                             src="/website_customer_portal/static/src/img/desktop---proyecto-line-2.png"/>
+                                        <div class="row-project">
+                                            <div class="col-2-project">
+                                                <div class="referencia-proyecto montserrat-normal-eerie-black-16px">
+                                                    <span class="span montserrat-normal-eerie-black-16px">
+                                                        <b>Referencia Proyecto:</b></span>
+                                                    <span class="span2"></span>
+                                                    <span class="span montserrat-normal-eerie-black-16px"><span
+                                                            t-esc="lead_id.id"/></span>
+                                                </div>
+                                                <div class="pedidos-relacionados montserrat-normal-eerie-black-16px">
+                                                    <b>Pedidos relacionados:</b> <t t-esc="lead_sales.stringify()"/>
+                                                </div>
+                                                <div class="back-up-specialist montserrat-normal-eerie-black-16px">
+                                                    <b>Back-Office:</b>
+                                                    <span t-if="lead_id.back_up_specialist">
+                                                        <span t-field="lead_id.back_up_specialist"/>
+                                                        <span>- Tel:</span>
+                                                        <span t-field="lead_id.back_up_specialist.phone"/>
+                                                    </span>
+                                                </div>
+                                                <div class="dir-facturacin">
+                                                    <div class="direccin-de-factura montserrat-semi-bold-eerie-black-16px">
+                                                        Dirección de facturación:
+                                                    </div>
+                                                    <p class="e-closion-diseo montserrat-normal-eerie-black-16px">
+                                                        <span t-if="lead_id.partner_id.street">
+                                                            <span t-field="lead_id.partner_id.street"/>,
+                                                            <span t-field="lead_id.partner_id.street2"/>
+                                                            <span t-field="lead_id.partner_id.zip"/>
+                                                            <span t-field="lead_id.partner_id.city"/>
+                                                            <span t-field="lead_id.partner_id.state_id"/>
+                                                            <span t-field="lead_id.partner_id.country_id"/>
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-3-project">
+                                                <div class="dir-envio">
+                                                    <div class="direccin-de-envo montserrat-semi-bold-black-16px">
+                                                        Dirección de envío:
+                                                    </div>
+                                                    <p class="c-jos-lopez-35-08 montserrat-normal-black-16px">
+                                                        <span t-field="lead_id.shipping_address"/>
+                                                        <br/>
+                                                    </p>
+                                                </div>
+                                                <div class="dir-envio-1">
+                                                    <div class="contacto-obra montserrat-semi-bold-black-16px">
+                                                        <br/>
+                                                        Contacto Obra:
+                                                    </div>
+                                                    <div class="julian-lopez-66553 montserrat-normal-black-16px">
+                                                        <br/>
+                                                        <span t-field="lead_id.project_contact"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="orders">
+                                        <div t-foreach="lead_id.order_ids.filtered(lambda r: r.state not in ['draft', 'sent'])"
+                                             t-as="order">
+                                            <div class="order-container">
+                                                <div class="pedido row">
+                                                    <div class="col-order">
+                                                        <div class="order-reference montserrat-normal-white-30px">
+                                                            <span t-field="order.name" class="span-middle"/>
+                                                            <span t-if="order.full_delivered"
+                                                                  class="background-color-green padding-tag montserrat-semi-bold-eerie-black-14px">
+                                                                Entregado
+                                                            </span>
+                                                        </div>
+                                                        <div class="referencia-cliente montserrat-normal-white-16px">
+                                                            Referencia Cliente: <span class="montserrat-semi-bold-white-16px"
+                                                                                      t-if="order.client_order_ref"
+                                                                                      t-field="order.client_order_ref"/>
+                                                        </div>
+                                                        <p class="fecha-de-formalizaci montserrat-normal-white-16px">
+                                                            Fecha de formalización del pedido: <span class="montserrat-semi-bold-white-16px"
+                                                                t-esc="order.date_order.date().strftime('%d/%m/%Y')"
+                                                                t-if="order.date_order"/>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-button">
+                                                        <div class="btn-descargar border-1px-white">
+                                                            <div class="overlap-group1">
+                                                                <a t-att-href="order.get_portal_url(report_type='pdf', download=True)"
+                                                                   title="Descargar">
+                                                                    <span class="descargar montserrat-semi-bold-white-14px">
+                                                                        Descargar
+                                                                    </span>
+                                                                    <span>
+                                                                        <img class="noun-save-2209758"
+                                                                             src="/website_customer_portal/static/src/img/desktop---proyecto-noun-save-2209758-1.png"/>
+                                                                    </span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="btn-ver-pedido ac-label">
+                                                            <div class="overlap-group1">
+                                                                <span class="ver-pedido montserrat-semi-bold-eerie-black-14px">
+                                                                    Ver pedido
+                                                                </span>
+                                                                <span>
+                                                                    <img class="noun-arrow-1776263"
+                                                                         src="/website_customer_portal/static/src/img/desktop---proyecto-noun-arrow-1776263-1.png"/>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="article ac-content p-2">
                                                     <table class="table">
-                                                        <thead class="text-left thead">
+                                                        <thead class="thead">
                                                             <tr>
-                                                                <th scope="col" class="col-md-4">Descripción</th>
-                                                                <th scope="col" class="col-md-3">Fecha de llegada prevista</th>
-                                                                <th scope="col" colspan="3" class="col-md-3">Cantidad</th>
-                                                                <th scope="col" class="col-md-2">Estado</th>
+                                                                <th scope="col"
+                                                                    class="col-md-4 border-light-td padding-left text-left montserrat-semi-bold-eerie-black-14px"><b>
+                                                                    Producto</b></th>
+                                                                <th scope="col"
+                                                                    class="col-md-1 border-light-td text-center montserrat-semi-bold-eerie-black-14px"><b>
+                                                                    Llegada al
+                                                                    almacén</b></th>
+                                                                <th scope="col"
+                                                                    class="col-md-1 text-center montserrat-semi-bold-eerie-black-14px">
+                                                                    <br/>Pedida</th>
+                                                                <th scope="col"
+                                                                    class="col-md-1 text-center montserrat-semi-bold-eerie-black-14px"><b>
+                                                                    Cantidad</b><br/>En almacén</th>
+                                                                <th scope="col"
+                                                                    class="col-md-1 border-light-td text-center montserrat-semi-bold-eerie-black-14px">
+                                                                    <br/>Enviada</th>
+                                                                <th scope="col"
+                                                                    class="col-md-2 text-center montserrat-semi-bold-eerie-black-14px"><b>
+                                                                    Estado</b></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr>
-                                                                <td class="col-md-4"> </td>
-                                                                <td class="col-md-3"> </td>
-                                                                <td class="col-md-1">Pedida</td>
-                                                                <td class="col-md-1">En almacén</td>
-                                                                <td class="col-md-1">Enviada</td>
-                                                                <td class="col-md-2"> </td>
-                                                            </tr>
+                                                            <t t-set="last_section" t-value="False"/>
                                                             <t t-foreach="order.order_line" t-as="line">
-                                                                <tr>
-                                                                    <t t-if="line.display_type == 'line_section'">
-                                                                        <td name="td_section_line" colspan="6">
-                                                                            <h5 t-field="line.name" />
+                                                                <t t-if="line.display_type == 'line_section'">
+                                                                    <t t-set="last_section" t-value="line"/>
+                                                                </t>
+                                                                <t t-if="not line.display_type and line.product_id.id != down_payment and line.product_id.categ_id.id != 119 and line.product_uom_qty != 0">
+                                                                    <tr t-if="last_section"
+                                                                        class="rectangle">
+                                                                        <td class="padding-left border-light-td montserrat-medium-black-24px"
+                                                                            name="td_section_line" colspan="6">
+                                                                            <span t-field="last_section.name"/>
+                                                                            <t t-set="last_section" t-value="False"/>
                                                                         </td>
-                                                                    </t>
-                                                                    <t t-if="not line.display_type">
-                                                                        <td class="col-md-4">
+                                                                    </tr>
+                                                                    <tr t-attf-class="#{'color-green' if line.product_state == 'delivered' else 'color-black'}">
+                                                                        <td class="col-md-4 border-light-td padding-left montserrat-medium-eerie-black-14px">
                                                                             <div class="row">
                                                                                 <div class="col-sm-12 col-md-2">
-                                                                                    <img t-att-src="line.product_id.image_url" t-att-alt="line.name" class="img-thumbnail" style="width: 100px;" />
+                                                                                    <img t-att-src="line.product_id.image_url"
+                                                                                         t-att-alt="line.name"
+                                                                                         class="img-thumbnail"
+                                                                                         style="width: 100px;"/>
                                                                                 </div>
                                                                                 <div class="col-sm-12 col-md-10">
-                                                                                    <p t-field="line.name" t-if="line.name" />
+                                                                                    <span t-field="line.name"
+                                                                                          t-if="line.name"/>
                                                                                 </div>
                                                                             </div>
                                                                         </td>
-                                                                        <td class="col-md-3">
-                                                                            <span t-esc="line.x_date_expected.strftime('%d/%m/%Y')" t-if="line.x_date_expected" />
+                                                                        <td class="col-md-1 border-light-td text-center montserrat-medium-eerie-black-14px td-center">
+                                                                            <span t-esc="line.x_date_expected.strftime('%d/%m/%Y')"
+                                                                                  t-if="line.x_date_expected"/>
                                                                         </td>
-                                                                        <td class="col-md-1">
-                                                                            <span t-field="line.x_ordered_quantity" />
-                                                                            <span t-field="line.x_qty_received_uom_id" />
+                                                                        <td class="col-md-1 border-light-td text-center montserrat-medium-eerie-black-14px">
+                                                                            <span t-field="line.x_ordered_quantity"/>
+                                                                            <span t-field="line.x_qty_received_uom_id"/>
                                                                         </td>
-                                                                        <td class="col-md-1">
-                                                                            <span t-field="line.x_qty_received" />
-                                                                            <span t-field="line.x_qty_received_uom_id" />
+                                                                        <td class="col-md-1 border-light-td text-center montserrat-medium-eerie-black-14px">
+                                                                            <span t-attf-class="#{'color-green' if line.x_qty_received > 0 else 'color-black'}"
+                                                                                  t-field="line.x_qty_received"/>
+                                                                            <span t-attf-class="#{'color-green' if line.x_qty_received > 0 else 'color-black'}"
+                                                                                  t-field="line.x_qty_received_uom_id"/>
                                                                         </td>
-                                                                        <td class="col-md-1">
-                                                                            <span t-field="line.qty_delivered" />
-                                                                            <span t-field="line.product_uom" />
+                                                                        <td class="col-md-1 border-light-td text-center montserrat-medium-eerie-black-14px">
+                                                                            <span t-field="line.qty_delivered"/>
+                                                                            <span t-field="line.product_uom"/>
                                                                         </td>
-                                                                        <td class="col-md-2">
-                                                                            <span t-field="line.product_state" />
+                                                                        <td class="col-md-2 text-center montserrat-medium-eerie-black-14px">
+                                                                            <span t-field="line.product_state"/>
+                                                                            <t t-if="line.product_state=='delivered'">
+                                                                                <div class="fill-container-1">
+                                                                                    <img class="fill-1"
+                                                                                         src="/website_customer_portal/static/src/img/desktop---proyecto-fill-1.png"/>
+                                                                                </div>
+                                                                            </t>
+                                                                            <t t-elif="line.product_state=='approved'">
+
+                                                                            </t>
+                                                                            <t t-elif="line.product_state=='processed'">
+                                                                                <div class="fill-container-1">
+                                                                                    <img class="fill-4"
+                                                                                         src="/website_customer_portal/static/src/img/desktop---proyecto-fill-4.png"/>
+                                                                                </div>
+                                                                            </t>
+                                                                            <t t-elif="line.product_state=='at warehouse'">
+                                                                                <div class="fill-container-1">
+                                                                                    <img class="icon-estado-almacen"
+                                                                                         src="/website_customer_portal/static/src/img/desktop---proyecto-icon-estado-almacen.png"/>
+                                                                                </div>
+                                                                            </t>
                                                                         </td>
-                                                                    </t>
-                                                                </tr>
+                                                                    </tr>
+                                                                </t>
                                                             </t>
                                                         </tbody>
                                                     </table>
                                                 </div>
                                             </div>
                                         </div>
-                                    </t>
+                                    </div>
                                 </div>
                             </div>
-                        </t>
+                        </div>
                     </div>
                 </div>
-                <div class="oe_structure" id="oe_structure_portal_my_home_2" />
+            </t>
+        </template>
+
+        <template id="my_login">
+            <t t-set="hide_header_footer" t-value="True"/>
+            <t t-call="website_customer_portal.my_frontend_layout">
+                <div class="container-center-horizontal">
+                    <div class="desktoplogin screen">
+                        <div class="overlap-group3">
+                            <form role="form" t-attf-action="/my/dashboard/login" method="post"
+                                  onsubmit="this.action = this.action + location.hash">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <input type="hidden" name="db" t-att-value="request.db" id="db"
+                                       t-attf-class="form-control #{'form-control-sm' if form_small else ''}"
+                                       required="required" readonly="readonly"/>
+                                <div class="overlap-group2">
+                                    <div>
+                                        <img class="matter-solo-blanc"
+                                             src="/website_customer_portal/static/src/img/desktop---login-matter-solo-blanc.png"/>
+                                    </div>
+                                    <div>
+                                        <h1 class="title">Bienvenido a</h1>
+                                    </div>
+                                    <img class="logo-horizontal"
+                                         src="/website_customer_portal/static/src/img/desktop---login-logo-horizontal.png"/>
+                                    <div class="identifcate-para-ac">
+                                        Identifícate para acceder a tus proyectos<br/>y gestionar tus pedidos
+                                    </div>
+                                    <div class="bloque-login">
+                                        <div class="overlap-group1 border-0-8px-white">
+                                            <input type="text" placeholder="Email" name="login" t-att-value="login"
+                                                   id="login"
+                                                   class="email-login montserrat-normal-mountain-mist-18px"
+                                                   required="required" autofocus="autofocus" autocapitalize="off"/>
+                                        </div>
+                                        <div class="overlap-group border-0-8px-white">
+                                            <input type="password" placeholder="Contraseña" name="password"
+                                                   id="password"
+                                                   class="contrasea montserrat-normal-mountain-mist-18px"
+                                                   required="required" autocomplete="current-password"
+                                                   t-att-autofocus="'autofocus' if login else None"/>
+                                        </div>
+                                        <div class="check-sesion">
+                                            <img class="rectangle"
+                                                 src="/website_customer_portal/static/src/img/desktop---login-rectangle.png"/>
+                                            <span class="mantener-la-sesin-i montserrat-normal-white-16px">
+                                                Mantener la sesión iniciada
+                                            </span>
+                                        </div>
+                                        <p class="alert alert-danger" t-if="error" role="alert">
+                                            <t t-esc="error"/>
+                                        </p>
+                                        <p class="alert alert-success" t-if="message" role="status">
+                                            <t t-esc="message"/>
+                                        </p>
+                                        <div class="boton-blanco">
+                                            <button type="submit" class="btn-block iniciar-sesin">Iniciar
+                                                sesión</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </t>
         </template>
     </data>

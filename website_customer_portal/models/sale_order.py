@@ -1,13 +1,11 @@
 from odoo import models, fields, api
-from itertools import groupby
-import operator
 
 
 STATES = [
     ("approved", "Presupuesto aprobado"),
-    ("processed", "Pedido tramitado"),
+    ("processed", "En curso"),
     ("at warehouse", "Pedido en almacén"),
-    ("delivered", "Pedido entregado"),
+    ("delivered", "Entregado"),
 ]
 
 
@@ -22,6 +20,7 @@ class SaleOrder(models.Model):
     x_opportunity_ids = fields.Char(string="ID de oportunidad", compute="_compute_x_opportunity_ids")
     count_opportunity_id = fields.Integer(string="Count Opportunity", compute="_compute_count_opportunity_id")
     x_partner_id = fields.Many2one(comodel_name="res.partner", string="Usuario Delivery")
+    full_delivered = fields.Boolean(string="Full Delivered", compute="_compute_full_delivered")
 
     def opportunity_portal_url(self, suffix=None, report_type=None, download=None, query_string=None, anchor=None):
         """Get a portal url for opportunity model, including access_token.
@@ -69,6 +68,11 @@ class SaleOrder(models.Model):
         names = ", ".join([order.name for order in orders])
         return names
 
+    @api.depends("order_line.product_state")
+    def _compute_full_delivered(self):
+        for order in self:
+            order.full_delivered = not any(l.product_state != 'delivered' for l in order.order_line)
+
 
 class SaleOrderLine(models.Model):
     """."""
@@ -92,7 +96,7 @@ class SaleOrderLine(models.Model):
             domain = [("order_id.origin", "=", origin), ("product_id", "=", rec.product_id.id)]
             # line = purchase_line.search(domain, limit=1, order="id desc")
             line = purchase_line.search(domain, order="id desc")
-            rec.x_qty_received = sum(line.mapped("qty_received"))
+            rec.x_qty_received = sum(line.mapped("qty_received")) - rec.qty_delivered
             rec.x_qty_received_uom_id = len(line) > 0 and line[0].product_uom.id or False
             rec.x_ordered_quantity = sum(line.mapped("product_qty"))
 
@@ -122,10 +126,6 @@ class SaleOrderLine(models.Model):
 
             if rec.x_ordered_quantity == rec.qty_delivered:
                 rec.product_state = "delivered"
-            elif rec.x_ordered_quantity <= rec.x_qty_received:
-                rec.product_state = "at warehouse"
-            elif line.order_id.falta_confirmacion:
-                rec.product_state = "approved"
             else:
                 rec.product_state = "processed"
 

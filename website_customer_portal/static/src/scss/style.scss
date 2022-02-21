@@ -1,157 +1,1900 @@
-.o_portal_jumbotron {
-    background: #212529;
-    color: #ffffff;
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,300,500,600,100");
 
+/* Variables */
+:root {
+  --black: rgba(0, 0, 0, 1);
+  --eerie-black: rgba(26, 29, 31, 1);
+  --mine-shaft: rgba(47, 47, 47, 1);
+  --mountain-mist: rgba(152, 152, 152, 1);
+  --celeste: rgba(209, 209, 209, 1);
+  --gallery: rgba(238, 238, 238, 1);
+  --white: rgba(255, 255, 255, 1);
+  --green: #178e37;
+
+  --font-size-m: 14px;
+  --font-size-l: 16px;
+  --font-size-xl: 18px;
+  --font-size-xxl: 30px;
+  --font-size-xxxl: 34px;
+  --font-size-xxxxl: 35px;
+  --font-size-xxxxxl: 40px;
+
+  --font-family-helvetica: "Helvetica";
+  --font-family-montserrat: "Montserrat";
 }
 
-.o_delivery_matter {
-    font-size: 7em;
-    font-weight: 500;
-    padding: 0.5em;
-
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--eerie-black);
 }
 
-.o_o_delivery_matter {
-    font-size: 4em;
-    font-weight: 500;
-    padding: 0.5em;
-
+#wrapwrap {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 100vh !important;
 }
 
-.o_delivery_matter_name {
-    font-weight: 600;
-    color: #212529;
+#wrapwrap > * {
+  padding: 0px;
 }
 
-.o_delivery_matter_link {
-    display: block;
-    padding: 4px;
-    text-decoration: none !important;
+/* Classes */
+.dashboard_main_context {
+    background-color: var(--gallery);
+}
+.montserrat-semi-bold-white-16px {
+  color: var(--white);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-l);
+  font-weight: 600;
+  font-style: normal;
+}
+.montserrat-normal-eerie-black-30px {
+  color: var(--eerie-black);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-xxl);
+  font-weight: 400;
+  font-style: normal;
+}
+.montserrat-normal-eerie-black-14px {
+  color: var(--eerie-black);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-m);
+  font-weight: 400;
+  font-style: normal;
+}
+.border-1px-white {
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--white);
+}
+.border-1px-black {
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--black);
+}
+.montserrat-normal-eerie-black-16px {
+  color: var(--eerie-black);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-l);
+  font-weight: 400;
+  font-style: normal;
 }
 
-.project_data {
-
-    h6 {
-        font-weight: 500 !important;
-        font-size: 14px !important;
-    }
+.montserrat-normal-mountain-mist-18px {
+  color: var(--mountain-mist);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-xl);
+  font-weight: 400;
+  font-style: normal;
 }
 
-.thead {
-    font-weight: 800;
-    text-transform: uppercase;
-
-    th {
-        border: 0px !important;
-    }
+.border-0-8px-white {
+    border-width: 0.8px;
+    border-style: solid;
+    border-color: var(--white);
 }
 
-.o_download {
-    >a {
-
-        color: #fff;
-        text-decoration: none;
-    }
-
-
-
+.montserrat-normal-black-16px {
+  color: var(--black);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-l);
+  font-weight: 400;
+  font-style: normal;
 }
 
-/* -----------------> can start accordion style copy from here ------------------------*/
-
-.accordion-started.accordion-bral {
-    min-height: 0;
-    min-width: 220px;
-    width: 100%;
-    background-color: #212529;
-    margin: 0px !important;
-    color: #ffffff;
+.montserrat-normal-white-16px {
+  color: var(--white);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-l);
+  font-weight: 400;
+  font-style: normal;
 }
 
-.accordion-started.accordion-bral img {
-    width: 100%;
-    height: auto;
+.montserrat-semi-bold-white-14px {
+  color: var(--white);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-m);
+  font-weight: 600;
+  font-style: normal;
 }
 
-.accordion-started.accordion-bral .ac-label {
-    font-family: Arial, sans-serif;
-    padding: 5px 20px;
-    position: relative;
-    display: block;
-    height: auto;
-    color: #ffffff;
-    line-height: 33px;
-    font-size: 15px;
-    font-weight: 300;
-    margin-bottom: 5px;
+.montserrat-medium-white-16px {
+  color: var(--white);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-l);
+  font-weight: 500;
+  font-style: normal;
 }
 
-.accordion-started.accordion-bral .ac-label:hover {}
+.montserrat-semi-bold-black-16px {
+  color: var(--black);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-l);
+  font-weight: 600;
+  font-style: normal;
+}
 
+.montserrat-medium-black-34px {
+  color: var(--black);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-xxxl);
+  font-weight: 500;
+  font-style: normal;
+}
 
+.montserrat-medium-black-24px {
+  color: var(--black);
+  font-family: var(--font-family-montserrat);
+  font-size: 24px;
+  font-weight: 500;
+  font-style: normal;
+}
 
-.accordion-started.accordion-bral input:checked+.ac-label,
-.accordion-started.accordion-bral input:checked+.ac-label:active {}
+.montserrat-semi-bold-eerie-black-14px {
+  color: var(--eerie-black);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-m);
+  font-weight: 600;
+  font-style: normal;
+}
 
-.accordion-started.accordion-bral input.ac-input {
+.helvetica-normal-eerie-black-16px {
+  color: var(--eerie-black);
+  font-family: var(--font-family-helvetica);
+  font-size: var(--font-size-l);
+}
+
+.montserrat-medium-eerie-black-14px {
+  color: var(--eerie-black);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-m);
+  font-weight: 500;
+  font-style: normal;
+}
+
+.montserrat-light-black-40px {
+  color: var(--black);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-xxxxxl);
+  font-weight: 300;
+  font-style: normal;
+}
+
+.montserrat-normal-white-30px {
+  color: var(--white);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-xxl);
+  font-weight: 400;
+  font-style: normal;
+}
+
+.montserrat-semi-bold-eerie-black-16px {
+  color: var(--eerie-black);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-l);
+  font-weight: 600;
+  font-style: normal;
+}
+
+input.ac-input {
     display: none;
 }
 
-.accordion-started.accordion-bral .article {
-    overflow: hidden;
-    height: 0px;
-    max-height: auto;
-
+.desktopproyecto table th {
+    vertical-align: middle !important;
 }
 
-.accordion-started.accordion-bral .article p {
+.desktopproyecto table tr {
+    border-bottom: 3px solid var(--gallery);
+}
+
+.desktopproyecto .padding-left{
+    padding-left: 70px;
+}
+
+.desktopproyecto .order-container {
+    margin-bottom: 8px;
+}
+
+.desktopproyecto .article {
+    overflow: hidden;
+    padding: 0px !important;
+}
+
+.desktopproyecto .article p {
     line-height: 23px;
     padding-left: 5px;
 }
 
-
-
-.accordion-started.accordion-bral input:checked~.article.ac-content {
-    height: auto;
+.desktopproyecto .article.ac-content {
+    display: none;
     background: #fff;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow-x: scroll;
 }
 
-.accordion-started.accordion-bral i {
-    position: absolute;
-    transform: translate(-30px, 0);
-    margin-top: 16px;
-    right: 0;
+.desktopproyecto .article.ac-content::-webkit-scrollbar {
+    display: none;
 }
 
-.accordion-started.accordion-bral input:checked~.ac-label i:before {
-    transform: translate(2px, 0) rotate(-45deg);
+.desktopproyecto .float-right {
+    float: right;
 }
 
-.accordion-started.accordion-bral input:checked~.ac-label i:after {
-    transform: translate(-2px, 0) rotate(45deg);
-}
-
-.accordion-started.accordion-bral i:before,
-.accordion-bral i:after {
-    content: "";
-    position: absolute;
-    background-color: #fff;
-    width: 4px;
-    height: 9px;
-}
-
-.accordion-started.accordion-bral i:before {
-    transform: translate(-2px, 0) rotate(-45deg);
-}
-
-.accordion-started.accordion-bral i:after {
+i:after {
     transform: translate(2px, 0) rotate(45deg);
 }
 
-.accordion-started ul.ac-list {
+ul.ac-list {
     padding-left: 40px;
     list-style-type: disc;
 }
 
+/* Styles */
+.cabecera-v1 {
+  background-color: var(--black);
+  height: 70px;
+  position: relative;
+  width: 100%;
+}
 
-/* ---------- accordion style end --------------------------------------- */
+.logo-horizontal-header {
+  height: 14px;
+  left: 79px;
+  position: absolute;
+  top: 26px;
+  width: 300px;
+}
+
+.footer {
+  background-color: var(--eerie-black);
+  height: 100px;
+  width: 100%;
+}
+
+.matter-solo-blanc-footer {
+  height: 15px;
+  left: 80px;
+//   position: absolute;
+  position: relative;
+  top: 41px;
+  width: 150px;
+}
+
+.email {
+  height: 19px;
+  position: relative;
+  width: 253px;
+  margin-right: 10px;
+}
+
+.footer_tel_mail {
+    top: 38px;
+    margin-left: auto;
+    margin-right: 0;
+    position: relative;
+}
+
+.ateliermatterbarce {
+  font-weight: 500;
+  left: 37px;
+  letter-spacing: 0.38px;
+  line-height: 19px;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+  color: white;
+}
+
+.noun-mail-1053115 {
+  height: 14px;
+  left: 0;
+  position: absolute;
+  top: 3px;
+  width: 22px;
+}
+
+.tel {
+    height: 19px;
+    position: relative;
+    width: 136px;
+}
+
+.phone {
+    font-weight: 500;
+    left: 32px;
+    letter-spacing: 0.38px;
+    line-height: 19px;
+    position: absolute;
+    top: 0;
+    white-space: nowrap;
+    color: white;
+}
+
+.noun-phone-1995462 {
+    height: 18px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 18px;
+}
+
+.desktopinicio {
+    background-color: var(--gallery);
+    overflow: auto;
+    position: relative;
+}
+
+.desktopinicio .overlap-group1 {
+    background-color: var(--gallery);
+    position: relative;
+    padding: 0px 79px;
+    margin-bottom: 79px;
+}
+
+.desktopinicio .overlap-group {
+  background-color: var(--gallery);
+  height: 700px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%
+}
+
+.desktopinicio .proyecto {
+  background-color: var(--white) !important;
+  margin-top: 10px;
+}
+
+.container {
+    background-color: var(--gallery) !important;
+}
+
+.desktopinicio .leal-item-value {
+    background: var(--white);
+    padding: 20px 0 20px 25px;
+    font-weight: 500;
+    letter-spacing: 0.81px;
+    position: relative;
+}
+
+.desktopinicio .matter-solo-blanc {
+  height: 15px;
+  left: 80px;
+  position: absolute;
+  top: 41px;
+  width: 150px;
+}
+
+// .desktopinicio .email {
+//   height: 19px;
+//   left: 1002px;
+//   position: absolute;
+//   top: 39px;
+//   width: 253px;
+// }
+
+.desktopinicio .ateliermatterbarce {
+  font-weight: 500;
+  left: 37px;
+  letter-spacing: 0.38px;
+  line-height: 19px;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+.desktopinicio .noun-mail-1053115 {
+  height: 14px;
+  left: 0;
+  position: absolute;
+  top: 3px;
+  width: 22px;
+}
+
+// .desktopinicio .tel {
+//   height: 19px;
+//   left: 1321px;
+//   position: absolute;
+//   top: 39px;
+//   width: 136px;
+// }
+
+.desktopinicio .phone {
+  font-weight: 500;
+  left: 32px;
+  letter-spacing: 0.38px;
+  line-height: 19px;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+.desktopinicio .noun-phone-1995462 {
+  height: 18px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 18px;
+}
+
+.desktopinicio .title-delivery {
+  font-weight: 300;
+  letter-spacing: 0.95px;
+  margin-top: 53px;
+  margin-bottom: 30px;
+}
+
+.desktopinicio .logo-horizontal {
+  height: 14px;
+  left: 79px;
+  position: absolute;
+  top: 26px;
+  width: 300px;
+}
+
+.screen a {
+  text-decoration: none;
+}
+
+.container-center-horizontal {
+  pointer-events: none;
+}
+
+.container-center-horizontal1 {
+  flex-direction: row;
+  pointer-events: none;
+}
+
+.container-center-horizontal > *, .container-center-horizontal1 > * {
+  flex-shrink: 0;
+  pointer-events: auto;
+}
+
+.desktopproyecto {
+  background-color: var(--white);
+  min-height: 600px;
+}
+
+.desktopproyecto .padding-tag {
+    padding: 4px;
+    vertical-align: middle;
+}
+
+.desktopproyecto .span-middle {
+    vertical-align: middle;
+}
+
+.desktopproyecto .background-color-green {
+    background-color: var(--green) !important;
+    color: var(--white);
+}
+
+.desktopproyecto .color-green{
+    color: var(--green) !important;
+}
+
+.desktopproyecto .color-green td{
+    color: var(--green) !important;
+}
+
+.desktopproyecto .overlap-group6 {
+    background-color: var(--gallery);
+    position: relative;
+    padding: 0px 79px;
+}
+
+.desktopproyecto .overlap-group5 {
+  background-color: var(--gallery);
+  left: 0;
+  position: relative;
+  top: 0;
+  width: 100%;
+}
+
+.desktopproyecto .boton-volver {
+  height: 42px;
+  width: 92px;
+  float: left;
+  margin: auto 0px;
+}
+
+.desktopproyecto .boton-volver:hover {
+    cursor: pointer;
+}
+
+.desktopproyecto .overlap-group-2 {
+  height: 44px;
+  left: -1px;
+  position: relative;
+  top: -1px;
+  width: 94px;
+}
+
+.desktopproyecto .volver {
+  font-weight: 500;
+  left: 22px;
+  letter-spacing: 0;
+  line-height: 16px;
+  position: absolute;
+  text-align: center;
+  top: 11px;
+  white-space: nowrap;
+  width: 49px;
+}
+
+.desktopproyecto .datos-proyecto {
+  background-color: var(--white);
+  min-height: 365px;
+  position: relative;
+  padding: 32px 58px;
+}
+
+.desktopproyecto .boton-editar-datos {
+  height: 42px;
+  position: relative;
+  width: 167px;
+  float: right;
+  cursor: pointer;
+}
+
+.desktopproyecto .overlap-group1-1 {
+  height: 100%;
+}
+
+.desktopproyecto .overlap-group-3 {
+  height: 44px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 169px;
+}
+
+.desktopproyecto .noun-edit-1513863 {
+  height: 18px;
+  left: 126px;
+  position: absolute;
+  top: 11px;
+  width: 18px;
+}
+
+.desktopproyecto .editar-datos {
+  font-weight: 500;
+  left: 24px;
+  letter-spacing: 0;
+  line-height: 16px;
+  position: absolute;
+  top: 12px;
+  white-space: nowrap;
+  width: 89px;
+}
+
+.desktopproyecto .referencia-proyecto {
+  font-weight: 600;
+  line-height: 16px;
+  margin-bottom: 20.1px;
+}
+
+.desktopproyecto .span {
+  letter-spacing: 0;
+  line-height: 19px;
+}
+
+.desktopproyecto .span2 {
+  color: var(--eerie-black);
+  font-family: var(--font-family-helvetica);
+  font-size: var(--font-size-xl);
+  letter-spacing: 0.43px;
+  line-height: 22px;
+}
+
+.desktopproyecto .pedidos-relacionados {
+  line-height: 19px;
+  margin-bottom: 20.1px;
+}
+
+.desktopproyecto .back-up-specialist {
+  line-height: 19px;
+  margin-bottom: 20.1px;
+}
+
+.desktopproyecto .dir-facturacin {
+  position: relative;
+  margin-bottom: 20.1px;
+}
+
+.desktopproyecto .direccin-de-factura {
+  font-weight: 600;
+  left: 0;
+  letter-spacing: 0.38px;
+  line-height: 19px;
+  white-space: nowrap;
+}
+
+.desktopproyecto .e-closion-diseo {
+  letter-spacing: 0.38px;
+  line-height: 26px;
+}
+
+.desktopproyecto .dir-envio {
+  height: 55px;
+  position: relative;
+  width: 334px;
+}
+
+.desktopproyecto .direccin-de-envo {
+  font-weight: 600;
+  left: 0;
+  letter-spacing: 0.38px;
+  line-height: 19px;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+  width: 192px;
+}
+
+.desktopproyecto .c-jos-lopez-35-08 {
+  left: 1px;
+  letter-spacing: 0.38px;
+  line-height: 26px;
+  position: absolute;
+  top: 29px;
+  white-space: nowrap;
+  width: 334px;
+}
+
+.desktopproyecto .dir-envio-1 {
+  position: relative;
+  margin-bottom: 20.1px;
+}
+
+.desktopproyecto .contacto-obra {
+  font-weight: 600;
+  left: 0;
+  letter-spacing: 0.38px;
+  line-height: 19px;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+  width: 151px;
+}
+
+.desktopproyecto .julian-lopez-66553 {
+  left: 1px;
+  letter-spacing: 0.38px;
+  line-height: 26px;
+  position: absolute;
+  top: 27px;
+  white-space: nowrap;
+  width: 222px;
+}
+
+.desktopproyecto .datos-del-proyecto {
+  letter-spacing: 0.71px;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.desktopproyecto .col-2-project{
+    display: inline-block;
+    margin-top: 18px;
+    width: 54%;
+    vertical-align: top;
+}
+
+.desktopproyecto .col-3-project{
+    display: inline-block;
+    margin-top: 18px;
+    width: 45%;
+    vertical-align: top;
+}
+
+.desktopproyecto .line-2 {
+  height: 2px;
+  width: 100%;
+}
+
+.desktopproyecto .overlap-group4 {
+  height: 975px;
+  left: 80px;
+  position: absolute;
+  top: 729px;
+  width: 1377px;
+}
+
+.desktopproyecto .rectangle {
+  background-color: var(--celeste);
+  width: 1375px;
+}
+
+.desktopproyecto .filas-se-fija-al-top {
+  height: 63px;
+  left: 59px;
+  position: absolute;
+  top: 169px;
+  width: 1248px;
+}
+
+.desktopproyecto .overlap-group-4 {
+  height: 63px;
+  left: 422px;
+  position: absolute;
+  top: 0;
+  width: 690px;
+}
+
+.desktopproyecto .llegada-al-almacn {
+  font-weight: 600;
+  left: 10px;
+  letter-spacing: 0.33px;
+  line-height: 16px;
+  position: absolute;
+  text-align: center;
+  top: 13px;
+  width: 112px;
+}
+
+.desktopproyecto .estado {
+  font-weight: 600;
+  left: 560px;
+  letter-spacing: 0.33px;
+  line-height: 16px;
+  position: absolute;
+  text-align: center;
+  top: 22px;
+  white-space: nowrap;
+  width: 112px;
+}
+
+.desktopproyecto .cantidad {
+  font-weight: 600;
+  left: 280px;
+  letter-spacing: 0.33px;
+  line-height: 16px;
+  position: absolute;
+  text-align: center;
+  top: 10px;
+  white-space: nowrap;
+  width: 112px;
+}
+
+.desktopproyecto .en-almacn-1 {
+  left: 280px;
+  letter-spacing: 0.33px;
+  line-height: 16px;
+  position: absolute;
+  text-align: center;
+  top: 31px;
+  white-space: nowrap;
+  width: 112px;
+}
+
+.desktopproyecto .enviada {
+  left: 417px;
+  letter-spacing: 0.33px;
+  line-height: 16px;
+  position: absolute;
+  text-align: center;
+  top: 31px;
+  white-space: nowrap;
+  width: 112px;
+}
+
+.desktopproyecto .pedida {
+  left: 139px;
+  letter-spacing: 0.33px;
+  line-height: 16px;
+  position: absolute;
+  text-align: center;
+  top: 31px;
+  white-space: nowrap;
+  width: 112px;
+}
+
+.desktopproyecto .verticales {
+  height: 63px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 690px;
+}
+
+.desktopproyecto .line-3-copy-8 {
+  height: 64px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 2px;
+}
+
+.desktopproyecto .line-3-copy-9 {
+  height: 64px;
+  left: 128px;
+  position: absolute;
+  top: 0;
+  width: 2px;
+}
+
+.desktopproyecto .line-3-copy-10 {
+  height: 64px;
+  left: 540px;
+  position: absolute;
+  top: 0;
+  width: 2px;
+}
+
+.desktopproyecto .line-3-copy-11 {
+  height: 64px;
+  left: 689px;
+  position: absolute;
+  top: 0;
+  width: 2px;
+}
+
+.desktopproyecto .documentos {
+  font-weight: 600;
+  left: 1136px;
+  letter-spacing: 0.33px;
+  line-height: 16px;
+  position: absolute;
+  text-align: center;
+  top: 22px;
+  white-space: nowrap;
+  width: 112px;
+}
+
+.desktopproyecto .producto {
+  font-weight: 600;
+  left: 0;
+  letter-spacing: 0.33px;
+  line-height: 16px;
+  position: absolute;
+  top: 22px;
+  white-space: nowrap;
+  width: 112px;
+}
+
+.desktopproyecto .ales-container {
+  height: 673px;
+  left: 0;
+  position: absolute;
+  top: 302px;
+  width: 1377px;
+}
+
+.desktopproyecto .verticales-1 {
+  height: 673px;
+  left: 181px;
+  position: absolute;
+  top: 0;
+  width: 992px;
+}
+
+.desktopproyecto .line-3-copy-8-1 {
+  height: 674px;
+  left: 300px;
+  position: absolute;
+  top: 0;
+  width: 3px;
+}
+
+.desktopproyecto .line-3-copy-9-1 {
+  height: 674px;
+  left: 428px;
+  position: absolute;
+  top: 0;
+  width: 3px;
+}
+
+.desktopproyecto .line-3-copy-10-1 {
+  height: 674px;
+  left: 840px;
+  position: absolute;
+  top: 0;
+  width: 3px;
+}
+
+.desktopproyecto .line-3-copy-11-1 {
+  height: 674px;
+  left: 990px;
+  position: absolute;
+  top: 0;
+  width: 3px;
+}
+
+.desktopproyecto .line-3-copy-5 {
+  height: 674px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 3px;
+}
+
+.desktopproyecto .line-3-copy-6 {
+  height: 674px;
+  left: 566px;
+  position: absolute;
+  top: 0;
+  width: 3px;
+}
+
+.desktopproyecto .line-3-copy-7 {
+  height: 674px;
+  left: 704px;
+  position: absolute;
+  top: 0;
+  width: 3px;
+}
+
+.desktopproyecto .horizontales {
+  height: 544px;
+  left: 0;
+  position: absolute;
+  top: 128px;
+  width: 1377px;
+}
+
+.desktopproyecto .line-3-copy-4 {
+  height: 2px;
+  left: 0;
+  position: absolute;
+  top: 310px;
+  width: 1378px;
+}
+
+.desktopproyecto .line-3-copy-13 {
+  height: 2px;
+  left: 0;
+  position: absolute;
+  top: 426px;
+  width: 1378px;
+}
+
+.desktopproyecto .line-3-copy-14 {
+  height: 2px;
+  left: 0;
+  position: absolute;
+  top: 542px;
+  width: 1378px;
+}
+
+.desktopproyecto .line-3-copy-12 {
+  height: 2px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1378px;
+}
+
+.desktopproyecto .categora-de-prod-2 {
+  height: 406px;
+  left: 1px;
+  position: absolute;
+  top: 548px;
+  width: 1375px;
+}
+
+.desktopproyecto .overlap-group {
+  background-color: var(--celeste);
+  height: 75px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1375px;
+}
+
+.desktopproyecto .sanitarios {
+  font-weight: 500;
+  left: 58px;
+  letter-spacing: 0.57px;
+  position: absolute;
+  top: 21px;
+  width: 133px;
+}
+
+.desktopproyecto .prod-5 {
+  height: 87px;
+  left: 70px;
+  position: absolute;
+  top: 319px;
+  width: 1078px;
+}
+
+.desktopproyecto .bitmap-container {
+  height: 84px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 75px;
+}
+
+.desktopproyecto .bitmap {
+  height: 81px;
+  left: 4px;
+  position: absolute;
+  top: 0;
+  width: 71px;
+}
+
+.desktopproyecto .bitmap-1 {
+  height: 76px;
+  left: 0;
+  position: absolute;
+  top: 8px;
+  width: 72px;
+}
+
+.desktopproyecto .ce382-090-ce382-ma {
+  left: 137px;
+  letter-spacing: 0.33px;
+  line-height: 20px;
+  position: absolute;
+  top: 7px;
+  width: 264px;
+}
+
+.desktopproyecto .date-1 {
+  font-weight: 500;
+  left: 424px;
+  letter-spacing: 0.33px;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  top: 7px;
+  white-space: nowrap;
+  width: 104px;
+}
+
+.desktopproyecto .address {
+  font-weight: 500;
+  left: 555px;
+  letter-spacing: 0.33px;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  top: 7px;
+  white-space: nowrap;
+  width: 104px;
+}
+
+.desktopproyecto .address-1 {
+  font-weight: 500;
+  left: 693px;
+  letter-spacing: 0.33px;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  top: 7px;
+  white-space: nowrap;
+  width: 104px;
+}
+
+.desktopproyecto .address-2 {
+  font-weight: 500;
+  left: 833px;
+  letter-spacing: 0.33px;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  top: 7px;
+  white-space: nowrap;
+  width: 104px;
+}
+
+.desktopproyecto .entregado {
+  color: #56a323;
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-m);
+  font-weight: 500;
+  left: 974px;
+  letter-spacing: 0.33px;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  top: 8px;
+  white-space: nowrap;
+  width: 104px;
+}
+
+.desktopproyecto .icon-estado-entregado {
+  height: 22px;
+  left: 1012px;
+  position: absolute;
+  top: 49px;
+  width: 29px;
+}
+
+.desktopproyecto .fill-container {
+  height: 22px;
+  position: relative;
+}
+
+.desktopproyecto .fill-1 {
+  height: 21px;
+  width: 26px;
+}
+
+.desktopproyecto .fill-3 {
+  height: 13px;
+  width: 13px;
+}
+
+.desktopproyecto .prod-4 {
+  height: 81px;
+  left: 68px;
+  position: absolute;
+  top: 207px;
+  width: 1080px;
+}
+
+.desktopproyecto .bitmap-2 {
+  height: 81px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 71px;
+}
+
+.desktopproyecto .ce240-029-ce240-ma {
+  left: 139px;
+  letter-spacing: 0.33px;
+  line-height: 20px;
+  position: absolute;
+  top: 7px;
+  width: 264px;
+}
+
+.desktopproyecto .date-2 {
+  font-weight: 500;
+  left: 426px;
+  letter-spacing: 0.33px;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  top: 7px;
+  white-space: nowrap;
+  width: 104px;
+}
+
+.desktopproyecto .address-3 {
+  font-weight: 500;
+  left: 557px;
+  letter-spacing: 0.33px;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  top: 7px;
+  white-space: nowrap;
+  width: 104px;
+}
+
+.desktopproyecto .address-4 {
+  font-weight: 500;
+  left: 695px;
+  letter-spacing: 0.33px;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  top: 7px;
+  white-space: nowrap;
+  width: 104px;
+}
+
+.desktopproyecto .text-1 {
+  font-weight: 500;
+  left: 835px;
+  letter-spacing: 0.33px;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  top: 7px;
+  white-space: nowrap;
+  width: 104px;
+}
+
+.desktopproyecto .icon-estado-almacen-1 {
+  height: 65px;
+  width: 103px;
+}
+
+.desktopproyecto .en-almacn {
+  font-weight: 500;
+  left: 0;
+  letter-spacing: 0.33px;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  white-space: nowrap;
+  width: 104px;
+}
+
+.desktopproyecto .icon-estado-almacen {
+  height: 26px;
+//   left: 37px;
+//   position: absolute;
+//   top: 39px;
+  width: 28px;
+}
+
+.desktopproyecto .prod-3 {
+  height: 90px;
+  left: 58px;
+  position: absolute;
+  top: 90px;
+  width: 1089px;
+}
+
+.desktopproyecto .bitmap-3 {
+  height: 90px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 85px;
+}
+
+.desktopproyecto .ce382-090-ce382-ma-1 {
+  left: 149px;
+  letter-spacing: 0.33px;
+  line-height: 20px;
+  position: absolute;
+  top: 1px;
+  width: 264px;
+}
+
+.desktopproyecto .date-3 {
+  font-weight: 500;
+  left: 436px;
+  letter-spacing: 0.33px;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  top: 1px;
+  white-space: nowrap;
+  width: 104px;
+}
+
+.desktopproyecto .address-5 {
+  font-weight: 500;
+  left: 567px;
+  letter-spacing: 0.33px;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  top: 1px;
+  white-space: nowrap;
+  width: 104px;
+}
+
+.desktopproyecto .address-6 {
+  font-weight: 500;
+  left: 705px;
+  letter-spacing: 0.33px;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  top: 1px;
+  white-space: nowrap;
+  width: 104px;
+}
+
+.desktopproyecto .address-7 {
+  font-weight: 500;
+  left: 845px;
+  letter-spacing: 0.33px;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  top: 1px;
+  white-space: nowrap;
+  width: 104px;
+}
+
+.desktopproyecto .entregado-1 {
+  color:
+#1d8d3a;
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-m);
+  font-weight: 500;
+  left: 986px;
+  letter-spacing: 0.33px;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  top: 1px;
+  white-space: nowrap;
+  width: 104px;
+}
+
+.desktopproyecto .icon-estado-entregado-1 {
+  height: 22px;
+  left: 1024px;
+  position: absolute;
+  top: 39px;
+  width: 29px;
+}
+
+.desktopproyecto .fill-container-1 {
+  height: 22px;
+  position: relative;
+}
+
+.desktopproyecto table tr{
+    padding-left: 100px !important;
+}
+
+.desktopproyecto .categora-de-prod-1 {
+  height: 298px;
+  left: 1px;
+  position: absolute;
+  top: 230px;
+  width: 1375px;
+}
+
+.desktopproyecto .cermica {
+  font-weight: 500;
+  left: 58px;
+  letter-spacing: 0.57px;
+  position: absolute;
+  top: 21px;
+  width: 128px;
+}
+
+.desktopproyecto .prod-2 {
+  height: 80px;
+  left: 58px;
+  position: absolute;
+  top: 218px;
+  width: 1089px;
+}
+
+.desktopproyecto .bitmap-4 {
+  height: 75px;
+  left: 0;
+  position: absolute;
+  top: 4px;
+  width: 92px;
+}
+
+.desktopproyecto .ce382-090-ce382-ma-2 {
+  left: 149px;
+  letter-spacing: 0.33px;
+  line-height: 20px;
+  position: absolute;
+  top: 0;
+  width: 264px;
+}
+
+.desktopproyecto .date {
+  font-weight: 500;
+  left: 436px;
+  letter-spacing: 0.33px;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  white-space: nowrap;
+  width: 104px;
+}
+
+.desktopproyecto .x500-m {
+  font-weight: 500;
+  left: 567px;
+  letter-spacing: 0.33px;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  white-space: nowrap;
+  width: 104px;
+}
+
+.desktopproyecto .x300-m {
+  font-weight: 500;
+  left: 705px;
+  letter-spacing: 0.33px;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  white-space: nowrap;
+  width: 104px;
+}
+
+.desktopproyecto .text-2 {
+  font-weight: 500;
+  left: 845px;
+  letter-spacing: 0.33px;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  white-space: nowrap;
+  width: 104px;
+}
+
+.desktopproyecto .tramitado {
+  font-weight: 500;
+  left: 986px;
+  letter-spacing: 0.33px;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  white-space: nowrap;
+  width: 104px;
+}
+
+.desktopproyecto .icon-pedido-tramitado {
+  height: 22px;
+  left: 1024px;
+  position: absolute;
+  top: 36px;
+  width: 29px;
+}
+
+.desktopproyecto .overlap-group-5 {
+  height: 22px;
+  position: relative;
+}
+
+.desktopproyecto .group-3 {
+  background-image: url(desktop-proyecto-group-3.png);
+  background-size: 100% 100%;
+  height: 13px;
+  left: 16px;
+  position: absolute;
+  top: 0;
+  width: 13px;
+}
+
+.desktopproyecto .fill-4 {
+  height: 21px;
+  width: 25px;
+}
+
+.desktopproyecto .prod-1 {
+  height: 88px;
+  left: 58px;
+  position: absolute;
+  top: 92px;
+  width: 1089px;
+}
+
+.desktopproyecto .foto-prod-1 {
+  height: 85px;
+  left: 0;
+  position: absolute;
+  top: 3px;
+  width: 92px;
+}
+
+.desktopproyecto .ce240-029-ce240-ma-1 {
+  left: 149px;
+  letter-spacing: 0.33px;
+  line-height: 20px;
+  position: absolute;
+  top: 0;
+  width: 264px;
+}
+
+.desktopproyecto .x72145-m {
+  font-weight: 500;
+  left: 567px;
+  letter-spacing: 0.33px;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  white-space: nowrap;
+  width: 104px;
+}
+
+.desktopproyecto .x72145-m-1 {
+  font-weight: 500;
+  left: 705px;
+  letter-spacing: 0.33px;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  white-space: nowrap;
+  width: 104px;
+}
+
+.desktopproyecto .x500-m-1 {
+  font-weight: 500;
+  left: 845px;
+  letter-spacing: 0.33px;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  white-space: nowrap;
+  width: 104px;
+}
+
+.desktopproyecto .icon-estado-almacen-2 {
+  height: 65px;
+  width: 103px;
+}
+
+.desktopproyecto .detalles-del-pedido {
+  background-color: var(--mine-shaft);
+  height: 170px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1376px;
+}
+
+.desktopproyecto .so14172 {
+  left: 57px;
+  letter-spacing: 0.71px;
+  position: absolute;
+  top: 30px;
+  width: 131px;
+}
+
+.desktopproyecto .btn-descargar {
+  height: 42px;
+  width: 166px;
+  padding: 10px;
+  text-align: center;
+  margin: 8px;
+}
+
+.desktopproyecto .overlap-group1 {
+  position: relative;
+}
+
+.desktopproyecto .noun-save-2209758 {
+  height: 19px;
+  width: 19px;
+}
+
+.desktopproyecto .descargar {
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 16px;
+}
+
+.desktopproyecto .btn-cerrar-pedido {
+  background-color: var(--white);
+  height: 40px;
+  left: 1154px;
+  position: absolute;
+  top: 92px;
+  width: 163px;
+}
+
+.desktopproyecto .noun-arrow-1776263-1 {
+  height: 8px;
+  left: 132px;
+  position: absolute;
+  top: 16px;
+  transform: rotate(-180deg);
+  width: 16px;
+}
+
+.desktopproyecto .cerrar-pedido {
+  font-weight: 600;
+  left: 16px;
+  letter-spacing: 0;
+  line-height: 16px;
+  position: absolute;
+  text-align: center;
+  top: 11px;
+  white-space: nowrap;
+  width: 107px;
+}
+
+.desktopproyecto .pedido {
+    background-color: var(--mine-shaft);
+    min-height: 170px;
+    padding: 30px 58px;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+.desktopproyecto .col-button {
+    float: right;
+    margin-left: auto auto;
+}
+
+.desktopproyecto .button-box-row {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: 0px;
+    display: inline-block;
+}
+
+.desktopproyecto .col-order {
+    margin-right: auto;
+}
+
+.desktopproyecto .orders {
+    position: relative;
+    margin: 50px 0px;
+}
+
+.desktopproyecto .order-reference {
+  letter-spacing: 0.71px;
+  margin-bottom: 10px;
+}
+
+.desktopproyecto .referencia-cliente {
+  letter-spacing: 0.38px;
+  line-height: 19px;
+  margin-bottom: 13px;
+}
+
+.desktopproyecto .fecha-de-formalizaci {
+  letter-spacing: 0.38px;
+  line-height: 19px;
+}
+
+.desktopproyecto .btn-ver-pedido {
+  background-color: var(--white);
+  height: 40px;
+  width: 164px;
+  color: var(__black);
+  cursor: pointer;
+  margin: 8px;
+}
+
+.desktopproyecto .noun-arrow-1776263 {
+  height: 8px;
+  left: 126px;
+  position: absolute;
+  top: 17px;
+  width: 16px;
+}
+
+.desktopproyecto .ver-pedido {
+  font-weight: 600;
+  left: 17px;
+  letter-spacing: 0;
+  line-height: 16px;
+  position: absolute;
+  text-align: center;
+  top: 11px;
+  white-space: nowrap;
+  width: 100px;
+}
+
+.desktopproyecto .matter-solo-blanc {
+  height: 15px;
+  left: 80px;
+  position: absolute;
+  top: 41px;
+  width: 150px;
+}
+
+.desktopproyecto .ateliermatterbarce {
+  font-weight: 500;
+  left: 37px;
+  letter-spacing: 0.38px;
+  line-height: 19px;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+.desktopproyecto .noun-mail-1053115 {
+  height: 14px;
+  left: 0;
+  position: absolute;
+  top: 3px;
+  width: 22px;
+}
+
+.desktopproyecto .phone {
+  font-weight: 500;
+  left: 32px;
+  letter-spacing: 0.38px;
+  line-height: 19px;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+.desktopproyecto .noun-phone-1995462 {
+  height: 18px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 18px;
+}
+
+.desktopproyecto .masa-can-palet {
+    color: var(--black);
+    font-family: var(--font-family-montserrat);
+    font-size: var(--font-size-xxxxxl);
+    font-weight: 600;
+    margin: 51px 0px !important
+}
+
+.desktopproyecto .project-title {
+    margin: auto auto;
+    vertical-align: top;
+}
+
+.desktopproyecto .project-title-text {
+    letter-spacing: 0.95px;
+}
+
+.td-center {
+    text-align: center;
+}
+
+.desktopproyecto .logo-horizontal {
+  height: 14px;
+  left: 79px;
+  position: absolute;
+  top: 26px;
+  width: 300px;
+}
+
+.desktopproyecto .border-light-td {
+    border-right: 3px solid var(--gallery);
+}
+
+/* Login Styles */
+.desktoplogin {
+  background-color: var(--white);
+}
+
+.desktoplogin .overlap-group3 {
+
+}
+
+.desktoplogin .overlap-group2 {
+  background-color: var(--black);
+  text-align: center;
+  padding-bottom: 79px;
+}
+
+.desktoplogin .alert {
+    margin-top: 20px;
+}
+
+.desktoplogin .matter-solo-blanc {
+  height: 25px;
+  width: 253px;
+  margin-top: 63px;
+}
+
+.desktoplogin .title {
+  color: var(--white);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-xxxxl);
+  font-weight: 100;
+  letter-spacing: 0;
+  line-height: 55px;
+  text-align: center;
+  margin-top: 112px;
+  white-space: nowrap;
+}
+
+.desktoplogin .logo-horizontal {
+  height: 22px;
+  width: 472px;
+}
+
+.desktoplogin .bloque-login {
+    width: 471px;
+    margin-top: 64px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.desktoplogin .boton-blanco {
+  background-color: var(--white);
+  height: 45px;
+  width: 471px;
+  margin-top: 40px;
+}
+
+.desktoplogin .iniciar-sesin {
+  color: var(--black);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-xl);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 21px;
+  text-align: center;
+  top: 11px;
+  white-space: nowrap;
+  width: 100%;
+  height: 100%;
+  background-color: var(__white);
+}
+
+.desktoplogin .overlap-group {
+    background-color: var(--black);
+    height: 49px;
+    width: 474px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+.desktoplogin .contrasea {
+    background-color: var(--black);
+    padding-left: 21px;
+    letter-spacing: 0;
+    line-height: 21px;
+    white-space: nowrap;
+    width: 100%;
+    height: 100%;
+}
+
+.desktoplogin .overlap-group1 {
+    height: 49px;
+    width: 474px;
+}
+
+.desktoplogin .email-login {
+    background-color: var(--black);
+    padding-left: 21px;
+    letter-spacing: 0;
+    line-height: 21px;
+    white-space: nowrap;
+    width: 100%;
+    height: 100%;
+}
+
+.desktoplogin .check-sesion {
+  height: 19px;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.desktoplogin .mantener-la-sesin-i {
+  letter-spacing: 0;
+  line-height: 19px;
+  white-space: nowrap;
+}
+
+.desktoplogin .rectangle {
+  background-color: var(__white);
+  height: 14px;
+  width: 14px;
+}
+
+.desktoplogin .identifcate-para-ac {
+    color: var(--white);
+    font-family: var(--font-family-montserrat);
+    font-size: var(--font-size-xl);
+    font-weight: 300;
+    letter-spacing: 0;
+    line-height: 21px;
+    text-align: center;
+    margin-top: 120px;
+}
