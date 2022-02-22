@@ -607,9 +607,26 @@
     }
 
     .desktopproyecto .col-3-project{
-//         display: inline-block;
         margin-top: 18px;
         width: 45%;
         vertical-align: top;
+    }
+
+    .desktopproyecto .padding-left{
+        padding-left: 19px;
+    }
+
+    .desktopproyecto .border-light-td {
+//         border-right: 3px solid var(--gallery);
+    }
+
+    .desktopproyecto .img-thumbnail {
+        width: 55px;
+        max-height:
+    }
+
+    .desktopproyecto table.table table th, .desktopproyecto table.table table td {
+        vertical-align: middle;
+        padding: 1rem 0;
     }
 }

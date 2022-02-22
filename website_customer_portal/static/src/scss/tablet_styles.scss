@@ -608,4 +608,16 @@
         width: 45%;
         vertical-align: top;
     }
+
+    .desktopproyecto .padding-left{
+        padding-left: 70px;
+    }
+
+    .desktopproyecto .border-light-td {
+        border-right: 3px solid var(--gallery);
+    }
+
+    .desktopproyecto .img-thumbnail {
+        width: 75px;
+    }
 }
