@@ -320,14 +320,14 @@
                                                                                   t-if="line.x_date_expected"/>
                                                                         </td>
                                                                         <td class="col-md-1 border-light-td text-center montserrat-medium-eerie-black-14px">
-                                                                            <span t-field="line.x_ordered_quantity"/>
-                                                                            <span t-field="line.x_qty_received_uom_id"/>
+                                                                            <span t-field="line.product_uom_qty"/>
+                                                                            <span t-field="line.product_uom"/>
                                                                         </td>
                                                                         <td class="col-md-1 border-light-td text-center montserrat-medium-eerie-black-14px">
                                                                             <span t-attf-class="#{'color-green' if line.x_qty_received > 0 else 'color-black'}"
                                                                                   t-field="line.x_qty_received"/>
                                                                             <span t-attf-class="#{'color-green' if line.x_qty_received > 0 else 'color-black'}"
-                                                                                  t-field="line.x_qty_received_uom_id"/>
+                                                                                  t-field="line.product_uom"/>
                                                                         </td>
                                                                         <td class="col-md-1 border-light-td text-center montserrat-medium-eerie-black-14px">
                                                                             <span t-field="line.qty_delivered"/>
@@ -407,14 +407,14 @@
                                                                                 </tr>
                                                                                 <tr style="border-bottom: 0;">
                                                                                     <td class="border-light-td text-center montserrat-medium-eerie-black-14px" style="border-top:0;" colspan="2">
-                                                                                        <span t-field="line.x_ordered_quantity"/>
-                                                                                        <span t-field="line.x_qty_received_uom_id"/>
+                                                                                        <span t-field="line.product_uom_qty"/>
+                                                                                        <span t-field="line.product_uom"/>
                                                                                     </td>
                                                                                     <td class="border-light-td text-center montserrat-medium-eerie-black-14px" style="border-top:0;" colspan="2">
                                                                                         <span t-attf-class="#{'color-green' if line.x_qty_received > 0 else 'color-black'}"
                                                                                               t-field="line.x_qty_received"/>
                                                                                         <span t-attf-class="#{'color-green' if line.x_qty_received > 0 else 'color-black'}"
-                                                                                              t-field="line.x_qty_received_uom_id"/>
+                                                                                              t-field="line.product_uom"/>
                                                                                     </td>
                                                                                     <td class="border-light-td text-center montserrat-medium-eerie-black-14px" style="border-top:0;" colspan="2">
                                                                                         <span t-field="line.qty_delivered"/>
@@ -452,15 +452,15 @@
                                                                         </td>
                                                                         <td class="col-md-1 border-light-td text-center montserrat-medium-eerie-black-14px">
                                                                             <span>Pedida</span><br/>
-                                                                            <span t-field="line.x_ordered_quantity"/>
-                                                                            <span t-field="line.x_qty_received_uom_id"/>
+                                                                            <span t-field="line.product_uom_qty"/>
+                                                                            <span t-field="line.product_uom"/>
                                                                         </td>
                                                                         <td class="col-md-1 border-light-td text-center montserrat-medium-eerie-black-14px">
                                                                             <span>En almacén</span><br/>
                                                                             <span t-attf-class="#{'color-green' if line.x_qty_received > 0 else 'color-black'}"
                                                                                   t-field="line.x_qty_received"/>
                                                                             <span t-attf-class="#{'color-green' if line.x_qty_received > 0 else 'color-black'}"
-                                                                                  t-field="line.x_qty_received_uom_id"/>
+                                                                                  t-field="line.product_uom"/>
                                                                         </td>
                                                                         <td class="col-md-1 border-light-td text-center montserrat-medium-eerie-black-14px">
                                                                             <span>Enviada</span><br/>
