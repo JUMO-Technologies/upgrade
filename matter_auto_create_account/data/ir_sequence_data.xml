@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Sequences for Partner -->
+        <record id="seq_res_partner" model="ir.sequence">
+            <field name="name">Partner Account</field>
+            <field name="code">res.partner</field>
+            <field name="padding">4</field>
+            <field name="number_next_actual">1000</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+         <!-- Sequences for Provider -->
+        <record id="seq_res_provider" model="ir.sequence">
+            <field name="name">Provider Account</field>
+            <field name="code">res.provider</field>
+            <field name="padding">4</field>
+            <field name="number_next_actual">1000</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

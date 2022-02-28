@@ -7,12 +7,12 @@
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale_stock.view_order_form_inherit_sale_stock"/>
             <field name="arch" type="xml">
-                <button name="action_view_delivery" position="after">
-                    <button type="object" name="action_view_purchase_picking" class="oe_stat_button" icon="fa-truck"
-                            attrs="{'invisible': [('purchase_picking_counts', '=', 0)]}" groups="base.group_user">
-                        <field name="purchase_picking_counts" widget="statinfo" string="Receptions"/>
-                    </button>
-                </button>
+<!--                <button name="action_view_delivery" position="after">-->
+<!--                    <button type="object" name="action_view_purchase_picking" class="oe_stat_button" icon="fa-truck"-->
+<!--                            attrs="{'invisible': [('purchase_picking_counts', '=', 0)]}" groups="base.group_user">-->
+<!--                        <field name="purchase_picking_counts" widget="statinfo" string="Receptions"/>-->
+<!--                    </button>-->
+<!--                </button>-->
                 <field name="warehouse_id" position="before">
                     <field name="team_warehouse_id" invisible="1"/>
                 </field>
