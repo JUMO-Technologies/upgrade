@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <template id="report_invoice_document" inherit_id="account.report_invoice_document">
+            <div name="origin" position="after">
+                <div class="col-auto mw-100 mb-2" t-if="o.team_id" name="team">
+                    <strong>Sale Team:</strong>
+                    <p class="m-0" t-field="o.team_id"/>
+                </div>
+            </div>
+        </template>
+    
+    </data>
+</odoo>

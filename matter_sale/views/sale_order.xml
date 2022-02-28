@@ -7,17 +7,50 @@
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale_stock.view_order_form_inherit_sale_stock"/>
             <field name="arch" type="xml">
-                <button name="action_view_delivery" position="after">
-                    <button type="object" name="action_view_purchase_picking" class="oe_stat_button" icon="fa-truck"
-                            attrs="{'invisible': [('purchase_picking_counts', '=', 0)]}" groups="base.group_user">
-                        <field name="purchase_picking_counts" widget="statinfo" string="Receptions"/>
-                    </button>
-                </button>
+<!--                <button name="action_view_delivery" position="after">-->
+<!--                    <button type="object" name="action_view_purchase_picking" class="oe_stat_button" icon="fa-truck"-->
+<!--                            attrs="{'invisible': [('purchase_picking_counts', '=', 0)]}" groups="base.group_user">-->
+<!--                        <field name="purchase_picking_counts" widget="statinfo" string="Receptions"/>-->
+<!--                    </button>-->
+<!--                </button>-->
                 <field name="warehouse_id" position="before">
                     <field name="team_warehouse_id" invisible="1"/>
                 </field>
             </field>
         </record>
+
+
+     <record id="view_order_form_matter" model="ir.ui.view">
+            <field name="name">sale.order.form.matter.view</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="priority">30</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='sale_order_template_id']" position="after">
+                    <field name="user_id"/>
+                    <field name="team_id" kanban_view_ref="%(sales_team.crm_team_view_kanban)s" options="{'no_create': True}"/>
+                </xpath>
+                <xpath expr="//page/group/group/field[@name='user_id']" position="replace">
+
+                </xpath>
+                <xpath expr="//page/group/group/field[@name='team_id']" position="replace">
+
+                </xpath>
+            </field>
+      </record>
+
+
+        
+        <record model="ir.actions.server" id="ir_actions_reemplazar">
+            <field name="name">Reemplazar</field>
+            <field name="model_id" ref="website_sale.model_product_public_category"/>
+            <field name="binding_model_id" ref="website_sale.model_product_public_category" />
+            <field name="state">code</field>
+            <field name="code">
+                if records:
+                    action = records._replace_product()
+            </field>
+    </record>
 
     </data>
 </odoo>
