@@ -83,7 +83,12 @@
                 </ul>
                 <ul class="list-inline" t-else="">
                     <li t-if="company.name" class="list-inline-item"><i class="fa fa-building-o" role="img" aria-label="Company" title="Company"/> <span t-field="company.name"/></li>
-                    <li t-if="o.team_id.address" class="list-inline-item"><i class="fa fa-address-book" role="img" aria-label="Address" title="Address"/> <span t-field="o.team_id.street"/><span t-field="o.team_id.street2"/></li>
+                    <li t-if="company.street" class="list-inline-item"><i class="fa fa-address-book" role="img" aria-label="Address" title="Address"/>
+                        <span t-field="company.street"/>
+                        <span t-field="company.street2" t-if="company.street2"/>
+                        <span t-field="company.zip" t-if="company.zip"/>
+                        <span t-field="company.city" t-if="company.city"/>
+                    </li>
                     <li t-if="company.vat" class="list-inline-item"><i class="fa fa-building-o" role="img" aria-label="Fiscal number"/><t t-esc="company.country_id.vat_label or 'Tax ID'"/>: <span t-field="company.vat"/></li>
                 </ul>
             </xpath>
