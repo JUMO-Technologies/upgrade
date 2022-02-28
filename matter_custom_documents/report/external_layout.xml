@@ -23,8 +23,11 @@
 
         <template id="external_layout_background" inherit_id="web.external_layout_background">
             <xpath expr="//img[@t-if='company.logo']" position="replace">
-                <t t-set="team_id" t-value="o._name == 'purchase.order' and o.sale_team_id or o.team_id"/>
-                <t t-if="team_id.assign_address">
+                <t t-if="'sale_team_id' in o._fields" t-set="team_id" t-value="o.sale_team_id"/>
+                <t t-elif="'team_id' in o._fields" t-set="team_id" t-value="o.team_id"/>
+                <t t-elif="o._name == 'stock.picking'" t-set="team_id" t-value="o.sale_id.team_id"/>
+                <t t-else="" t-set="team_id" t-value="False"/>
+                <t t-if="team_id and team_id.assign_address">
                     <img t-if="team_id.logo" t-att-src="image_data_uri(team_id.logo)" class="float-left"
                          alt="Logo"/>
                 </t>
@@ -35,7 +38,7 @@
                      style="height: 115px; max-height: 115px;" class="float-right" alt="Logo"/>
             </xpath>
             <xpath expr="//div[@class='float-left company_address']" position="replace">
-                <t t-if="team_id.assign_address">
+                <t t-if="team_id and team_id.assign_address">
                     <div class="float-left company_address">
                         <div>
                             <div>
@@ -77,7 +80,7 @@
                 </t>
             </xpath>
             <xpath expr="//div[@t-attf-class='o_company_#{company.id}_layout footer o_background_footer']//ul[hasclass('list-inline')]" position="replace">
-                <ul class="list-inline" t-if="team_id.assign_address">
+                <ul class="list-inline" t-if="team_id and team_id.assign_address">
                     <li t-if="company.name" class="list-inline-item"><i class="fa fa-building-o" role="img" aria-label="Company" title="Company"/> <span t-field="company.name"/></li>
                     <li t-if="team_id.address" class="list-inline-item"><i class="fa fa-address-book" role="img" aria-label="Address" title="Address"/> <span t-field="team_id.address"/></li>
                     <li t-if="company.vat" class="list-inline-item"><i class="fa fa-building-o" role="img" aria-label="Fiscal number"/><t t-esc="company.country_id.vat_label or 'Tax ID'"/>: <span t-field="company.vat"/></li>
