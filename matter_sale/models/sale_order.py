@@ -62,3 +62,17 @@ class SaleOrder(models.Model):
                 result['views'] = form_view
             result['res_id'] = pick_ids.id
         return result
+
+
+class ProductPublicCategory(models.Model):
+    _inherit = "product.public.category"
+
+    def _replace_product(self):
+        for item in self:
+            texto = item.name
+            buscar = "Matter Barcelona"
+            reemplazar_por = "Matter Atelier"
+            text_name = texto.replace(buscar, reemplazar_por)
+            item.write({'name': text_name})
+
+

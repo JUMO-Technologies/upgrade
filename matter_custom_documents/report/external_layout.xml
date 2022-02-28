@@ -4,16 +4,17 @@
 
         <template id="external_layout_standard" inherit_id="web.external_layout_standard">
             <xpath expr="//div[@class='col-3 mb4']" position="replace">
-                 <div class="col-6 mb4">
-                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 100px;" alt="Logo"/>
-                 </div>
+                <div class="col-6 mb4">
+                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 100px;"
+                         alt="Logo"/>
+                </div>
             </xpath>
             <xpath expr="//div[@name='moto']" position="replace">
             </xpath>
             <xpath expr="//div[@class='col-6 mb4']" position="after">
                 <div class="col-4 text-right">
                     <img t-att-src="'/matter_custom_documents/static/image/image.png'"
-                        style="margin-right: 70px;height: 100px; max-height: 150px;" alt="Logo"/>
+                         style="margin-right: 70px;height: 100px; max-height: 150px;" alt="Logo"/>
                 </div>
                 <div class="col-2" style="margin-top:30px;" t-field="company.report_header" name="moto"/>
             </xpath>
@@ -21,11 +22,77 @@
 
 
         <template id="external_layout_background" inherit_id="web.external_layout_background">
-            <xpath expr="//img[@t-if='company.logo']" position="after">
+            <xpath expr="//img[@t-if='company.logo']" position="replace">
+                <t t-if="o.team_id.assign_address">
+                    <img t-if="o.team_id.logo" t-att-src="image_data_uri(o.team_id.logo)" class="float-left"
+                         alt="Logo"/>
+                </t>
+                <t t-else="">
+                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" class="float-left" alt="Logo"/>
+                </t>
                 <img t-att-src="'/matter_custom_documents/static/image/image.png'"
                      style="height: 115px; max-height: 115px;" class="float-right" alt="Logo"/>
             </xpath>
+            <xpath expr="//div[@class='float-left company_address']" position="replace">
+                <t t-if="o.team_id.assign_address">
+                    <div class="float-left company_address">
+                        <div>
+                            <div>
+                                <li t-if="o.team_id.address" class="list-inline-item"><span class="o_force_ltr"
+                                                                                            t-field="o.team_id.address"/></li>
+                                <li t-if="o.team_id.cp" class="list-inline-item"><span class="o_force_ltr"
+                                                                                       t-field="o.team_id.cp"/></li>
+                            </div>
+                            <div>
+                                <span t-field="o.team_id.phone"/>
+                            </div>
+                            <div>
+                                <span t-field="o.team_id.email"/>
+                            </div>
+                            <span t-field="o.team_id.website"/>
+                        </div>
+                    </div>
+                </t>
+                <t t-else="">
+                    <div class="float-left company_address">
+                        <div>
+                            <div>
+                                <li t-if="company.street" class="list-inline-item"><span class="o_force_ltr"
+                                                                                         t-field="company.street"/></li>
+                                <li t-if="company.zip" class="list-inline-item"><span class="o_force_ltr"
+                                                                                      t-field="company.zip"/></li>
+                                <li t-if="company.city" class="list-inline-item"><span class="o_force_ltr"
+                                                                                       t-field="company.city"/></li>
+                            </div>
+                            <div>
+                                <span t-field="company.phone"/>
+                            </div>
+                            <div>
+                                <span t-field="company.email"/>
+                            </div>
+                            <span t-field="company.website"/>
+                        </div>
+                    </div>
+                </t>
+            </xpath>
+            <xpath expr="//div[@t-attf-class='o_company_#{company.id}_layout footer o_background_footer']//ul[hasclass('list-inline')]" position="replace">
+                <ul class="list-inline" t-if="o.team_id.assign_address">
+                    <li t-if="company.name" class="list-inline-item"><i class="fa fa-building-o" role="img" aria-label="Company" title="Company"/> <span t-field="company.name"/></li>
+                    <li t-if="o.team_id.address" class="list-inline-item"><i class="fa fa-address-book" role="img" aria-label="Address" title="Address"/> <span t-field="o.team_id.address"/></li>
+                    <li t-if="company.vat" class="list-inline-item"><i class="fa fa-building-o" role="img" aria-label="Fiscal number"/><t t-esc="company.country_id.vat_label or 'Tax ID'"/>: <span t-field="company.vat"/></li>
+                </ul>
+                <ul class="list-inline" t-else="">
+                    <li t-if="company.name" class="list-inline-item"><i class="fa fa-building-o" role="img" aria-label="Company" title="Company"/> <span t-field="company.name"/></li>
+                    <li t-if="company.street" class="list-inline-item"><i class="fa fa-address-book" role="img" aria-label="Address" title="Address"/>
+                        <span t-field="company.street"/>
+                        <span t-field="company.street2" t-if="company.street2"/>
+                        <span t-field="company.zip" t-if="company.zip"/>
+                        <span t-field="company.city" t-if="company.city"/>
+                    </li>
+                    <li t-if="company.vat" class="list-inline-item"><i class="fa fa-building-o" role="img" aria-label="Fiscal number"/><t t-esc="company.country_id.vat_label or 'Tax ID'"/>: <span t-field="company.vat"/></li>
+                </ul>
+            </xpath>
         </template>
-    
+
     </data>
 </odoo>
