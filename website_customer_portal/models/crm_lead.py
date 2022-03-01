@@ -26,3 +26,9 @@ class CRMLead(models.Model):
         return self.env["sale.order"].search(
             [("opportunity_id", "=", lead_id.id), ("state", "not in", ["draft", "sent"])]
         )
+
+
+class CrmStage(models.Model):
+    _inherit = "crm.stage"
+
+    hide_from_delivery_portal = fields.Boolean("Ocultar del Portal Delivery", default=False)

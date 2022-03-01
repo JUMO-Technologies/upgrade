@@ -15,7 +15,8 @@ class CustomerPortal(CustomerPortal):
 
     def _prepare_dashboard_portal_values(self, access_token):
         values = self._prepare_home_portal_values()
-        domain = [("access_token", "=", access_token), ('stage_id.is_won', '!=', True)]
+        domain = [("access_token", "=", access_token),
+                  ('stage_id.hide_from_delivery_portal', '!=', True)]
         lead_id = request.env["crm.lead"].with_user(SUPERUSER_ID).search(domain)
         down_payment = int(request.env['ir.config_parameter'].sudo().get_param('sale.default_deposit_product_id'))
         values.update(lead_sales=lead_id.get_sale_by_oppotunity_id(lead_id), lead_id=lead_id, down_payment=down_payment)
