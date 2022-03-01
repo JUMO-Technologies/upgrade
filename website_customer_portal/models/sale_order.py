@@ -71,7 +71,12 @@ class SaleOrder(models.Model):
     @api.depends("order_line.product_state")
     def _compute_full_delivered(self):
         for order in self:
-            order.full_delivered = not any(l.product_state != 'delivered' for l in order.order_line)
+            down_payment = int(self.env['ir.config_parameter'].sudo().get_param('sale.default_deposit_product_id'))
+            domain = [('display_type', '=', False), ('product_id', '!=', down_payment),
+                      ('product_id.categ_id', '!=', 119), ('product_uom_qty', '>', 0),
+                      ('price_subtotal', '>=', 0)]
+            delivery_line = order.order_line.filtered_domain(domain)
+            order.full_delivered = not any(l.product_state != 'delivered' for l in delivery_line)
 
 
 class SaleOrderLine(models.Model):
@@ -141,6 +146,6 @@ class SaleOrderLine(models.Model):
             stock_move = self.env["stock.move"].search(domain, order="date_expected desc", limit=1)
 
             if rec.product_state == "approved" or not stock_move:
-                rec.x_date_expected = rec.order_id.commitment_date
+                rec.x_date_expected = rec.order_id.date_order
             else:
                 rec.x_date_expected = stock_move.date_expected
