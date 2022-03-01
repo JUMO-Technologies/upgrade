@@ -426,7 +426,7 @@
                                                                     </tr>
 
                                                                     <tr t-attf-class="invisible-tablet #{'color-green' if line.product_state == 'delivered' else 'color-black'}">
-                                                                        <td class="col-md-4 border-light-td padding-left montserrat-medium-eerie-black-14px" colspan="4">
+                                                                        <td class="col-md-4 border-light-td padding-left montserrat-normal-eerie-black-14px" colspan="4">
                                                                             <div class="row">
                                                                                 <div class="col-sm-12 col-md-2">
                                                                                     <img t-att-src="line.product_id.image_url"
@@ -440,36 +440,36 @@
                                                                                 </div>
                                                                             </div>
                                                                         </td>
-                                                                        <td class="col-md-1 border-light-td text-center montserrat-medium-eerie-black-14px td-center" colspan="2">
-                                                                            <span><b>Llegada al almacén</b></span><br/><br/>
-                                                                            <span t-esc="line.x_date_expected.strftime('%d/%m/%Y')"
+                                                                        <td class="col-md-1 border-light-td text-center td-center" colspan="2">
+                                                                            <span class="montserrat-semi-bold-eerie-black-14px"><b>Llegada al almacén</b></span><br/><br/>
+                                                                            <span class="montserrat-medium-eerie-black-13px" t-esc="line.x_date_expected.strftime('%d/%m/%Y')"
                                                                                   t-if="line.x_date_expected"/>
                                                                         </td>
                                                                     </tr>
                                                                     <tr style="border-bottom: 2px solid black;" t-attf-class="invisible-tablet #{'color-green' if line.product_state == 'delivered' else 'color-black'}">
-                                                                        <td class="col-md-1 text-center text-middle montserrat-medium-eerie-black-14px">
+                                                                        <td class="col-md-1 text-center text-middle montserrat-semi-bold-eerie-black-14p">
                                                                             <span><b>Cantidad</b></span>
                                                                         </td>
-                                                                        <td class="col-md-1 text-center montserrat-medium-eerie-black-14px">
+                                                                        <td class="col-md-1 text-center montserrat-normal-eerie-black-14px">
                                                                             <span>Pedida</span><br/><br/>
-                                                                            <span t-field="line.product_uom_qty"/>
-                                                                            <span t-field="line.product_uom"/>
+                                                                            <span class="montserrat-medium-eerie-black-13px" t-field="line.product_uom_qty"/>
+                                                                            <span class="montserrat-medium-eerie-black-13px" t-field="line.product_uom"/>
                                                                         </td>
-                                                                        <td class="col-md-1 text-center montserrat-medium-eerie-black-14px">
+                                                                        <td class="col-md-1 text-center montserrat-normal-eerie-black-14px">
                                                                             <span>En almacén</span><br/><br/>
-                                                                            <span t-attf-class="#{'color-green' if line.x_qty_received > 0 else 'color-black'}"
+                                                                            <span t-attf-class="montserrat-medium-eerie-black-13px #{'color-green' if line.x_qty_received > 0 else 'color-black'}"
                                                                                   t-field="line.x_qty_received"/>
-                                                                            <span t-attf-class="#{'color-green' if line.x_qty_received > 0 else 'color-black'}"
+                                                                            <span t-attf-class="montserrat-medium-eerie-black-13px #{'color-green' if line.x_qty_received > 0 else 'color-black'}"
                                                                                   t-field="line.product_uom"/>
                                                                         </td>
-                                                                        <td class="col-md-1 border-light-td text-center montserrat-medium-eerie-black-14px">
+                                                                        <td class="col-md-1 border-light-td text-center montserrat-normal-eerie-black-14px">
                                                                             <span>Enviada</span><br/><br/>
-                                                                            <span t-field="line.qty_delivered"/>
-                                                                            <span t-field="line.product_uom"/>
+                                                                            <span class="montserrat-medium-eerie-black-13px" t-field="line.qty_delivered"/>
+                                                                            <span class="montserrat-medium-eerie-black-13px" t-field="line.product_uom"/>
                                                                         </td>
-                                                                        <td class="col-md-2 text-center montserrat-medium-eerie-black-14px" colspan="2">
-                                                                            <span><b>Estado</b></span><br/><br/>
-                                                                            <span t-field="line.product_state" class="margin-right"/>
+                                                                        <td class="col-md-2 text-center montserrat-normal-eerie-black-14px" colspan="2">
+                                                                            <span class="montserrat-semi-bold-eerie-black-14p"><b>Estado</b></span><br/><br/>
+                                                                            <span t-field="line.product_state" class="margin-right montserrat-medium-eerie-black-13px"/>
                                                                             <t t-if="line.product_state=='delivered'">
                                                                                 <span class="fill-container-1">
                                                                                     <img class="fill-1"
