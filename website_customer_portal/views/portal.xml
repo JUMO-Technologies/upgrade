@@ -291,7 +291,7 @@
                                                                 <t t-if="line.display_type == 'line_section'">
                                                                     <t t-set="last_section" t-value="line"/>
                                                                 </t>
-                                                                <t t-if="not line.display_type and line.product_id.id != down_payment and line.product_id.categ_id.id != 119 and line.product_uom_qty != 0">
+                                                                <t t-if="not line.display_type and line.product_id.id != down_payment and line.product_id.categ_id.id != 119 and line.product_uom_qty != 0 and line.product_uom_qty > 0 and line.price_subtotal >= 0">
                                                                     <tr t-if="last_section"
                                                                         class="rectangle">
                                                                         <td class="padding-left border-light-td montserrat-medium-black-24px"

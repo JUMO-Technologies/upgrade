@@ -122,11 +122,7 @@ class SaleOrderLine(models.Model):
         purchase_line = self.env["purchase.order.line"]
         # picking = self.env["stock.picking"]
         for rec in self:
-            origin = rec.mapped("order_id").name
-            domain = [("order_id.origin", "=", origin), ("product_id", "=", rec.product_id.id)]
-            line = purchase_line.search(domain, limit=1, order="id desc")
-
-            if rec.product_uom_qty == rec.qty_delivered:
+            if rec.product_uom_qty <= rec.qty_delivered:
                 rec.product_state = "delivered"
             else:
                 rec.product_state = "processed"
