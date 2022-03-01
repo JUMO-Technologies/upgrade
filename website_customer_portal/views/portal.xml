@@ -361,7 +361,7 @@
 
                                                                     <tr t-attf-class="invisible-desktop #{'color-green' if line.product_state == 'delivered' else 'color-black'}"
                                                                         style="border-bottom: 2px solid black;">
-                                                                        <td style="border-top:0, padding-bottom: 0; padding-top: 0;"
+                                                                        <td style="padding-top: 0;"
                                                                             class="border-light-td padding-left montserrat-medium-eerie-black-14px" colspan="6">
                                                                             <table>
                                                                                 <tr>
@@ -441,35 +441,35 @@
                                                                             </div>
                                                                         </td>
                                                                         <td class="col-md-1 border-light-td text-center montserrat-medium-eerie-black-14px td-center" colspan="2">
-                                                                            <span><b>Llegada al almacén</b></span><br/>
+                                                                            <span><b>Llegada al almacén</b></span><br/><br/>
                                                                             <span t-esc="line.x_date_expected.strftime('%d/%m/%Y')"
                                                                                   t-if="line.x_date_expected"/>
                                                                         </td>
                                                                     </tr>
-                                                                    <tr t-attf-class="invisible-tablet #{'color-green' if line.product_state == 'delivered' else 'color-black'}">
-                                                                        <td class="col-md-1 border-light-td text-center montserrat-medium-eerie-black-14px">
+                                                                    <tr style="border-bottom: 2px solid black;" t-attf-class="invisible-tablet #{'color-green' if line.product_state == 'delivered' else 'color-black'}">
+                                                                        <td class="col-md-1 text-center text-middle montserrat-medium-eerie-black-14px">
                                                                             <span><b>Cantidad</b></span>
                                                                         </td>
-                                                                        <td class="col-md-1 border-light-td text-center montserrat-medium-eerie-black-14px">
-                                                                            <span>Pedida</span><br/>
+                                                                        <td class="col-md-1 text-center montserrat-medium-eerie-black-14px">
+                                                                            <span>Pedida</span><br/><br/>
                                                                             <span t-field="line.product_uom_qty"/>
                                                                             <span t-field="line.product_uom"/>
                                                                         </td>
-                                                                        <td class="col-md-1 border-light-td text-center montserrat-medium-eerie-black-14px">
-                                                                            <span>En almacén</span><br/>
+                                                                        <td class="col-md-1 text-center montserrat-medium-eerie-black-14px">
+                                                                            <span>En almacén</span><br/><br/>
                                                                             <span t-attf-class="#{'color-green' if line.x_qty_received > 0 else 'color-black'}"
                                                                                   t-field="line.x_qty_received"/>
                                                                             <span t-attf-class="#{'color-green' if line.x_qty_received > 0 else 'color-black'}"
                                                                                   t-field="line.product_uom"/>
                                                                         </td>
                                                                         <td class="col-md-1 border-light-td text-center montserrat-medium-eerie-black-14px">
-                                                                            <span>Enviada</span><br/>
+                                                                            <span>Enviada</span><br/><br/>
                                                                             <span t-field="line.qty_delivered"/>
                                                                             <span t-field="line.product_uom"/>
                                                                         </td>
                                                                         <td class="col-md-2 text-center montserrat-medium-eerie-black-14px" colspan="2">
-                                                                            <span><b>Estado</b></span><br/>
-                                                                            <span t-field="line.product_state"/>
+                                                                            <span><b>Estado</b></span><br/><br/>
+                                                                            <span t-field="line.product_state" class="margin-right"/>
                                                                             <t t-if="line.product_state=='delivered'">
                                                                                 <span class="fill-container-1">
                                                                                     <img class="fill-1"
