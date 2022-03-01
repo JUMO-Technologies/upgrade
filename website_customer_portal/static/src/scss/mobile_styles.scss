@@ -16,6 +16,7 @@
       --font-size-m: 14px;
       --font-size-l: 15px;
       --font-size-xxl: 20px;
+      --font-size-xxyl: 24px;
       --font-size-xxxl: 34px;
       --font-size-xxxxl: 35px;
       --font-size-xxxxxl: 40px;
@@ -535,9 +536,10 @@
     }
 
     .desktopproyecto .masa-can-palet {
+        display: block;
         color: var(--black);
         font-family: var(--font-family-montserrat);
-        font-size: var(--font-size-xxxl);
+        font-size: var(--font-size-xxyl);
         letter-spacing: 0.57px;
         font-weight: 600;
         margin: 51px 0px !important
@@ -592,8 +594,6 @@
       text-align: center;
       cursor: pointer;
       margin-top: 30px;
-      margin-left: 8px;
-      margin-right: 8px;
       margin-bottom: 8px;
     }
 
@@ -603,7 +603,7 @@
       padding: 10px;
       text-align: center;
       cursor: pointer;
-      margin: 8px;
+      margin: 8px 0;
     }
 
     .desktopproyecto .col-3-project{
@@ -628,5 +628,15 @@
     .desktopproyecto table.table table th, .desktopproyecto table.table table td {
         vertical-align: middle;
         padding: 1rem 0;
+    }
+
+    .desktopproyecto .col-2-project{
+        margin-top: 18px;
+        vertical-align: top;
+    }
+
+    .desktopproyecto .tag-float-right {
+        float: right;
+        margin-top: 10px;
     }
 }

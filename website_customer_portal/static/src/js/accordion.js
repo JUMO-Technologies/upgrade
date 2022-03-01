@@ -8,23 +8,11 @@
             $span = $(this).find("span.ver-pedido");
             if ($article.css('display') == 'block'){
                 $article.css("display", 'none');
-                $img.css({
-                  'transform': 'rotate(0deg)',
-                  '-ms-transform': 'rotate(0deg)',
-                  '-moz-transform': 'rotate(0deg)',
-                  '-webkit-transform': 'rotate(0deg)',
-                  '-o-transform': 'rotate(0deg)'
-                });
+                $img.removeClass("rotate-image");
                 $span.html("Ver pedido");
             } else {
                 $article.css("display", 'block');
-                $img.css({
-                  'transform': 'rotate(180deg)',
-                  '-ms-transform': 'rotate(180deg)',
-                  '-moz-transform': 'rotate(180deg)',
-                  '-webkit-transform': 'rotate(180deg)',
-                  '-o-transform': 'rotate(180deg)'
-                });
+                $img.addClass("rotate-image");
                 $span.html("Cerrar pedido");
             }
         });

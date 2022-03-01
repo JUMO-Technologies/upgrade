@@ -309,7 +309,7 @@ ul.ac-list {
 
 .desktopproyecto .dir-envio-1 {
   position: relative;
-  margin-bottom: 20.1px;
+  margin-bottom: 50px;
 }
 
 .desktopproyecto .contacto-obra {
@@ -331,13 +331,6 @@ ul.ac-list {
   top: 27px;
   white-space: nowrap;
   width: 222px;
-}
-
-.desktopproyecto .col-2-project{
-    display: inline-block;
-    margin-top: 18px;
-    width: 54%;
-    vertical-align: top;
 }
 
 .desktopproyecto .line-2 {
@@ -1203,13 +1196,20 @@ ul.ac-list {
   margin-right: 20px;
 }
 
-.desktopproyecto .noun-arrow-1776263-1 {
-    height: 8px;
-    left: 132px;
-    position: absolute;
-    top: 16px;
-    transform: rotate(-180deg);
-    width: 16px;
+.desktopproyecto .rotate-image {
+    transform: rotate(180deg) !important;
+    -ms-transform: rotate(180deg) !important;
+    -moz-transform: rotate(180deg) !important;
+    -webkit-transform: rotate(180deg) !important;
+    -o-transform: rotate(180deg) !important;
+}
+
+.desktopproyecto .text-bottom {
+    vertical-align: bottom !important;
+}
+
+.desktopproyecto .text-top {
+    vertical-align: top !important;
 }
 
 .desktopproyecto .cerrar-pedido {
