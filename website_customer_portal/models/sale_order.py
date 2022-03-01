@@ -140,7 +140,7 @@ class SaleOrderLine(models.Model):
             ]
             stock_move = self.env["stock.move"].search(domain, order="date_expected desc", limit=1)
 
-            if rec.product_state == "approved":
+            if rec.product_state == "approved" or not stock_move:
                 rec.x_date_expected = rec.order_id.commitment_date
             else:
                 rec.x_date_expected = stock_move.date_expected
