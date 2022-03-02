@@ -80,12 +80,7 @@
                 </t>
             </xpath>
             <xpath expr="//div[@t-attf-class='o_company_#{company.id}_layout footer o_background_footer']//ul[hasclass('list-inline')]" position="replace">
-                <ul class="list-inline" t-if="team_id and team_id.assign_address">
-                    <li t-if="company.name" class="list-inline-item"><i class="fa fa-building-o" role="img" aria-label="Company" title="Company"/> <span t-field="company.name"/></li>
-                    <li t-if="team_id.address" class="list-inline-item"><i class="fa fa-address-book" role="img" aria-label="Address" title="Address"/> <span t-field="team_id.address"/></li>
-                    <li t-if="company.vat" class="list-inline-item"><i class="fa fa-building-o" role="img" aria-label="Fiscal number"/><t t-esc="company.country_id.vat_label or 'Tax ID'"/>: <span t-field="company.vat"/></li>
-                </ul>
-                <ul class="list-inline" t-else="">
+                <ul class="list-inline">
                     <li t-if="company.name" class="list-inline-item"><i class="fa fa-building-o" role="img" aria-label="Company" title="Company"/> <span t-field="company.name"/></li>
                     <li t-if="company.street" class="list-inline-item"><i class="fa fa-address-book" role="img" aria-label="Address" title="Address"/>
                         <span t-field="company.street"/>
