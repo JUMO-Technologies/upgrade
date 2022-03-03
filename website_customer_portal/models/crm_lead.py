@@ -33,12 +33,6 @@ class CRMLead(models.Model):
         )
 
     @api.model
-    def _add_field(self, name, field):
-        res = super(CRMLead, self)._add_field(name, field)
-
-        return res
-
-    @api.model
     def _name_search(self, name='', args=None, operator='ilike', limit=100, name_get_uid=None):
         # private implementation of name_search, allows passing a dedicated user
         # for the name_get part to solve some access rights issues
@@ -61,7 +55,6 @@ class CRMLead(models.Model):
                     args += [("id", operator, vals0), ("name", operator, vals1)]
                 else:
                     args += [("name", operator, name)]
-
         ids = self._search(args, limit=limit, access_rights_uid=name_get_uid)
         recs = self.browse(ids)
         return lazy_name_get(recs.with_user(name_get_uid))
