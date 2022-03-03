@@ -57,8 +57,11 @@ class CRMLead(models.Model):
             elif len_vals > 1:
                 vals0 = values[0].strip()
                 vals1 = values[1].strip()
-                args += ['|', '|', ("id", operator, vals0), ("id", operator, vals1),
-                         '|', ("name", operator, vals0), ("name", operator, vals1)]
+                if vals0 and vals0.isnumeric():
+                    args += [("id", operator, vals0), ("name", operator, vals1)]
+                else:
+                    args += [("name", operator, name)]
+
         ids = self._search(args, limit=limit, access_rights_uid=name_get_uid)
         recs = self.browse(ids)
         return lazy_name_get(recs.with_user(name_get_uid))
