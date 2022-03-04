@@ -68,25 +68,27 @@ class ProductPublicCategory(models.Model):
     _inherit = "product.public.category"
 
     def _replace_product(self):
-        for item in self:
-            texto = item.name
-            buscar = "Barcelona"
-            reemplazar_por = "Atelier"
-            text_name = texto.replace(buscar, reemplazar_por, 1)
-            item.write({'name': text_name})
-            products = self.env['product.template'].search([('public_category_id', '=', item.id)])
-            products._replace_product_template()
+        buscar = "Barcelona"
+        reemplazar_por = "Atelier"
+        params = (buscar, reemplazar_por, str(self.ids)[1:-1])
+        sql = "UPDATE product_public_category SET name = REPLACE(name, '%s', '%s') WHERE id in (%s)" % params
+        sql2 = """UPDATE ir_translation SET src = REPLACE(src, '%s', '%s'), value = ''
+        WHERE res_id in (%s) AND name = 'product.public.category,name'""" % params
+        self._cr.execute(sql)
+        self._cr.execute(sql2)
+        products = self.env['product.template'].search([('public_category_id', 'in', self.ids)])
+        products._replace_product_template()
 
 
 class ProductTemplate(models.Model):
     _inherit = "product.template"
 
     def _replace_product_template(self):
-        for item in self:
-            texto = item.name
-            buscar = "Barcelona"
-            reemplazar_por = "Atelier"
-            text_name = texto.replace(buscar, reemplazar_por, 1)
-            item.write({'name': text_name})
-
-
+        buscar = "Barcelona"
+        reemplazar_por = "Atelier"
+        params = (buscar, reemplazar_por, str(self.ids)[1:-1])
+        sql = "UPDATE product_template SET name = REPLACE(name, '%s', '%s') WHERE id in (%s)" % params
+        sql2 = """UPDATE ir_translation SET src = REPLACE(src, '%s', '%s'), value = ''
+                WHERE res_id in (%s) AND name = 'product.template,name'""" % params
+        self._cr.execute(sql)
+        self._cr.execute(sql2)
