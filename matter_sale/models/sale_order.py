@@ -70,9 +70,23 @@ class ProductPublicCategory(models.Model):
     def _replace_product(self):
         for item in self:
             texto = item.name
-            buscar = "Matter Barcelona"
-            reemplazar_por = "Matter Atelier"
-            text_name = texto.replace(buscar, reemplazar_por)
+            buscar = "Barcelona"
+            reemplazar_por = "Atelier"
+            text_name = texto.replace(buscar, reemplazar_por, 1)
+            item.write({'name': text_name})
+            products = self.env['product.template'].search([('public_category_id', '=', item.id)])
+            products._replace_product_template()
+
+
+class ProductTemplate(models.Model):
+    _inherit = "product.template"
+
+    def _replace_product_template(self):
+        for item in self:
+            texto = item.name
+            buscar = "Barcelona"
+            reemplazar_por = "Atelier"
+            text_name = texto.replace(buscar, reemplazar_por, 1)
             item.write({'name': text_name})
 
 
