@@ -62,3 +62,33 @@ class SaleOrder(models.Model):
                 result['views'] = form_view
             result['res_id'] = pick_ids.id
         return result
+
+
+class ProductPublicCategory(models.Model):
+    _inherit = "product.public.category"
+
+    def _replace_product(self):
+        buscar = "Barcelona"
+        reemplazar_por = "Atelier"
+        params = (buscar, reemplazar_por, str(self.ids)[1:-1])
+        sql = "UPDATE product_public_category SET name = REPLACE(name, '%s', '%s') WHERE id in (%s)" % params
+        sql2 = """UPDATE ir_translation SET src = REPLACE(src, '%s', '%s'), value = ''
+        WHERE res_id in (%s) AND name = 'product.public.category,name'""" % params
+        self._cr.execute(sql)
+        self._cr.execute(sql2)
+        products = self.env['product.template'].search([('public_category_id', 'in', self.ids)])
+        products._replace_product_template()
+
+
+class ProductTemplate(models.Model):
+    _inherit = "product.template"
+
+    def _replace_product_template(self):
+        buscar = "Barcelona"
+        reemplazar_por = "Atelier"
+        params = (buscar, reemplazar_por, str(self.ids)[1:-1])
+        sql = "UPDATE product_template SET name = REPLACE(name, '%s', '%s') WHERE id in (%s)" % params
+        sql2 = """UPDATE ir_translation SET src = REPLACE(src, '%s', '%s'), value = ''
+                WHERE res_id in (%s) AND name = 'product.template,name'""" % params
+        self._cr.execute(sql)
+        self._cr.execute(sql2)

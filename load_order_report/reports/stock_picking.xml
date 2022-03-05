@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <template id="report_loading_order_document" inherit_id="stock.report_delivery_document" primary="True">
+            <xpath expr="//table[@name='stock_move_table']/thead/tr" position="inside">
+                <th name="th_sm_po" class="text-center"><strong>PO</strong></th>
+            </xpath>
+            <xpath expr="//tr[@t-foreach='lines']" position="inside">
+                <td class="text-center">
+                    <span t-field="move.purchase_origin"/>
+                </td>
+            </xpath>
+            <xpath expr="//table[@name='stock_move_line_table']/thead/tr" position="inside">
+                <th name="th_sml_po" class="text-center"><strong>PO</strong></th>
+            </xpath>
+            <xpath expr="//tr[@t-foreach='o.move_line_ids']" position="inside">
+                <td class="text-center">
+                    <span t-field="move_line.move_id.purchase_origin"/>
+                </td>
+            </xpath>
+        </template>
+
+        <template id="report_loading_order">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="load_order_report.report_loading_order_document" t-lang="o.partner_id.lang"/>
+            </t>
+        </template>
+
+        <report string="Orden de Carga"
+                id="action_report_load_order"
+                model="stock.picking"
+                report_type="qweb-pdf"
+                name="load_order_report.report_loading_order"
+                file="load_order_report.report_loading_order"
+                print_report_name="'Order de Carga - %s - %s' % (object.partner_id.name or '', object.name)"/>
+
+    </data>
+</odoo>

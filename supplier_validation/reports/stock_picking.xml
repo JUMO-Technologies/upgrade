@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <template id="report_delivery_document" inherit_id="stock.report_delivery_document">
+            <div name="div_sched_date" position="after">
+                <div t-if="o.location_id.usage == 'supplier'" class="col-auto" name="div_supplier_validation">
+                    <strong>Validación por PO:</strong>
+                    <span t-if="o.partner_id.po_validation">SI</span>
+                    <span t-else="">NO</span><br/>
+                    <strong>Validación por producto:</strong>
+                    <span t-if="o.partner_id.product_validation">SI</span>
+                    <span t-else="">NO</span>
+                </div>
+            </div>
+        </template>
+    
+    </data>
+</odoo>

@@ -7,7 +7,12 @@
     'author': 'JUMO Technologies',
     'website': '',
     'license': '',
-    'depends': ['sale_quotation_builder', 'sale_stock', 'purchase_stock', 'sale_purchase', 'calendar'],
+    'depends': ['sale_quotation_builder',
+                'sale_stock',
+                'purchase_stock',
+                'sale_purchase',
+                'calendar',
+                'website_sale'],
     'data': [
         'views/crm_team.xml',
         'views/sale_order.xml',

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <record id="partner_validation_form" model="ir.ui.view">
+            <field name="name">partner.validation.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <group name="purchase" position="inside">
+                    <field name="po_validation"/>
+                    <field name="product_validation"/>
+                </group>
+            </field>
+        </record>
+    
+    </data>
+</odoo>
