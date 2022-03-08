@@ -58,3 +58,10 @@ class CRMLead(models.Model):
         ids = self._search(args, limit=limit, access_rights_uid=name_get_uid)
         recs = self.browse(ids)
         return lazy_name_get(recs.with_user(name_get_uid))
+
+
+class CrmStage(models.Model):
+    _inherit = "crm.stage"
+
+    hide_from_delivery_portal = fields.Boolean("Ocultar del Portal Delivery", default=False)
+

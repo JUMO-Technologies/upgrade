@@ -71,7 +71,12 @@ class SaleOrder(models.Model):
     @api.depends("order_line.product_state")
     def _compute_full_delivered(self):
         for order in self:
-            order.full_delivered = not any(l.product_state != 'delivered' for l in order.order_line)
+            down_payment = int(self.env['ir.config_parameter'].sudo().get_param('sale.default_deposit_product_id'))
+            domain = [('display_type', '=', False), ('product_id', '!=', down_payment),
+                      ('product_id.categ_id', '!=', 119), ('product_uom_qty', '>', 0),
+                      ('price_subtotal', '>=', 0)]
+            delivery_line = order.order_line.filtered_domain(domain)
+            order.full_delivered = not any(l.product_state != 'delivered' for l in delivery_line)
 
 
 class SaleOrderLine(models.Model):
@@ -84,21 +89,23 @@ class SaleOrderLine(models.Model):
         selection=STATES, string="Estado", compute="_compute_product_state", default="approved"
     )
     x_qty_received = fields.Float(string="Cantidad Recibida", compute="_compute_qty_received_with_uom_id")
-    x_qty_received_uom_id = fields.Many2one(comodel_name="uom.uom", compute="_compute_qty_received_with_uom_id")
-    x_ordered_quantity = fields.Float(string="Cantidad Pedida", compute="_compute_qty_received_with_uom_id")
     x_date_expected = fields.Date(string="Fecha Esperada", compute="_compute_x_date_expected")
 
-    @api.depends("order_id")
+    @api.depends('move_ids.state', 'move_ids.scrapped', 'move_ids.product_uom_qty', 'move_ids.product_uom')
     def _compute_qty_received_with_uom_id(self):
-        purchase_line = self.env["purchase.order.line"]
-        for rec in self:
-            origin = rec.mapped("order_id").name
-            domain = [("order_id.origin", "=", origin), ("product_id", "=", rec.product_id.id)]
-            # line = purchase_line.search(domain, limit=1, order="id desc")
-            line = purchase_line.search(domain, order="id desc")
-            rec.x_qty_received = sum(line.mapped("qty_received")) - rec.qty_delivered
-            rec.x_qty_received_uom_id = len(line) > 0 and line[0].product_uom.id or False
-            rec.x_ordered_quantity = sum(line.mapped("product_qty"))
+        for line in self:  # TODO: maybe one day, this should be done in SQL for performance sake
+            if line.qty_delivered_method == 'stock_move':
+                qty = 0.0
+                outgoing_moves, incoming_moves = line._get_outgoing_incoming_moves()
+                for move in outgoing_moves:
+                    qty += move.product_uom._compute_quantity(move.reserved_availability, line.product_uom,
+                                                              rounding_method='HALF-UP')
+                for move in incoming_moves:
+                    qty -= move.product_uom._compute_quantity(move.reserved_availability, line.product_uom,
+                                                              rounding_method='HALF-UP')
+                line.x_qty_received = qty
+            else:
+                line.x_qty_received = 0.0
 
     def _compute_stock_move_id(self):
         for rec in self:
@@ -120,11 +127,7 @@ class SaleOrderLine(models.Model):
         purchase_line = self.env["purchase.order.line"]
         # picking = self.env["stock.picking"]
         for rec in self:
-            origin = rec.mapped("order_id").name
-            domain = [("order_id.origin", "=", origin), ("product_id", "=", rec.product_id.id)]
-            line = purchase_line.search(domain, limit=1, order="id desc")
-
-            if rec.x_ordered_quantity == rec.qty_delivered:
+            if rec.product_uom_qty <= rec.qty_delivered:
                 rec.product_state = "delivered"
             else:
                 rec.product_state = "processed"
@@ -142,7 +145,7 @@ class SaleOrderLine(models.Model):
             ]
             stock_move = self.env["stock.move"].search(domain, order="date_expected desc", limit=1)
 
-            if rec.product_state == "approved":
-                rec.x_date_expected = False
+            if rec.product_state == "approved" or not stock_move:
+                rec.x_date_expected = rec.order_id.date_order
             else:
                 rec.x_date_expected = stock_move.date_expected

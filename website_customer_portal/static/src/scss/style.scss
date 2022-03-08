@@ -1,28 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,300,500,600,100");
-
-/* Variables */
-:root {
-  --black: rgba(0, 0, 0, 1);
-  --eerie-black: rgba(26, 29, 31, 1);
-  --mine-shaft: rgba(47, 47, 47, 1);
-  --mountain-mist: rgba(152, 152, 152, 1);
-  --celeste: rgba(209, 209, 209, 1);
-  --gallery: rgba(238, 238, 238, 1);
-  --white: rgba(255, 255, 255, 1);
-  --green: #178e37;
-
-  --font-size-m: 14px;
-  --font-size-l: 16px;
-  --font-size-xl: 18px;
-  --font-size-xxl: 30px;
-  --font-size-xxxl: 34px;
-  --font-size-xxxxl: 35px;
-  --font-size-xxxxxl: 40px;
-
-  --font-family-helvetica: "Helvetica";
-  --font-family-montserrat: "Montserrat";
-}
-
 body {
     display: flex;
     flex-direction: column;
@@ -35,169 +10,6 @@ body {
   min-height: 100vh !important;
 }
 
-#wrapwrap > * {
-  padding: 0px;
-}
-
-/* Classes */
-.dashboard_main_context {
-    background-color: var(--gallery);
-}
-.montserrat-semi-bold-white-16px {
-  color: var(--white);
-  font-family: var(--font-family-montserrat);
-  font-size: var(--font-size-l);
-  font-weight: 600;
-  font-style: normal;
-}
-.montserrat-normal-eerie-black-30px {
-  color: var(--eerie-black);
-  font-family: var(--font-family-montserrat);
-  font-size: var(--font-size-xxl);
-  font-weight: 400;
-  font-style: normal;
-}
-.montserrat-normal-eerie-black-14px {
-  color: var(--eerie-black);
-  font-family: var(--font-family-montserrat);
-  font-size: var(--font-size-m);
-  font-weight: 400;
-  font-style: normal;
-}
-.border-1px-white {
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--white);
-}
-.border-1px-black {
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--black);
-}
-.montserrat-normal-eerie-black-16px {
-  color: var(--eerie-black);
-  font-family: var(--font-family-montserrat);
-  font-size: var(--font-size-l);
-  font-weight: 400;
-  font-style: normal;
-}
-
-.montserrat-normal-mountain-mist-18px {
-  color: var(--mountain-mist);
-  font-family: var(--font-family-montserrat);
-  font-size: var(--font-size-xl);
-  font-weight: 400;
-  font-style: normal;
-}
-
-.border-0-8px-white {
-    border-width: 0.8px;
-    border-style: solid;
-    border-color: var(--white);
-}
-
-.montserrat-normal-black-16px {
-  color: var(--black);
-  font-family: var(--font-family-montserrat);
-  font-size: var(--font-size-l);
-  font-weight: 400;
-  font-style: normal;
-}
-
-.montserrat-normal-white-16px {
-  color: var(--white);
-  font-family: var(--font-family-montserrat);
-  font-size: var(--font-size-l);
-  font-weight: 400;
-  font-style: normal;
-}
-
-.montserrat-semi-bold-white-14px {
-  color: var(--white);
-  font-family: var(--font-family-montserrat);
-  font-size: var(--font-size-m);
-  font-weight: 600;
-  font-style: normal;
-}
-
-.montserrat-medium-white-16px {
-  color: var(--white);
-  font-family: var(--font-family-montserrat);
-  font-size: var(--font-size-l);
-  font-weight: 500;
-  font-style: normal;
-}
-
-.montserrat-semi-bold-black-16px {
-  color: var(--black);
-  font-family: var(--font-family-montserrat);
-  font-size: var(--font-size-l);
-  font-weight: 600;
-  font-style: normal;
-}
-
-.montserrat-medium-black-34px {
-  color: var(--black);
-  font-family: var(--font-family-montserrat);
-  font-size: var(--font-size-xxxl);
-  font-weight: 500;
-  font-style: normal;
-}
-
-.montserrat-medium-black-24px {
-  color: var(--black);
-  font-family: var(--font-family-montserrat);
-  font-size: 24px;
-  font-weight: 500;
-  font-style: normal;
-}
-
-.montserrat-semi-bold-eerie-black-14px {
-  color: var(--eerie-black);
-  font-family: var(--font-family-montserrat);
-  font-size: var(--font-size-m);
-  font-weight: 600;
-  font-style: normal;
-}
-
-.helvetica-normal-eerie-black-16px {
-  color: var(--eerie-black);
-  font-family: var(--font-family-helvetica);
-  font-size: var(--font-size-l);
-}
-
-.montserrat-medium-eerie-black-14px {
-  color: var(--eerie-black);
-  font-family: var(--font-family-montserrat);
-  font-size: var(--font-size-m);
-  font-weight: 500;
-  font-style: normal;
-}
-
-.montserrat-light-black-40px {
-  color: var(--black);
-  font-family: var(--font-family-montserrat);
-  font-size: var(--font-size-xxxxxl);
-  font-weight: 300;
-  font-style: normal;
-}
-
-.montserrat-normal-white-30px {
-  color: var(--white);
-  font-family: var(--font-family-montserrat);
-  font-size: var(--font-size-xxl);
-  font-weight: 400;
-  font-style: normal;
-}
-
-.montserrat-semi-bold-eerie-black-16px {
-  color: var(--eerie-black);
-  font-family: var(--font-family-montserrat);
-  font-size: var(--font-size-l);
-  font-weight: 600;
-  font-style: normal;
-}
-
 input.ac-input {
     display: none;
 }
@@ -208,10 +20,6 @@ input.ac-input {
 
 .desktopproyecto table tr {
     border-bottom: 3px solid var(--gallery);
-}
-
-.desktopproyecto .padding-left{
-    padding-left: 70px;
 }
 
 .desktopproyecto .order-container {
@@ -254,128 +62,10 @@ ul.ac-list {
 }
 
 /* Styles */
-.cabecera-v1 {
-  background-color: var(--black);
-  height: 70px;
-  position: relative;
-  width: 100%;
-}
-
-.logo-horizontal-header {
-  height: 14px;
-  left: 79px;
-  position: absolute;
-  top: 26px;
-  width: 300px;
-}
-
-.footer {
-  background-color: var(--eerie-black);
-  height: 100px;
-  width: 100%;
-}
-
-.matter-solo-blanc-footer {
-  height: 15px;
-  left: 80px;
-//   position: absolute;
-  position: relative;
-  top: 41px;
-  width: 150px;
-}
-
-.email {
-  height: 19px;
-  position: relative;
-  width: 253px;
-  margin-right: 10px;
-}
-
-.footer_tel_mail {
-    top: 38px;
-    margin-left: auto;
-    margin-right: 0;
-    position: relative;
-}
-
-.ateliermatterbarce {
-  font-weight: 500;
-  left: 37px;
-  letter-spacing: 0.38px;
-  line-height: 19px;
-  position: absolute;
-  top: 0;
-  white-space: nowrap;
-  color: white;
-}
-
-.noun-mail-1053115 {
-  height: 14px;
-  left: 0;
-  position: absolute;
-  top: 3px;
-  width: 22px;
-}
-
-.tel {
-    height: 19px;
-    position: relative;
-    width: 136px;
-}
-
-.phone {
-    font-weight: 500;
-    left: 32px;
-    letter-spacing: 0.38px;
-    line-height: 19px;
-    position: absolute;
-    top: 0;
-    white-space: nowrap;
-    color: white;
-}
-
-.noun-phone-1995462 {
-    height: 18px;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 18px;
-}
-
-.desktopinicio {
-    background-color: var(--gallery);
-    overflow: auto;
-    position: relative;
-}
-
-.desktopinicio .overlap-group1 {
-    background-color: var(--gallery);
-    position: relative;
-    padding: 0px 79px;
-    margin-bottom: 79px;
-}
-
-.desktopinicio .overlap-group {
-  background-color: var(--gallery);
-  height: 700px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%
-}
 
 .desktopinicio .proyecto {
   background-color: var(--white) !important;
   margin-top: 10px;
-}
-
-.desktopinicio .leal-item-value {
-    background: var(--white);
-    padding: 20px 0 20px 25px;
-    font-weight: 500;
-    letter-spacing: 0.81px;
-    position: relative;
 }
 
 .desktopinicio .matter-solo-blanc {
@@ -385,14 +75,6 @@ ul.ac-list {
   top: 41px;
   width: 150px;
 }
-
-// .desktopinicio .email {
-//   height: 19px;
-//   left: 1002px;
-//   position: absolute;
-//   top: 39px;
-//   width: 253px;
-// }
 
 .desktopinicio .ateliermatterbarce {
   font-weight: 500;
@@ -412,14 +94,6 @@ ul.ac-list {
   width: 22px;
 }
 
-// .desktopinicio .tel {
-//   height: 19px;
-//   left: 1321px;
-//   position: absolute;
-//   top: 39px;
-//   width: 136px;
-// }
-
 .desktopinicio .phone {
   font-weight: 500;
   left: 32px;
@@ -436,13 +110,6 @@ ul.ac-list {
   position: absolute;
   top: 0;
   width: 18px;
-}
-
-.desktopinicio .title-delivery {
-  font-weight: 300;
-  letter-spacing: 0.95px;
-  margin-top: 53px;
-  margin-bottom: 30px;
 }
 
 .desktopinicio .logo-horizontal {
@@ -498,25 +165,9 @@ ul.ac-list {
     color: var(--green) !important;
 }
 
-.desktopproyecto .overlap-group6 {
-    background-color: var(--gallery);
-    position: relative;
-    padding: 0px 79px;
-}
-
 .desktopproyecto .overlap-group5 {
   background-color: var(--gallery);
-  left: 0;
-  position: relative;
-  top: 0;
   width: 100%;
-}
-
-.desktopproyecto .boton-volver {
-  height: 42px;
-  width: 92px;
-  float: left;
-  margin: auto 0px;
 }
 
 .desktopproyecto .boton-volver:hover {
@@ -541,13 +192,6 @@ ul.ac-list {
   top: 11px;
   white-space: nowrap;
   width: 49px;
-}
-
-.desktopproyecto .datos-proyecto {
-  background-color: var(--white);
-  min-height: 365px;
-  position: relative;
-  padding: 32px 58px;
 }
 
 .desktopproyecto .boton-editar-datos {
@@ -665,7 +309,7 @@ ul.ac-list {
 
 .desktopproyecto .dir-envio-1 {
   position: relative;
-  margin-bottom: 20.1px;
+  margin-bottom: 50px;
 }
 
 .desktopproyecto .contacto-obra {
@@ -687,26 +331,6 @@ ul.ac-list {
   top: 27px;
   white-space: nowrap;
   width: 222px;
-}
-
-.desktopproyecto .datos-del-proyecto {
-  letter-spacing: 0.71px;
-  margin-bottom: 5px;
-  display: inline-block;
-}
-
-.desktopproyecto .col-2-project{
-    display: inline-block;
-    margin-top: 18px;
-    width: 54%;
-    vertical-align: top;
-}
-
-.desktopproyecto .col-3-project{
-    display: inline-block;
-    margin-top: 18px;
-    width: 45%;
-    vertical-align: top;
 }
 
 .desktopproyecto .line-2 {
@@ -1339,9 +963,9 @@ ul.ac-list {
   position: relative;
 }
 
-.desktopproyecto table tr{
-    padding-left: 100px !important;
-}
+// .desktopproyecto table tr{
+//     padding-left: 100px !important;
+// }
 
 .desktopproyecto .categora-de-prod-1 {
   height: 298px;
@@ -1556,14 +1180,6 @@ ul.ac-list {
   width: 131px;
 }
 
-.desktopproyecto .btn-descargar {
-  height: 42px;
-  width: 166px;
-  padding: 10px;
-  text-align: center;
-  margin: 8px;
-}
-
 .desktopproyecto .overlap-group1 {
   position: relative;
 }
@@ -1577,24 +1193,27 @@ ul.ac-list {
   font-weight: 600;
   letter-spacing: 0;
   line-height: 16px;
+  margin-right: 20px;
 }
 
-.desktopproyecto .btn-cerrar-pedido {
-  background-color: var(--white);
-  height: 40px;
-  left: 1154px;
-  position: absolute;
-  top: 92px;
-  width: 163px;
+.desktopproyecto .rotate-image {
+    transform: rotate(180deg) !important;
+    -ms-transform: rotate(180deg) !important;
+    -moz-transform: rotate(180deg) !important;
+    -webkit-transform: rotate(180deg) !important;
+    -o-transform: rotate(180deg) !important;
 }
 
-.desktopproyecto .noun-arrow-1776263-1 {
-  height: 8px;
-  left: 132px;
-  position: absolute;
-  top: 16px;
-  transform: rotate(-180deg);
-  width: 16px;
+.desktopproyecto .text-bottom {
+    vertical-align: bottom !important;
+}
+
+.desktopproyecto .text-top {
+    vertical-align: top !important;
+}
+
+.desktopproyecto .text-middle {
+    vertical-align: middle !important;
 }
 
 .desktopproyecto .cerrar-pedido {
@@ -1609,17 +1228,8 @@ ul.ac-list {
   width: 107px;
 }
 
-.desktopproyecto .pedido {
-    background-color: var(--mine-shaft);
-    min-height: 170px;
-    padding: 30px 58px;
-    margin-left: 0px !important;
-    margin-right: 0px !important;
-}
-
-.desktopproyecto .col-button {
-    float: right;
-    margin-left: auto auto;
+.desktopproyecto .margin-right {
+    margin-right: 20px;
 }
 
 .desktopproyecto .button-box-row {
@@ -1628,15 +1238,6 @@ ul.ac-list {
     margin-left: auto;
     margin-right: 0px;
     display: inline-block;
-}
-
-.desktopproyecto .col-order {
-    margin-right: auto;
-}
-
-.desktopproyecto .orders {
-    position: relative;
-    margin: 50px 0px;
 }
 
 .desktopproyecto .order-reference {
@@ -1655,33 +1256,18 @@ ul.ac-list {
   line-height: 19px;
 }
 
-.desktopproyecto .btn-ver-pedido {
-  background-color: var(--white);
-  height: 40px;
-  width: 164px;
-  color: var(__black);
-  cursor: pointer;
-  margin: 8px;
-}
-
 .desktopproyecto .noun-arrow-1776263 {
   height: 8px;
-  left: 126px;
-  position: absolute;
-  top: 17px;
   width: 16px;
 }
 
 .desktopproyecto .ver-pedido {
   font-weight: 600;
-  left: 17px;
   letter-spacing: 0;
   line-height: 16px;
-  position: absolute;
   text-align: center;
-  top: 11px;
   white-space: nowrap;
-  width: 100px;
+  margin-right: 20px;
 }
 
 .desktopproyecto .matter-solo-blanc {
@@ -1728,21 +1314,9 @@ ul.ac-list {
   width: 18px;
 }
 
-.desktopproyecto .masa-can-palet {
-    color: var(--black);
-    font-family: var(--font-family-montserrat);
-    font-size: var(--font-size-xxxxxl);
-    font-weight: 600;
-    margin: 51px 0px !important
-}
-
 .desktopproyecto .project-title {
     margin: auto auto;
     vertical-align: top;
-}
-
-.desktopproyecto .project-title-text {
-    letter-spacing: 0.95px;
 }
 
 .td-center {
@@ -1755,10 +1329,6 @@ ul.ac-list {
   position: absolute;
   top: 26px;
   width: 300px;
-}
-
-.desktopproyecto .border-light-td {
-    border-right: 3px solid var(--gallery);
 }
 
 /* Login Styles */
