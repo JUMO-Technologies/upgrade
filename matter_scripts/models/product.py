@@ -20,7 +20,11 @@ class ProductTemplate(models.Model):
         if not products:
             return
         products = map(lambda s: s[0], products)
+        index = 0
         for item in self.env['product.template'].browse(products):
+            if index > 2000:
+                break
+            index += 1
             if item.x_product_rect == 1:
                 item.write({
                     'name': (item.public_category_id and item.public_category_id.collection_number or '') + ' ' + (
