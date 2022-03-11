@@ -129,7 +129,7 @@ class ProductTemplate(models.Model):
         WHERE (POSITION(xcc.x_name IN prod.name) = 0
         OR POSITION(xfc.x_name IN prod.name) = 0
         OR POSITION(xac.x_name IN prod.name) = 0
-        OR POSITION(xac.x_product_name_desc IN prod.name) = 0)
+        OR POSITION(prod.x_product_name_desc IN prod.name) = 0)
         AND prod.active = true) AS prods"""
 
 
