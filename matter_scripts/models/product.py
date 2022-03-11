@@ -126,10 +126,13 @@ class ProductTemplate(models.Model):
         INNER JOIN x_colores_coleccion xcc ON xcc.id = prod.x_producto_color
         INNER JOIN x_formatos_coleccion xfc ON xfc.id = prod.x_producto_formato
         INNER JOIN x_acabados_coleccion xac ON xac.id = prod.x_producto_acabado
+        INNER JOIN product_public_category ppc ON prod.public_category_id = ppc.id
         WHERE (POSITION(xcc.x_name IN prod.name) = 0
         OR POSITION(xfc.x_name IN prod.name) = 0
         OR POSITION(xac.x_name IN prod.name) = 0
-        OR POSITION(prod.x_product_name_desc IN prod.name) = 0)
+        OR POSITION(prod.x_product_name_desc IN prod.name) = 0
+        OR POSITION(ppc.name IN prod.name) = 0
+        OR POSITION(ppc.collection_number IN prod.name) = 0)
         AND prod.active = true) AS prods"""
 
 
