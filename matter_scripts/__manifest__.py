@@ -7,7 +7,7 @@
     'author': '',
     'website': '',
     'license': '',
-    'depends': ['account', 'l10n_es', 'helpdesk'],
+    'depends': ['account', 'l10n_es', 'helpdesk', 'website_sale'],
     'data': [
 
     ],
