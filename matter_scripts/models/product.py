@@ -128,7 +128,8 @@ class ProductTemplate(models.Model):
         INNER JOIN x_acabados_coleccion xac ON xac.id = prod.x_producto_acabado
         WHERE (POSITION(xcc.x_name IN prod.name) = 0
         OR POSITION(xfc.x_name IN prod.name) = 0
-        OR POSITION(xac.x_name IN prod.name) = 0)
+        OR POSITION(xac.x_name IN prod.name) = 0
+        OR POSITION(xac.x_product_name_desc IN prod.name) = 0)
         AND prod.active = true) AS prods"""
 
 
