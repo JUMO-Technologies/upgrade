@@ -13,6 +13,17 @@
             </field>
         </record>
 
+        <record id="view_calendar_event_calendar" model="ir.ui.view">
+            <field name="name">view.calendar.event.calendar</field>
+            <field name="model">calendar.event</field>
+            <field name="inherit_id" ref="calendar.view_calendar_event_calendar"/>
+            <field name="arch" type="xml">
+                <calendar position="inside">
+                    <field name="opportunity_id"/>
+                </calendar>
+            </field>
+        </record>
+
         <record id="view_calendar_event_search" model="ir.ui.view">
             <field name="name">view.calendar.event.search</field>
             <field name="model">calendar.event</field>
