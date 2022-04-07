@@ -9,7 +9,8 @@
             <field name="arch" type="xml">
                 <field name="vat" position="after">
                     <field name="newletter"/>
-                    <field name="data_protection_sign"/>
+                    <field name="data_protection_sign" attrs="{'invisible': [('parent_id', '!=', False)]}"/>
+                    <field name="parent_protection_sign" attrs="{'invisible': [('parent_id', '=', False)]}"/>
                 </field>
             </field>
         </record>
