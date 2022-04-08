@@ -9,7 +9,9 @@
             <field name="arch" type="xml">
                 <notebook position="before">
                     <group>
-                        <field name="partner_category_ids" widget="many2many_tags"/>
+                        <group>
+                            <field name="partner_category_ids" widget="many2many_tags"/>
+                        </group>
                     </group>
                 </notebook>
             </field>
