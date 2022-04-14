@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_invoice_tree" model="ir.ui.view">
+            <field name="name">view_invoice_tree</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_invoice_tree"/>
+            <field name="arch" type="xml">
+                <tree position="inside">
+                    <field name="late_payment" optional="hide"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_account_invoice_filter" model="ir.ui.view">
+            <field name="name">view_account_invoice_filter</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+            <field name="arch" type="xml">
+                <search position="inside">
+                    <field name="late_payment"/>
+                    <filter string="Late Payments" name="late_payments_filter"
+                            domain="[('late_payment', '&gt;', 15), ('invoice_payment_state', 'not in', ('paid', 'in_payment'))]"/>
+                </search>
+            </field>
+        </record>
+
+    </data>
+</odoo>
