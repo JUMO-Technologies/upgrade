@@ -7,13 +7,9 @@
             <field name="model">crm.lead</field>
             <field name="inherit_id" ref="crm.crm_lead_view_form"/>
             <field name="arch" type="xml">
-                <notebook position="before">
-                    <group>
-                        <group>
-                            <field name="partner_category_ids" widget="many2many_tags"/>
-                        </group>
-                    </group>
-                </notebook>
+                <field name="team_id" position="after">
+                    <field name="partner_category_ids" widget="many2many_tags"/>
+                </field>
             </field>
         </record>
     
