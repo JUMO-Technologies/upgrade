@@ -1,5 +1,8 @@
 /*=========================== Header Style 1 ==============================*/
 /*----------------- Header Static Menu ------------------*/
+header#top {
+    display: none;
+}
 .navbar-toggler{
 	background: nth($f_color,27) !important;
 	&:focus{

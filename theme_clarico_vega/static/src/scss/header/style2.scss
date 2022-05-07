@@ -1,4 +1,7 @@
 /*--------- Static Menu ------------*/
+header#top {
+    display: none;
+}
 #top_menu > li > ul.dropdown-menu
 {
 	border-top: 1px solid #ced4da; /*This color is not used in variables*/
