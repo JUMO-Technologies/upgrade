@@ -1003,6 +1003,7 @@ odoo.define('theme_clarico_vega.theme_script', function(require) {
         });
         var product_detail = new sAnimations.registry.product_detail();
         product_detail.productGallery();
+        $("header#top").css('display', 'none');
     })
 
 
