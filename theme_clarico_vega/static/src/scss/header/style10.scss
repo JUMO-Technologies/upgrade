@@ -1,4 +1,7 @@
 /*=========================== Header Style 10 ==============================*/
+header#top {
+    display: none;
+}
 /*---------- Header container/sticky position styles  ----------------*/
 #wrapwrap.homepage > header:not(.o_header_affix) > .navbar{
     padding-top: 0px !important;
