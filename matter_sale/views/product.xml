@@ -7,14 +7,12 @@
             <field name="model">product.product</field>
             <field name="inherit_id" ref="product.product_product_tree_view"/>
             <field name="arch" type="xml">
-
                 <tree position="inside">
                     <field name="is_stock_old" invisible="1"/>
-                    <button class="fa fa-exclamation-triangle text-danger" name="view_partner_account" type="object"
-                            attrs="{'invisible': [('is_stock_old', '=', False)]}"
-                            title="In stock for more than 15 days"/>
+                    <button class="fa fa-exclamation-triangle text-danger" name="is_stock_old_ribbon"
+                       attrs="{'invisible': [('is_stock_old', '=', False)]}"
+                       title="In stock for more than 15 days"/>
                 </tree>
-
             </field>
         </record>
 
