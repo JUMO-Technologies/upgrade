@@ -18,6 +18,7 @@
         'views/sale_order.xml',
         'views/purchase_order.xml',
         'views/calendar_event.xml',
+        'views/product.xml',
     ],
     'installable': True,
     'auto_install': False
