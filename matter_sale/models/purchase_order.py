@@ -1,5 +1,6 @@
 from odoo import fields, models, api, _
 from odoo.exceptions import ValidationError
+from datetime import datetime
 
 
 class PurchaseOrder(models.Model):
@@ -43,5 +44,5 @@ class PurchaseOrder(models.Model):
     def _constrains_picking_type_id(self):
         for order in self:
             if order.sale_order_id and order.sale_order_id.warehouse_id.id != order.picking_type_id.warehouse_id.id and \
-                    order.date_order > "2022-05-31":
+                    order.date_order > datetime(day=31, month=5, year=2022):
                 raise ValidationError(_("Sorry it can not be choose this picking type for this sale team"))
