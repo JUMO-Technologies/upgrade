@@ -18,7 +18,7 @@
                 </div>
                 <field name="partner_ref" position="after">
                     <field name="sale_order_id" invisible="1"/>
-                    <field name="sale_team_id" attrs="{'invisible': [('sale_order_id', '=', False)]}"/>
+                    <field name="sale_team_id" attrs="{'invisible': [('sale_team_id', '=', False)]}"/>
                     <field name="sale_user_id" attrs="{'invisible': [('sale_order_id', '=', False)]}"/>
                 </field>
             </field>

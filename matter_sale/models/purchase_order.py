@@ -8,7 +8,7 @@ class PurchaseOrder(models.Model):
 
     sale_order_id = fields.Many2one("sale.order", compute="_compute_sale_order_source", store=True)
     sale_count = fields.Integer(compute="_compute_sale_order_source", store=True)
-    sale_team_id = fields.Many2one(related="sale_order_id.team_id")
+    sale_team_id = fields.Many2one("crm.team", compute="_compute_sale_team")
     sale_user_id = fields.Many2one(related="sale_order_id.user_id", string="User SO")
 
     @api.depends('origin')
@@ -17,6 +17,16 @@ class PurchaseOrder(models.Model):
             sale_order = self.env['sale.order'].search([('name', '=', order.origin)], limit=1)
             order.sale_order_id = sale_order or False
             order.sale_count = sale_order and 1 or 0
+
+    @api.depends("sale_order_id")
+    def _compute_sale_team(self):
+        for order in self:
+            if order.sale_order_id:
+                order.sale_team_id = order.sale_order_id.team_id
+            else:
+                order.sale_team_id = self.env['crm.team']._get_default_team_id(
+                    user_id=order.create_uid.id
+                )
 
     def view_sale_order(self):
         self.ensure_one()
@@ -44,5 +54,8 @@ class PurchaseOrder(models.Model):
     def _constrains_picking_type_id(self):
         for order in self:
             if order.sale_order_id and order.sale_order_id.warehouse_id.id != order.picking_type_id.warehouse_id.id and \
+                    order.date_order > datetime(day=31, month=5, year=2022):
+                raise ValidationError(_("Sorry it can not be choose this picking type for this sale team"))
+            elif order.sale_team_id and order.sale_team_id.warehouse_id.id != order.picking_type_id.warehouse_id.id and \
                     order.date_order > datetime(day=31, month=5, year=2022):
                 raise ValidationError(_("Sorry it can not be choose this picking type for this sale team"))
