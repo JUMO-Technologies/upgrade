@@ -4,7 +4,7 @@
         
         <record id="stock_vpick_tree" model="ir.ui.view">
             <field name="name">stock_vpick_tree</field>
-            <field name="model">product.product</field>
+            <field name="model">stock.picking</field>
             <field name="inherit_id" ref="stock.vpicktree"/>
             <field name="arch" type="xml">
                 <tree position="inside">
@@ -18,7 +18,7 @@
 
         <record id="stock_vpick_search" model="ir.ui.view">
             <field name="name">product_search_form_view</field>
-            <field name="model">product.product</field>
+            <field name="model">stock.picking</field>
             <field name="inherit_id" ref="stock.view_picking_internal_search"/>
             <field name="arch" type="xml">
                 <filter name="my_transfers" position="after">
