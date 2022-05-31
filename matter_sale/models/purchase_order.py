@@ -42,5 +42,6 @@ class PurchaseOrder(models.Model):
     @api.constrains("sale_order_id", "picking_type_id")
     def _constrains_picking_type_id(self):
         for order in self:
-            if order.sale_order_id and order.sale_order_id.warehouse_id.id != order.picking_type_id.warehouse_id.id:
+            if order.sale_order_id and order.sale_order_id.warehouse_id.id != order.picking_type_id.warehouse_id.id and \
+                    order.date_order > "2022-05-31":
                 raise ValidationError(_("Sorry it can not be choose this picking type for this sale team"))
