@@ -1,6 +1,19 @@
 from odoo import fields, models, api
 
 
+class AccountMove(models.Model):
+    _inherit = "account.move"
+
+    display_discount1 = fields.Boolean(compute="_compute_total_discount")
+    display_discount2 = fields.Boolean(compute="_compute_total_discount")
+
+    @api.depends("invoice_line_ids")
+    def _compute_total_discount(self):
+        for invoice in self:
+            invoice.display_discount1 = any(invoice.invoice_line_ids.mapped("discount1"))
+            invoice.display_discount2 = any(invoice.invoice_line_ids.mapped("discount2"))
+
+
 class AccountMoveline(models.Model):
     _inherit = "account.move.line"
 

@@ -1,6 +1,19 @@
 from odoo import fields, models, api
 
 
+class SaleOrder(models.Model):
+    _inherit = "sale.order"
+
+    display_discount1 = fields.Boolean(compute="_compute_total_discount")
+    display_discount2 = fields.Boolean(compute="_compute_total_discount")
+
+    @api.depends("order_line")
+    def _compute_total_discount(self):
+        for order in self:
+            order.display_discount1 = any(order.order_line.mapped("discount1"))
+            order.display_discount2 = any(order.order_line.mapped("discount2"))
+
+
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
