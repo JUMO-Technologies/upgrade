@@ -8,17 +8,12 @@ class MergePurchaseOrder(models.TransientModel):
     _name = 'merge.sale.order'
     _description = 'Merge Purchase Order'
 
-    merge_type = \
-        fields.Selection([
+    merge_type = fields.Selection([
             ('new_cancel',
                 'Create new order and cancel all selected sale orders'),
-            ('new_delete',
-             'Create new order and delete all selected sale orders'),
             ('merge_cancel',
              'Merge order on existing selected order and cancel others'),
-            ('merge_delete',
-                'Merge order on existing selected order and delete others')],
-            default='new_cancel')
+        ], default='new_cancel')
     sale_order_id = fields.Many2one('sale.order', 'Sale Order')
 
     @api.onchange('merge_type')
@@ -44,10 +39,6 @@ class MergePurchaseOrder(models.TransientModel):
             raise UserError(
                 _('Please select atleast two sale orders to perform '
                     'the Merge Operation.'))
-        if any(order.state != 'draft' for order in sale_orders):
-            raise UserError(
-                _('Please select Sale orders which are in Quotation state '
-                  'to perform the Merge Operation.'))
         partner = sale_orders[0].partner_id.id
         if any(order.partner_id.id != partner for order in sale_orders):
             raise UserError(
@@ -58,112 +49,25 @@ class MergePurchaseOrder(models.TransientModel):
                 'trigger_onchange': True,
                 'onchange_fields_to_trigger': [partner]
             }).create({'partner_id': partner})
-            default = {'order_id': so.id}
-            for order in sale_orders:
-                for line in order.order_line:
-                    existing_so_line = False
-                    if so.order_line:
-                        for soline in so.order_line:
-                            if line.product_id == soline.product_id and \
-                                    line.price_unit == soline.price_unit:
-                                existing_so_line = soline
-                                break
-                    if existing_so_line:
-                        existing_so_line.product_uom_qty += \
-                            line.product_uom_qty
-                        so_taxes = [
-                            tax.id for tax in existing_so_line.tax_id]
-                        [so_taxes.append((tax.id))
-                         for tax in line.tax_id]
-                        existing_so_line.tax_id = \
-                            [(6, 0, so_taxes)]
-                    else:
-                        line.copy(default=default)
-            for order in sale_orders:
-                order.action_cancel()
-        elif self.merge_type == 'new_delete':
-            so = self.env['sale.order'].with_context({
-                'trigger_onchange': True,
-                'onchange_fields_to_trigger': [partner]
-            }).create({'partner_id': partner})
-            default = {'order_id': so.id}
-            for order in sale_orders:
-                for line in order.order_line:
-                    existing_so_line = False
-                    if so.order_line:
-                        for soline in so.order_line:
-                            if line.product_id == soline.product_id and \
-                                    line.price_unit == soline.price_unit:
-                                existing_so_line = soline
-                                break
-                    if existing_so_line:
-                        existing_so_line.product_uom_qty += \
-                            line.product_uom_qty
-                        so_taxes = [
-                            tax.id for tax in existing_so_line.tax_id]
-                        [so_taxes.append((tax.id))
-                         for tax in line.tax_id]
-                        existing_so_line.tax_id = \
-                            [(6, 0, so_taxes)]
-                    else:
-                        line.copy(default=default)
-            for order in sale_orders:
-                order.sudo().action_cancel()
-                order.sudo().unlink()
         elif self.merge_type == 'merge_cancel':
-            default = {'order_id': self.sale_order_id.id}
             so = self.sale_order_id
-            for order in sale_orders:
-                if order == so:
-                    continue
-                for line in order.order_line:
-                    existing_so_line = False
-                    if so.order_line:
-                        for soline in so.order_line:
-                            if line.product_id == soline.product_id and \
-                                    line.price_unit == soline.price_unit:
-                                existing_so_line = soline
-                                break
-                    if existing_so_line:
-                        existing_so_line.product_uom_qty += \
-                            line.product_uom_qty
-                        so_taxes = [
-                            tax.id for tax in existing_so_line.tax_id]
-                        [so_taxes.append((tax.id))
-                         for tax in line.tax_id]
-                        existing_so_line.tax_id = \
-                            [(6, 0, so_taxes)]
-                    else:
-                        line.copy(default=default)
-            for order in sale_orders:
-                if order != so:
-                    order.sudo().action_cancel()
-        else:
-            default = {'order_id': self.sale_order_id.id}
-            so = self.sale_order_id
-            for order in sale_orders:
-                if order == so:
-                    continue
-                for line in order.order_line:
-                    existing_so_line = False
-                    if so.order_line:
-                        for soline in so.order_line:
-                            if line.product_id == soline.product_id and \
-                                    line.price_unit == soline.price_unit:
-                                existing_so_line = soline
-                                break
-                    if existing_so_line:
-                        existing_so_line.product_uom_qty += \
-                            line.product_uom_qty
-                        so_taxes = [
-                            tax.id for tax in existing_so_line.tax_id]
-                        [so_taxes.append((tax.id))
-                         for tax in line.tax_id]
-                        existing_so_line.tax_id = \
-                            [(6, 0, so_taxes)]
-                    else:
-                        line.copy(default=default)
-            for order in sale_orders:
-                if order != so:
-                    order.sudo().action_cancel()
-                    order.sudo().unlink()
+        default = {'order_id': so.id}
+        last_sequence = so.order_line and so.order_line[-1].sequence or 0
+        for order in sale_orders:
+            if order == so:
+                continue
+            if order.order_line:
+                last_sequence += 10
+                so.write({'order_line': [
+                    (0, 0, dict(default, **{
+                        'display_type': 'line_section',
+                        'name': order.name,
+                        'sequence': last_sequence,
+                    }))]}
+                )
+            for line in order.order_line:
+                last_sequence += 10
+                line.copy(default=dict(default, **{'sequence': last_sequence}))
+        for order in sale_orders:
+            if order != so:
+                order.sudo().action_cancel()
