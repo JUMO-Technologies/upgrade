@@ -44,11 +44,16 @@ class MergePurchaseOrder(models.TransientModel):
             raise UserError(
                 _('Please select Sale orders whose Customers are same to '
                     ' perform the Merge Operation.'))
+        lead = sale_orders[0].lead_id.id
+        if any(order.lead_id.id != lead for order in sale_orders):
+            raise UserError(
+                _('Please select Sale orders whose Leads are same to '
+                    ' perform the Merge Operation.'))
         if self.merge_type == 'new_cancel':
             so = self.env['sale.order'].with_context({
                 'trigger_onchange': True,
                 'onchange_fields_to_trigger': [partner]
-            }).create({'partner_id': partner})
+            }).create({'partner_id': partner, 'lead_id': lead})
         elif self.merge_type == 'merge_cancel':
             so = self.sale_order_id
         default = {'order_id': so.id}
