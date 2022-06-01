@@ -12,12 +12,14 @@
                 'purchase_stock',
                 'sale_purchase',
                 'calendar',
-                'website_sale'],
+                'website_sale',],
     'data': [
         'views/crm_team.xml',
         'views/sale_order.xml',
         'views/purchase_order.xml',
         'views/calendar_event.xml',
+        'views/product.xml',
+        'views/picking.xml',
     ],
     'installable': True,
     'auto_install': False

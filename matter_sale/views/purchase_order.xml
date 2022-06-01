@@ -7,9 +7,18 @@
             <field name="model">purchase.order</field>
             <field name="inherit_id" ref="purchase.purchase_order_form"/>
             <field name="arch" type="xml">
+                <div class="oe_button_box" position="inside">
+                    <button name="view_sale_order"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-dollar"
+                            attrs="{'invisible': [('sale_order_id', '=', False)]}">
+                            <field name="sale_count" widget="statinfo" string="Sale"/>
+                    </button>
+                </div>
                 <field name="partner_ref" position="after">
                     <field name="sale_order_id" invisible="1"/>
-                    <field name="sale_team_id" attrs="{'invisible': [('sale_order_id', '=', False)]}"/>
+                    <field name="sale_team_id" attrs="{'invisible': [('sale_team_id', '=', False)]}"/>
                     <field name="sale_user_id" attrs="{'invisible': [('sale_order_id', '=', False)]}"/>
                 </field>
             </field>

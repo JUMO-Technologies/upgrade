@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="visit_send_email" model="mail.template">
+            <field name="name">Send Email: Visit</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="subject">Solicitud de Visita Registrada</field>
+            <field name="email_from">"${object.user_id.partner_id.name}" &lt;${(object.user_id.partner_id.email)}&gt;</field>
+            <field name="email_to">"${(object.email_from)}</field>
+            <field name="body_html" type="html">
+                <div style="background-color:black;height:100%;color:white">
+                    <div style="padding:20px;">
+                        <img src="/matter_crm/static/src/img/matter-logo.png"/>
+                    </div><br/>
+                    <div style="padding:20px;">
+                        <p>Gracias por tu solicitud de visita a nuestro espacio.
+                            Te confirmamos que hemos registrado tu visita, en caso
+                            de modificación nos pondríamos en contacto contigo.</p>
+                    </div>
+                </div>
+            </field>
+            <field name="lang">${object.lang_id.url_code}</field>
+            <field name="auto_delete" eval="False"/>
+            <field name="user_signature" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

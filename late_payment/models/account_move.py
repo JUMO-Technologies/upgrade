@@ -1,10 +1,11 @@
-from odoo import fields, models, api
+from odoo import fields, models
 
 
 class AccountMove(models.Model):
     _inherit = "account.move"
 
     late_payment = fields.Integer(compute="_compute_late_payment", search="_search_late_payment")
+    programmed = fields.Boolean(string="Programmed")
 
     def _compute_late_payment(self):
         for move in self:
