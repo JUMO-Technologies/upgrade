@@ -14,7 +14,6 @@
         "reports/sale_order_reports.xml",
         "reports/report_invoice.xml",
     ],
-    "post_init_hook": "_post_init_copy_discount",
     "installable": True,
     "auto_install": False
 }

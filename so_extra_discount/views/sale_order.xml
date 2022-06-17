@@ -9,7 +9,6 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='order_line']/tree/field[@name='discount']" position="before">
                     <field name="discount1" optional="hide" string="Disc.%"/>
-                    <field name="discount1_store" invisible="1"/>
                     <field name="discount2" optional="hide" string="Disc2.%"/>
                 </xpath>
                 <xpath expr="//field[@name='order_line']/tree/field[@name='discount']" position="attributes">
