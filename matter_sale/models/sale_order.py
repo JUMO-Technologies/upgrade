@@ -10,6 +10,7 @@ class SaleOrder(models.Model):
     purchase_ids = fields.One2many('purchase.order', 'sale_order_id')
     purchase_picking_counts = fields.Integer("Number of Purchase Pickings", compute='_compute_purchase_picking_count',
                                              groups='purchase.group_purchase_user')
+    client_order_ref = fields.Char(required=True)
 
     @api.depends('order_line.purchase_line_ids')
     def _compute_purchase_picking_count(self):
