@@ -10,7 +10,7 @@
 
                 <field name="backorder_id" position="after">
                     <field name="delivered" string="Entregado"
-                           attrs="{'invisible': [('picking_type_code', '!=', 'outgoing')], 'readonly': [('state', '=', 'done')]}"/>
+                           attrs="{'invisible': [('picking_type_code', '!=', 'outgoing')], 'readonly': [('state', '!=', 'done')]}"/>
                 </field>
 
             </field>
