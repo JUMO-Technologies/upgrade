@@ -5,6 +5,7 @@ class StockPicking(models.Model):
     _inherit = "stock.picking"
 
     is_stock_old = fields.Boolean(string="In stock for 15 days", compute="_compute_is_stock_old", store=True)
+    delivered = fields.Boolean(string="Delivered")
 
     @api.depends("group_id")
     def _compute_is_stock_old(self):

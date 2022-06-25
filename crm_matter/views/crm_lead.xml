@@ -7,7 +7,7 @@
       <field name="inherit_id" ref="crm.crm_case_kanban_view_leads"/>
       <field name="arch" type="xml">
         <xpath expr="//kanban" position="attributes">
-          <attribute name="default_order">score desc, activity_date_deadline desc</attribute>
+          <attribute name="default_order">activity_date_deadline asc, score desc</attribute>
         </xpath>
 
       </field>
