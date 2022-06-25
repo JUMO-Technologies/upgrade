@@ -10,7 +10,7 @@
 
                 <field name="backorder_id" position="after">
                     <field name="delivered" string="Entregado"
-                           attrs="{'invisible': [('picking_type_code', '!=', 'outgoing')]}"/>
+                           attrs="{'invisible': [('picking_type_code', '!=', 'outgoing')], 'readonly': [('state', '!=', 'done')]}"/>
                 </field>
 
             </field>
@@ -22,6 +22,7 @@
             <field name="inherit_id" ref="stock.vpicktree"/>
             <field name="arch" type="xml">
                 <tree position="inside">
+                    <field name="delivered" string="Entregado" optional="hide"/>
                     <field name="is_stock_old" invisible="1"/>
                     <button class="fa fa-exclamation-triangle text-danger" name="is_stock_old_ribbon"
                        attrs="{'invisible': [('is_stock_old', '=', False)]}"
