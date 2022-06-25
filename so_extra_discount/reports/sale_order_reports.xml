@@ -15,7 +15,7 @@
                 <attribute name="style">display: none;</attribute>
             </xpath>
             <xpath expr="//td[@t-if='display_discount']" position="before">
-                <td t-if="doc.display_discount2" class="text-right" groups="product.group_discount_per_so_line">
+                <td t-if="doc.display_discount1" class="text-right" groups="product.group_discount_per_so_line">
                     <span t-field="line.discount1"/>
                 </td>
                 <td t-if="doc.display_discount2" class="text-right" groups="product.group_discount_per_so_line">
