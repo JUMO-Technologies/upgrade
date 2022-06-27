@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <record id="l10n_es_reports.es_profit_and_loss_line_4" model="account.financial.html.report.line">
+            <field name="domain" eval="['|', ('account_id.code', '=like', '600%'),
+                                        '|', ('account_id.code', '=like', '601%'),
+                                        '|', ('account_id.code', '=like', '602%'),
+                                        '|', ('account_id.code', '=like', '605%'),
+                                        '|', ('account_id.code', '=like', '606%'),
+                                        '|', ('account_id.code', '=like', '607%'),
+                                        '|', ('account_id.code', '=like', '608%'),
+                                        '|', ('account_id.code', '=like', '609%'),
+                                        '|', ('account_id.code', '=like', '61%'),
+                                        '|', ('account_id.code', '=like', '6931%'),
+                                        '|', ('account_id.code', '=like', '6932%'),
+                                        '|', ('account_id.code', '=like', '6933%'),
+                                        '|', ('account_id.code', '=like', '7931%'),
+                                        '|', ('account_id.code', '=like', '7932%'),
+                                        ('account_id.code', '=like', '7933%')]"/>
+        </record>
+    
+    </data>
+</odoo>
