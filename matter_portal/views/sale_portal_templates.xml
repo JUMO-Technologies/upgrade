@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="sale_order_portal_content" inherit_id="sale.sale_order_portal_content">
+        <xpath expr="//table[@id='sales_order_table']//th[1]" position="before">
+            <th><span>Imagen</span></th>
+        </xpath>
+        <xpath expr="//table[@id='sales_order_table']//th[@t-if='display_discount']" position="attributes">
+            <attribute name="style">display: none !important;</attribute>
+        </xpath>
+        <xpath expr="//table[@id='sales_order_table']//td[@id='product_name']" position="before">
+            <td t-if="not line.x_studio_imagen_" id="product_img"><span t-field="line.x_studio_img"/></td>
+            <td t-if="line.x_studio_imagen_" id="product_img">
+                <span t-field="line.x_studio_imagen_"
+                      t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'rounded o_image_64_max'}"/></td>
+        </xpath>
+        <xpath expr="//table[@id='sales_order_table']//td[@t-if='display_discount']" position="attributes">
+            <attribute name="style">display: none !important;</attribute>
+        </xpath>
+    </template>
+</odoo>
