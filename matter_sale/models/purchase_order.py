@@ -8,8 +8,9 @@ class PurchaseOrder(models.Model):
 
     sale_order_id = fields.Many2one("sale.order", compute="_compute_sale_order_source", store=True)
     sale_count = fields.Integer(compute="_compute_sale_order_source", store=True)
-    sale_team_id = fields.Many2one("crm.team", compute="_compute_sale_team")
+    sale_team_id = fields.Many2one("crm.team", compute="_compute_sale_team", store=True)
     sale_user_id = fields.Many2one(related="sale_order_id.user_id", string="User SO")
+    invoiced_amount = fields.Monetary(string="Invoiced Amount", compute="_compute_invoiced_amount", store=True)
 
     @api.depends('origin')
     def _compute_sale_order_source(self):
@@ -59,3 +60,8 @@ class PurchaseOrder(models.Model):
             elif order.sale_team_id and order.sale_team_id.warehouse_id.id != order.picking_type_id.warehouse_id.id and \
                     order.date_order > datetime(day=2, month=6, year=2022):
                 raise ValidationError(_("Sorry it can not be choose this picking type for this sale team"))
+
+    @api.depends("order_line.qty_invoiced", "order_line.price_unit")
+    def _compute_invoiced_amount(self):
+        for order in self:
+            order.invoiced_amount = sum([l.qty_invoiced * l.price_unit for l in order.order_line])

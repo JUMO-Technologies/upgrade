@@ -76,6 +76,11 @@ msgid "User SO"
 msgstr "Usuario SO"
 
 #. module: matter_sale
+#: model:ir.model.fields,field_description:matter_sale.field_purchase_order__invoiced_amount
+msgid "Invoiced Amount"
+msgstr "Total Facturado"
+
+#. module: matter_sale
 #: model:ir.model.fields,field_description:matter_sale.field_crm_team__warehouse_id
 #: model:ir.model.fields,field_description:matter_sale.field_sale_order__warehouse_id
 msgid "Warehouse"
