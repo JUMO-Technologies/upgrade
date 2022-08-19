@@ -1,15 +1,10 @@
 # -*- coding: utf-8 -*-
 {
     'name': "Matter Auto Create Account",
-
-    'summary': """
-       Matter Auto Create Account """,
-
-    'description': """
-        Matter Auto Create Account
-    """,
-    'author': "",
-    'website': "",
+    'version': "15.0.1.1.0",
+    'summary': "Matter Auto Create Account",
+    'author': "JUMO Technologies S.L.",
+    'website': "https://www.jumotech.com",
     'category': 'Accounting',
     'depends': ['account', 'sale', 'purchase'],
     'data': [

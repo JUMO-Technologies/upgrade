@@ -1,9 +1,8 @@
 {
     'name': 'Loading Order Report',
-    'version': '13.0.0.0.1',
+    'version': '15.0.0.0.1',
     'summary': 'Loading Order Report',
-    'description': 'Loading Order Report',
-    'category': 'Category',
+    'category': 'Stock',
     'author': 'Jumo Technologies',
     'website': 'https://www.jumotech.com',
     'license': 'LGPL-3',

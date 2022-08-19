@@ -1,12 +1,11 @@
 {
     'name': 'Matter Layouts',
-    'version': '14.0.0.0.1',
+    'version': '15.0.0.0.1',
     'summary': 'Custom Matter Report Layouts',
-    'description': 'Custom Matter Report Layouts',
-    'category': '',
-    'author': 'JUMO Technologies',
-    'website': '',
-    'license': '',
+    'category': 'Hidden',
+    'author': 'JUMO Technologies S.L.',
+    'website': 'https://www.jumotech.com',
+    'license': 'LGPL-3',
     'depends': ['web'],
     'data': [
         'views/res_company.xml',

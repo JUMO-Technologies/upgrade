@@ -1,12 +1,11 @@
 {
     'name': 'Matter Reports',
-    'version': '13.0.0.0.1',
+    'version': '15.0.1.1.0',
     'summary': 'Matter Custom Reports',
-    'description': 'Matter Custom Reports',
     'category': 'Reports',
-    'author': 'JUMO Technologies',
+    'author': 'JUMO Technologies S.L.',
     'website': 'https://www.jumotech.com',
-    'license': '',
+    'license': 'LGPL-3',
     'depends': ['account', 'matter_sale'],
     'data': [
         'reports/account_invoice.xml',

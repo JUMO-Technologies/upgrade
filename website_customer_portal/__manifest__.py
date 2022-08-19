@@ -1,13 +1,10 @@
 {
     "name": "Customer Portal",
-    "summary": """Matter Customer Portal""",
-    "description": """
-        Long description of module's purpose
-    """,
+    "summary": "Matter Customer Portal",
     "author": "Babatope Ajepe",
     "website": "http://www.yourcompany.com",
-    "category": "Uncategorized",
-    "version": "1.7",
+    "category": "Customization",
+    "version": "15.0.1.7.0",
     "depends": [
         "base",
         "website",
@@ -25,8 +22,16 @@
         "views/res_partner.xml",
         "views/crm_lead.xml",
         "views/sale_order.xml",
-        "views/assets.xml",
         "views/portal.xml",
         "views/purchase_order.xml",
     ],
+    "assets": {
+        "website.assets_frontend": [
+            "website_customer_portal/static/src/js/accordion.js",
+            "website_customer_portal/static/src/scss/desktop_styles.scss",
+            "website_customer_portal/static/src/scss/tablet_styles.scss",
+            "website_customer_portal/static/src/scss/mobile_styles.scss",
+            "website_customer_portal/static/src/scss/style.scss",
+        ],
+    },
 }

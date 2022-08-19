@@ -1,10 +1,9 @@
 {
     'name': 'Supplier Validation',
-    'version': '13.0.0.0.1',
+    'version': '15.0.0.0.1',
     'summary': 'Custom supplier fields',
-    'description': 'Custom supplier fields',
     'category': 'Partner',
-    'author': 'Jumo Technologies',
+    'author': 'Jumo Technologies S.L.',
     'website': 'https://www.jumotech.com',
     'license': 'LGPL-3',
     'depends': ['base', 'stock'],

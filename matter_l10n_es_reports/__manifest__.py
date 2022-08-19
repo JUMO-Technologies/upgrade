@@ -1,10 +1,9 @@
 {
     "name": "Matter Reports Spain",
-    "version": "13.0.0.0.1",
+    "version": "15.0.0.0.1",
     "summary": "Matter Reports Spain",
-    "description": "Matter Reports Spain",
     "category": "Accounting",
-    "author": "JUMO Technologies",
+    "author": "JUMO Technologies S.L.",
     "website": "https://www.jumotech.com",
     "license": "LGPL-3",
     "depends": ["l10n_es_reports"],

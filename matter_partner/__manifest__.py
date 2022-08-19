@@ -1,10 +1,9 @@
 {
-    "name": "Mater Partner",
-    "version": "13.0.0.0.1",
+    "name": "Matter Partner",
+    "version": "15.0.1.1.0",
     "summary": "Matter Custom Partner",
-    "description": "Matter Custom Partner",
     "category": "Contacts",
-    "author": "JUMO Technologies",
+    "author": "JUMO Technologies S.L.",
     "website": "https://www.jumotech.com",
     "license": "LGPL-3",
     "depends": ["contacts"],

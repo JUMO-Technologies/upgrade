@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 {
     'name': "pol on so",
-    'description': """
-Show Purchase Order Lines related on SO
-    """,
     'author': "Odoo SA",
-    'version': '1.1',
+    'version': '15.0.1.1.0',
     'depends': [
         'website_sale',
         'purchase',

@@ -1,9 +1,8 @@
 {
     "name": "Late Payment",
-    "version": "13.0.0.0.1",
+    "version": "15.0.0.0.1",
     "summary": "Late Payment",
-    "description": "Late Payment",
-    "category": "Category",
+    "category": "Accountant",
     "author": "JUMO Technologies",
     "website": "https://www.jumotech.com",
     "license": "LGPL-3",

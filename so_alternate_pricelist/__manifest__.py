@@ -2,12 +2,10 @@
 {
     'name': "Sale Order Alternate PriceList",
     'summary': "Sale Order Atlernate PriceList",
-    'description': """
-Customization in order to add an alternate pricelist on a sale order that will be taken into account for generating reports""",
     'author': "Odoo SA",
     'website': "https://www.odoo.com",
     'category': 'Report',
-    'version': '1.0',
+    'version': '15.0.1.0.0',
     'depends': [
         'base',
         'base_automation',

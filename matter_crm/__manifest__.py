@@ -1,8 +1,7 @@
 {
     "name": "Matter CRM",
-    "version": "13.0.0.0.1",
+    "version": "15.0.0.0.1",
     "summary": "Matter Custom CRM",
-    "description": "Matter Custom CRM",
     "category": "CRM",
     "author": "JUMO Technologies",
     "website": "https://www.jumotech.com",

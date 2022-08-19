@@ -1,15 +1,12 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Matter External Layout Document',
-    'version': '13.0.0.1',
+    'version': '15.0.0.1.0',
     'summary': 'Customize the Matter Documents',
-    'description': """Documents Customized:
-    1. External Layout for all documents
-    """,
-    'category': '',
-    'author': '',
-    'website': '',
-    'license': '',
+    'category': 'Hidden',
+    'author': 'JUMO Technologies S.L.',
+    'website': 'https://www.jumotech.com',
+    'license': 'LGPL-3',
     'depends': ['web', 'account'],
     'data': [
         'report/external_layout.xml',

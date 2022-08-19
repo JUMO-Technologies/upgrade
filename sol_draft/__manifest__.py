@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 {
     'name': "Automated Sequence",
-    'description': """
-Automated Sequence for product
-    """,
     'author': "Odoo SA",
     'depends': [
         'sale_crm',
@@ -12,7 +9,7 @@ Automated Sequence for product
         'crm',
         'sol_qty_multiple',
     ],
-    'version': '1.1',
+    'version': '15.0.1.1.0',
     'data': [
         # Views
         'views/sale_order.xml',

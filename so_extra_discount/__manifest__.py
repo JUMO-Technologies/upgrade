@@ -1,10 +1,9 @@
 {
     "name": "Sale Order Extra Discount",
-    "version": "13.0.0.0.1",
+    "version": "15.0.0.0.1",
     "summary": "Sale Order Extra Discount",
-    "description": "Sale Order Extra Discount",
     "category": "Sales",
-    "author": "JUMO Technologies",
+    "author": "JUMO Technologies S.L.",
     "website": "https://www.jumotech.com",
     "license": "LGPL-3",
     "depends": ["sale", "account"],

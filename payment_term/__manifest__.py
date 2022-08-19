@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 {
     'name': "Alanta Payment Term",
-    'description': """
-Special Payment terms
-    """,
     'author': "Odoo SA",
-    'version': '1.1',
+    'version': '15.0.1.1.0',
     'depends': [
         'sale',
         'purchase',

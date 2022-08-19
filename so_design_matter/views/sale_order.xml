@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='utf-8' ?>
 <odoo>
   <data>
-    <template id="add_css_to_so_matter" inherit_id="web.assets_common">
-      <xpath expr="//link[last()]" position="after">
-        <link
-          rel="stylesheet"
-          type="text/scss"
-          href="/so_design_matter/static/src/scss/so.scss"
-        />
-      </xpath>
-    </template>
+<!--    <template id="add_css_to_so_matter" inherit_id="web.assets_common">-->
+<!--      <xpath expr="//link[last()]" position="after">-->
+<!--        <link-->
+<!--          rel="stylesheet"-->
+<!--          type="text/scss"-->
+<!--          href="/so_design_matter/static/src/scss/so.scss"-->
+<!--        />-->
+<!--      </xpath>-->
+<!--    </template>-->
     <record id="sale_order_view_form_matter" model="ir.ui.view">
       <field name="name">sale.order.view.form.matter</field>
       <field name="model">sale.order</field>
